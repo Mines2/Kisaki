@@ -1,0 +1,361 @@
+/*
+* @Author: Mines
+* @Date:   2018-03-30 11:12:03
+* @Last Modified by:   Mines
+* @Last Modified time: 2018-04-09 15:46:57
+*/
+*{
+	padding:0px;
+	margin: 0px;
+	list-style-type: none;
+	cursor: url('../image/Arrow.cur')  , auto;
+
+	
+}
+
+header{
+	width: 100%;
+	background: white;
+	border-bottom: solid  3px gray;
+	height: 200px;
+
+}
+
+body{
+	background: gray;
+}
+
+.head_main{
+	margin: auto;
+	width: 65%;
+	position: relative;
+	padding: 10px;
+}
+
+.head_logo{
+	width: 200px;
+	height: 120px;
+	left: 0%;
+	position: relative;
+
+}
+
+.left_nav_content li {
+	float: left;
+	margin-right: 30px;
+	width: 30px;
+	height: 30px;
+}
+
+.left_nav_content{
+	position: relative;
+	bottom: 0;
+	margin-top: 20px;
+}
+
+.nav_logo{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	margin-top: -2px;
+}
+
+.nav_text{
+	position: absolute;
+	margin-left: 25px;
+}
+
+.right_top_nav{
+	position: absolute;
+	right: 1%;
+	top: 0%;
+
+
+}
+
+.right_bot_nav{
+	position: absolute;
+	right: 1%;
+	bottom: -12%;
+	margin-top: 20px;
+}
+
+.right_mid_nav{
+	position: absolute;
+	right: 3%;
+	top: 50%;
+
+}
+
+body{
+	cursor: url('../image/Arrow.cur')  , auto;
+}
+
+.search_text{
+	border: solid 2px blue;
+    width: 150px;
+    outline: none;
+    height: 19px;
+}
+
+.search_btu{
+	background: blue;
+    border: none;
+    padding: 4px;
+    outline: none;
+    position: relative;
+    margin-left: -9px;
+}
+
+
+.right_bot_nav .nav_content{
+	background: skyblue;
+	padding: 5px;
+
+}
+
+
+
+section{
+	width: 100%;
+	margin-top: 10px;
+
+}
+
+
+.section_content{
+	width: 65%;
+	margin: auto;
+	
+
+
+}
+
+
+.section_left{
+	background: white;
+	width: 18%;
+	float: left;
+	padding: 3px;
+	border-radius: 3px; 
+}
+
+.section_mid{
+	
+	width: 55%;
+	margin-left: 5px;
+	float: left;
+	border-radius: 3px; 
+	padding: 3px;
+}
+
+.section_right{
+	width: 25%;
+	margin-left: 5px;
+	float: left;
+	border-radius: 3px; 
+}
+
+.section_left_nav  li{
+
+ padding: 2px;
+ margin-bottom: 10px;
+
+}
+
+
+.section_left_nav  li  img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.section_left_userName{
+	position: absolute;
+	margin-top: 17px;
+	margin-left: 10px;
+}
+
+.vip_button{
+	background: pink;
+	padding: 5px;
+	color: gray;
+	width: 100%;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+
+
+}
+
+.number{
+	float: right;
+}
+
+.line{
+	border-bottom:solid 1px green; 
+}
+
+.advice_tillte{
+	width: 98.5%;
+	background: gray;
+	padding: 3px;
+}
+
+.advice_item{
+	border: none;
+	outline: none;
+	text-align: center;
+	background: skyblue;
+	padding: 5px;
+	width: 20%;
+	border-radius: 5px;
+}
+
+.advice_ul li{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.advice_item_text{
+	border: none;
+	outline: none;
+
+
+}
+
+.advice_item_date{
+	border: none;
+	outline: none;
+	width: 15%
+}
+
+.advice_content{
+	margin-bottom: 5px;
+	background: white;
+	margin-left: 10px;
+	border-radius: 3px; 
+	padding: 5px;
+}
+
+.paihang_tillte{
+	border: none;
+	outline: none;
+	background: gray;
+	padding: 3px;
+	width: 97%;
+}
+
+.paihang_content{
+	padding: 3px;
+	background: white;
+	margin-bottom: 10px;
+}
+
+.paihang_img{
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
+.paihang_text{
+	position: relative;
+	width: 50%;
+	float: left;
+	padding: 5px;
+	outline: none;
+	border: none;
+}
+
+.paihang_user{
+	position: relative;
+	width: 20%;
+	float: left;
+	padding: 5px;
+	outline: none;
+	border: none;
+}
+
+.paihang_number{
+	position: relative;
+	float: right;
+	font-size: 24px;
+	width: 5%;
+	outline: none;
+	border: none;
+}
+
+.paihang_ul li{
+   height: 130px;
+   width: 100%;
+   margin-top: 20px;
+}
+
+.mid_content{
+
+	margin-bottom: 5px;
+    background: white;
+    margin-left: 10px;
+    border-radius: 3px;
+    padding: 5px;
+}
+.mid_content_item{
+	width: 100%;
+}
+
+.mid_content_item_tillte{
+	border: none;
+	outline: none;
+	background: gray;
+	padding: 3px;
+	width: 98%;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+.mid_content_item_fresh{
+	position: relative;
+	float: right;
+	border-radius: 1px;
+	border: solid 1px ;
+	width: 15px;
+	height: 15px;
+	margin-top:-27px;
+	margin-right: 35px;
+
+}
+
+.mid_content_item_close{
+	position: relative;
+	float: right;
+	border-radius: 1px;
+	border: solid 1px ;
+	width: 15px;
+	height: 15px;
+	margin-top:-27px;
+	margin-right: 15px;
+}
+
+
+.userLogo{
+	border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+
+.mid_content_item_users  li{
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.mid_content_item_users {
+	height: 60px;
+}
+
+.mid_content_item_ul li{
+	margin-bottom: 5px;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml"  >
+<head>
+	
+    <title>Kisaki登录页面</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <script src="js/jquery.min.js" charset="utf-8"></script>
+
+</head>
+
+
+<body>
+   <header>
+   	     <div class="head_main" >
+   	        <img alt="" src="image/1.jpg" class="head_logo" >
+            <div class="left_nav">
+   	         <ul class="left_nav_content">
+   	            <li>
+   	            	<img alt="" src="image/1.jpg"  class="nav_logo">  <label class="nav_text" >XX</label>
+   	            </li>
+   	            <li>
+   	                <img alt="" src="image/1.jpg"  class="nav_logo"> <label class="nav_text">XX</label>
+   	            </li>
+
+   	         </ul>
+   	        </div>
+   	        <div class="right_top_nav">
+   	         <ul class="left_nav_content">
+   	            <li>
+   	            	  <label class="nav_text" >XX</label>
+   	            </li>
+   	            <li>
+   	                 <label class="nav_text">XX</label>
+   	            </li>
+   	            
+   	         </ul>
+   	        </div>
+   	        <div class="right_mid_nav">
+   	           <input type="text" placeholder="" class="search_text">
+   	           <button class="search_btu">搜索</button>
+   	        </div>
+   	        <div class="right_bot_nav">
+   	           <ul class="left_nav_content">
+   	            <li>
+   	            	  
+   	            	  <img alt="" src="image/1.jpg"  class="nav_logo"> <label class="nav_text">XX</label>
+   	            </li>
+   	            <li>
+   	                 
+   	                 <img alt="" src="image/1.jpg"  class="nav_logo"> <label class="nav_text">XX</label>
+   	            </li>
+   	            
+   	         </ul>
+   	        </div>
+
+
+   	     </div>
+   	     
+   </header>
+   <section>
+   <div class="section_content">
+   	  <div class="section_left">
+   	     <ul class="section_left_nav">
+   	        <li>
+   	           <img alt="" src="image/1.jpg">
+   	           <label class="section_left_userName">XXX</label>
+   	        </li>
+   	        <li>
+   	          <button  class="vip_button">
+   	          	开通会员
+   	          </button>
+   	        </li>
+   	        <li  class="line">
+   	        </li>
+   	        <li>
+   	        <label>关注</label>
+   	        <label class="number">22</label>
+   	        </li>
+   	        <li>
+   	        粉丝
+   	        </li>
+   	        <li  class="line">
+   	        </li>
+   	        <li>
+   	        浏览记录
+   	        </li>
+   	        <li>
+   	        评论记录
+   	        </li>
+   	        <li  class="line">
+   	        </li>
+   	     </ul>
+   	  </div>
+   	  
+   	  <div class="section_mid">
+   	  <div class="advice_content" >
+   	     <div class="advice">
+   	       <div class="advice_tillte">公告</div>
+   	     </div>
+   	     <ul  class="advice_ul">
+   	     <li>
+   	     	<input type="text" placeholder="" class="advice_item" value="公告">
+   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
+   	     </li>
+   	     <li>
+   	     	<input type="text" placeholder="" class="advice_item" value="公告">
+   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
+   	     </li>
+   	     <li>
+   	     	<input type="text" placeholder="" class="advice_item" value="公告">
+   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
+   	     </li>
+   	     </ul>
+   	 </div>
+   	 <div class="mid_content">
+   	     <div class="mid_content_item">
+   	        <input type="text" value="今日排行"  class="mid_content_item_tillte" readonly>
+   	        <button class="mid_content_item_fresh">*</button>
+   	        <button class="mid_content_item_close">-</button>
+   	        <ul class="mid_content_item_ul">
+   	           <li>
+   	                <input type="text" value="推荐用户"  class="mid_content_item_tillte" readonly>
+
+   	                <ul  class="mid_content_item_users">
+   	                	<li>
+   	                	    <img alt="" src="image/1.jpg"  class="userLogo">
+   	                	</li>
+   	                	<li>
+   	                	    <img alt="" src="image/1.jpg"  class="userLogo">
+   	                	</li>
+   	                	<li>
+   	                	    <img alt="" src="image/1.jpg"  class="userLogo">
+   	                	</li>
+   	                	<li>
+   	                	    <img alt="" src="image/1.jpg"  class="userLogo">
+   	                	</li>
+   	                </ul>
+   	           </li>
+   	           <li class="line">
+   	           </li>
+   	           <li>
+   	               <input type="text" value="推荐作品"  class="mid_content_item_tillte" readonly>
+   	           </li>
+   	        </ul>
+   	   
+
+
+
+
+
+   	     </div>
+   	 </div>
+   	  </div>
+   	  <div class="section_right">
+   	  <div class="paihang_content" >
+   	    <input type="text" value="今日排行"  readonly  class="paihang_tillte">
+
+        <ul class="paihang_ul">
+        	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+   	     	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+   	     	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+        	
+
+        </ul>
+   	    
+   	  </div>
+
+   	  <div class="paihang_content" >
+   	    <input type="text" value="今日排行" readonly class="paihang_tillte">
+
+        <ul class="paihang_ul">
+        	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+   	     	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+   	     	<li>
+        	<img src="image/1.jpg" class="paihang_img">
+   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
+   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+   	     	</li>
+        	
+
+        </ul>
+   	    
+   	  </div>
+   	
+   </div>
+   </div>
+
+
+
+   </section>
+
+	
+
+</body>
+
+</html>

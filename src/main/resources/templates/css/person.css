@@ -1,0 +1,39 @@
+/*
+* @Author: Mines
+* @Date:   2018-04-09 22:00:01
+* @Last Modified by:   Mines
+* @Last Modified time: 2018-04-09 22:15:52
+*/
+.section_content{
+	width: 65%;
+}
+
+.section_content_left{
+	width: 20%;
+	float: left;
+	height: 300px;
+	padding: 5px;
+}
+.section_content_mid{
+	margin-left: 10px;
+	width: 60%;
+	float: left;
+	background: white;
+	height: 300px;
+}
+
+.section_content_right{
+	width: 15%;
+	float: left;
+	background: red;
+	height: 300px;
+}
+
+.section_content_left_1{
+	width: 100%;
+	background: white;
+	height: 100px;
+	margin-bottom: 10px;
+
+
+}
