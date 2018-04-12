@@ -3,6 +3,7 @@ package kisaki.web.controller;
 import kisaki.web.entiy.BackgroundImg;
 import kisaki.web.mapper.BackgroundImgMapper;
 //import net.sf.json.JSONObject;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +23,16 @@ public class BackgroundImgController {
     BackgroundImgMapper backgroundImgMapper;
 
 
-//    @ResponseBody
-//    @RequestMapping("/getBGList")
-//    public Object getBGList(){
-////        JSONObject  jsonObject = new JSONObject();
-////        List<BackgroundImg> list = backgroundImgService.getBGList();
-//////        List<BackgroundImg> list = backgroundImgMapper.getList();
-////        jsonObject.accumulate("list",list);
-////        return jsonObject;
-//    }
+    @ResponseBody
+    @RequestMapping("/getBGList")
+    public Object getBGList(){
+        JSONObject jsonObject = new JSONObject();
+        List<BackgroundImg> list = backgroundImgService.getBGList();
+//        List<BackgroundImg> list = backgroundImgMapper.getList();
+        jsonObject.accumulate("list",list);
+        return jsonObject;
+    }
+
     @RequestMapping("/mess")
     public String test(Model model){
         return "/web/login";
