@@ -16,13 +16,18 @@ $(document).ready(function () {
             for (var i = 0; i < data.list.length; i++) {
                 bgImg.push(data.list[i]);
             }
+            $('#bg').attr('src', "../" + data.list[0].imgUrl);
+            $('#BGName').html(data.list[0].imgName);
+            $("#userName").html(data.list[0].userName);
+            $('#userLogoImg').attr('src',data.list[0].userLogoUrl);
+
         },
         error: function () {
            alert("网络异常，请联系维护人员", function () {
             });
         }
     });
-    var flag = 0;
+    var flag = 1;
     setInterval(function () {
         changeBGImg(bgImg[flag]);
         if (flag >= bgImg.length-1) {
@@ -31,16 +36,23 @@ $(document).ready(function () {
             flag+=1;
         }
 
-    },3000);
+    },10000);
 
 })
 
 
 function changeBGImg(imgObj) {
     $('#bg').fadeOut(1000);
-    setTimeout(function(){$('#bg').attr('src', "../" + imgObj.imgUrl);},1000);
+    $('#user').fadeOut(1000);
+    setTimeout(function(){
+        $('#bg').attr('src', "../" + imgObj.imgUrl);
+        $('#BGName').html(imgObj.imgName);
+        $("#userName").html(imgObj.userName);
+        $('#userLogoImg').attr('src',imgObj.userLogoUrl);
+    },1000);
 
     $('#bg').fadeIn(1000);
+    $('#user').fadeIn(1000);
 
 }
 

@@ -7,18 +7,22 @@
         <result column="IMG_URL" property="imgUrl"/>
         <result column="IMG_NAME" property="imgName"/>
         <result column="USER_ID" property="userId"/>
+        <result column="USER_NAME" property="userName"/>
+        <result column="USER_LOGO_URL" property="userLogoUrl" />
     </resultMap>
 
 
     <sql id="base_column">
-        ID, IMG_URL,IMG_NAME , USER_ID
+        ID, IMG_URL,IMG_NAME
     </sql>
 
     <select id="getList" resultMap="BackgroundImgResult">
         SELECT
         <include refid="base_column"></include>
+        , BG.USER_ID,TU.USER_NAME ,TU.USER_LOGO_URL
         FROM
-        backgroundImg
+        backgroundImg BG
+        LEFT JOIN  T_USER  TU ON  BG.USER_ID = TU.USER_ID
         ORDER BY ID ASC
 
     </select>
