@@ -25,10 +25,10 @@ $(document).ready(function () {
     var flag = 0;
     setInterval(function () {
         changeBGImg(bgImg[flag]);
-        if (flag >= 2) {
+        if (flag >= bgImg.length-1) {
             flag = 0;
         } else {
-            flag=+1;
+            flag+=1;
         }
 
     },3000);
@@ -38,7 +38,8 @@ $(document).ready(function () {
 
 function changeBGImg(imgObj) {
     $('#bg').fadeOut(1000);
-    $('#bg').attr('src', "../" + imgObj.imgUrl);
+    setTimeout(function(){$('#bg').attr('src', "../" + imgObj.imgUrl);},1000);
+
     $('#bg').fadeIn(1000);
 
 }
