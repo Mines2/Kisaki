@@ -1,6 +1,6 @@
 package kisaki.web.mapper;
 
-import kisaki.web.entiy.BackgroundImg;
+import kisaki.web.entity.BackgroundImg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

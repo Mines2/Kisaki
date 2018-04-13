@@ -1,4 +1,4 @@
-package kisaki.web.entiy.shiro;
+package kisaki.web.entity.shiro;
 
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.authc.AuthenticationInfo;

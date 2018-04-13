@@ -1,7 +1,6 @@
 package kisaki.web.service.BackgroundImgService;
 
-import kisaki.web.entiy.BackgroundImg;
-import org.springframework.stereotype.Repository;
+import kisaki.web.entity.BackgroundImg;
 
 import java.util.List;
 

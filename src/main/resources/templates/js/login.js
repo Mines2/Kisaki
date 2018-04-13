@@ -57,3 +57,24 @@ function changeBGImg(imgObj) {
 }
 
 
+function login() {
+    var username = $('#account').val();
+    var password = $('#password').val();
+    $.ajax({
+        data:{userName:username,password:password},
+        dataType:JSON,
+        url: "/login",
+        success: function (data) {
+            alert("1111111111");
+
+        },
+        error: function () {
+            alert("网络异常，请联系维护人员", function () {
+            });
+        }
+
+    })
+
+}
+
+

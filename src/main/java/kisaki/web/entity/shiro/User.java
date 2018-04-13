@@ -1,4 +1,4 @@
-package kisaki.web.entiy.shiro;
+package kisaki.web.entity.shiro;
 
 import java.io.Serializable;
 
@@ -6,6 +6,15 @@ public class User implements Serializable {
     private  Long id;
     private String userName;
     private String password;
+    private String logoImgUrl;
+
+    public String getLogoImgUrl() {
+        return logoImgUrl;
+    }
+
+    public void setLogoImgUrl(String logoImgUrl) {
+        this.logoImgUrl = logoImgUrl;
+    }
 
     public Long getId() {
         return id;

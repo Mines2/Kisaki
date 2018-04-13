@@ -1,6 +1,6 @@
 package kisaki.web.controller;
 
-import kisaki.web.entiy.BackgroundImg;
+import kisaki.web.entity.BackgroundImg;
 import kisaki.web.mapper.BackgroundImgMapper;
 //import net.sf.json.JSONObject;
 import net.sf.json.JSONObject;

@@ -33,13 +33,13 @@
 
 	  	
 	      </div><br/>
+<form th:action="@{/login}">
+	      <input type="text" placeholder="帐号" name="userName" id="account" class="account"><br/>
+	      <input type="password" placeholder="密码" name="password" id="password" class="password"><br/>
 
-	      <input type="text" placeholder="帐号"  class="account"><br/>
-	      <input type="password" placeholder="密码" class="password"><br/>
-
-	      <button  class="login_bt"> 登陆 </button><br/>
+	      <button type="submit" class="login_bt" > 登陆 </button><br/>
 	      <button class="register_bt"> 注册 </button>
-
+</form>
 
 
 

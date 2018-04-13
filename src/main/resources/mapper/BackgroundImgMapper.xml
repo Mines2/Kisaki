@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kisaki.web.mapper.BackgroundImgMapper">
-    <resultMap id="BackgroundImgResult" type="kisaki.web.entiy.BackgroundImg">
+    <resultMap id="BackgroundImgResult" type="kisaki.web.entity.BackgroundImg">
         <result column="ID" property="id"/>
         <result column="IMG_URL" property="imgUrl"/>
         <result column="IMG_NAME" property="imgName"/>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kisaki.web.mapper.UserMapper">
+    <resultMap id="UserResult" type="kisaki.web.entity.shiro.User">
+        <result column="USER_ID" property="id"/>
+        <result column="USER_NAME" property="userName"/>
+        <result column="USER_LOGO_URL" property="logoImgUrl"/>
+        <result column="PASS_WORD_SALT" property="password"/>
+    </resultMap>
+
+
+    <sql id="base_column">
+        USER_ID, USER_NAME,USER_LOGO_URL ,PASS_WORD_SALT
+    </sql>
+
+    <select id="findByUserName" resultMap="UserResult" parameterType="java.lang.String">
+        SELECT
+        <include refid="base_column"></include>
+
+        FROM
+        T_USER
+        WHERE USER_NAME = #{usrename,jdbcType=VARCHAR}
+
+    </select>
+
+
+</mapper>

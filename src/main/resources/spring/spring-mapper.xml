@@ -18,14 +18,14 @@
         <property name="cacheManagerConfigFile" value="classpath:spring/ehcache.xml" />
     </bean>
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="kisaki.web.entiy.shiro.RetryLimitHashedCredentialsMatcher">
+    <bean id="credentialsMatcher" class="kisaki.web.entity.shiro.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager" />
         <property name="hashAlgorithmName" value="md5" />
         <property name="hashIterations" value="2" />
         <property name="storedCredentialsHexEncoded" value="true" />
     </bean>
     <!-- Realm实现 -->
-    <bean id="userRealm" class="kisaki.web.entiy.shiro.MemberAccountRealm">
+    <bean id="userRealm" class="kisaki.web.entity.shiro.MemberAccountRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher" />
     </bean>
 

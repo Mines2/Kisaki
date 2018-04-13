@@ -1,4 +1,4 @@
-package kisaki.web.entiy;
+package kisaki.web.entity;
 
 import java.io.Serializable;
 

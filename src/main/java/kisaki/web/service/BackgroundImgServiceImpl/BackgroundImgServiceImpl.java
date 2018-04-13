@@ -1,6 +1,6 @@
 package kisaki.web.service.BackgroundImgServiceImpl;
 
-import kisaki.web.entiy.BackgroundImg;
+import kisaki.web.entity.BackgroundImg;
 import kisaki.web.mapper.BackgroundImgMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -63,8 +63,8 @@
    	  <div class="section_left">
    	     <ul class="section_left_nav">
    	        <li>
-   	           <img alt="" src="image/logo01.jpg">
-   	           <label class="section_left_userName">XXX</label>
+   	           <img alt="" th:src="${user.logoImgUrl}">
+   	           <label class="section_left_userName" th:text="${user.userName}"></label>
    	        </li>
    	        <li>
    	          <button  class="vip_button">
