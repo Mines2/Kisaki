@@ -1,0 +1,53 @@
+/*
+* @Author: Mines
+* @Date:   2018-04-16 10:44:05
+* @Last Modified by:   Mines
+* @Last Modified time: 2018-04-16 15:53:29
+*/
+
+
+.sreach_content{
+	width: 65%;
+	background: white;
+	margin: auto;
+	margin-top: 20px;
+}
+.content_tillte{
+	font-size: 20px;
+
+}
+.sreach_select_text li{
+    float: left;
+    margin-left: 20px;
+    padding: 5px;
+
+
+}
+
+.sreach_select_results_item{
+	width: 200px;
+	max-height: 288px;
+
+
+}
+
+
+.sreach_select_results{
+	width: 100%;
+	margin-top: 20px;
+    overflow: auto;
+    align-items:flex-end;
+}
+
+.sreach_select_results_item ul li{
+	width: 200px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.sreach_select_results_item{
+	padding: 16.5px;
+	float: left;
+    vertical-align: top;
+}
+
