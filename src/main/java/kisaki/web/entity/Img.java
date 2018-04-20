@@ -1,14 +1,48 @@
 package kisaki.web.entity;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
-public class BackgroundImg  implements Serializable {
+public class Img implements Serializable {
     private String imgUrl;
     private long id;
     private String imgName;
     private String userId;
     private String userName;
     private String userLogoUrl;
+    private int img_height;
+    private int img_width;
+    private double img_size;
+
+    public int getImg_height() {
+        return img_height;
+    }
+
+    public void setImg_height(int img_height) {
+        this.img_height = img_height;
+    }
+
+    public int getImg_width() {
+        return img_width;
+    }
+
+    public void setImg_width(int img_width) {
+        this.img_width = img_width;
+    }
+
+    public double getImg_size() {
+        return img_size;
+    }
+
+    public void setImg_size(double img_size) {
+        this.img_size = img_size;
+    }
 
     public String getUserName() {
         return userName;
@@ -27,6 +61,7 @@ public class BackgroundImg  implements Serializable {
     }
 
     public String getImgUrl() {
+
         return imgUrl;
     }
 

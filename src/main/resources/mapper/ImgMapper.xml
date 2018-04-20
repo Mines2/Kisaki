@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kisaki.web.mapper.BackgroundImgMapper">
-    <resultMap id="BackgroundImgResult" type="kisaki.web.entity.BackgroundImg">
+<mapper namespace="kisaki.web.mapper.ImgMapper">
+    <resultMap id="ImgResult" type="kisaki.web.entity.Img">
         <result column="ID" property="id"/>
         <result column="IMG_URL" property="imgUrl"/>
         <result column="IMG_NAME" property="imgName"/>
         <result column="USER_ID" property="userId"/>
         <result column="USER_NAME" property="userName"/>
         <result column="USER_LOGO_URL" property="userLogoUrl" />
+        <result column="USER_SIZE" property="userSize"/>
     </resultMap>
 
 
@@ -16,7 +17,7 @@
         ID, IMG_URL,IMG_NAME
     </sql>
 
-    <select id="getList" resultMap="BackgroundImgResult">
+    <select id="getList" resultMap="ImgResult">
         SELECT
         <include refid="base_column"></include>
         , BG.USER_ID,TU.USER_NAME ,TU.USER_LOGO_URL
@@ -24,6 +25,20 @@
         backgroundImg BG
         LEFT JOIN  T_USER  TU ON  BG.USER_ID = TU.USER_ID
         ORDER BY ID ASC
+
+    </select>
+    
+    <select id="getImgListByType" resultMap="ImgResult" parameterType="java.util.Map" statementType="STATEMENT" >
+        <![CDATA[
+        SELECT
+        id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
+        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+
+        FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
+
+        order BY  ${type} ASC ]]>
+
+
 
     </select>
 

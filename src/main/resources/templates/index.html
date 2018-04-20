@@ -6,6 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <script src="js/jquery.min.js" charset="utf-8"></script>
+	<script src="js/index.js" charset="utf-8"></script>
 
 </head>
 
@@ -75,10 +76,11 @@
    	        </li>
    	        <li>
    	        <label>关注</label>
-   	        <label class="number">22</label>
+   	        <label class="number" th:text="${careList.size()}">22</label>
    	        </li>
    	        <li>
-   	        粉丝
+				<label>粉丝</label>
+				<label class="number" th:text="${fansList.size()}">22</label>
    	        </li>
    	        <li  class="line">
    	        </li>
@@ -126,18 +128,12 @@
    	                <input type="text" value="推荐用户"  class="mid_content_item_tillte" readonly>
 
    	                <ul  class="mid_content_item_users">
-   	                	<li>
-   	                	    <img alt="" src="image/logo01.jpg" class="userLogo">
+   	                	<li th:each="user:${userList}">
+
+
+   	                	    <img alt="" th:src="${user.logoImgUrl}" class="userLogo">
    	                	</li>
-   	                	<li>
-   	                	    <img alt="" src="image/logo01.jpg" class="userLogo">
-   	                	</li>
-   	                	<li>
-   	                	    <img alt="" src="image/logo01.jpg" class="userLogo">
-   	                	</li>
-   	                	<li>
-   	                	    <img alt="" src="image/logo01.jpg" class="userLogo">
-   	                	</li>
+
    	                </ul>
    	           </li>
    	           <li class="line">
@@ -155,30 +151,20 @@
    	     </div>
    	 </div>
    	  </div>
-   	  <div class="section_right">
+   	  <div class="section_right" id="section_right">
    	  <div class="paihang_content" >
    	    <input type="text" value="今日排行"  readonly  class="paihang_tillte">
 
         <ul class="paihang_ul">
-        	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
+        	<li th:each="img,iterStat:${collectList}">
+				<div class="paihang_img">
+        	         <img th:src="${img.imgUrl}"  th:style="${img.img_size} <= 1 ? 'width:'+${img.img_size*100}+'%;height:100%;' :
+        	 'width:100%'+'%;height:'+${(1/img.img_size)*100}+'%;'" class="paihang_image">
+				</div>
+   	     	<input type="text" placeholder="" class="paihang_text"  th:value="${img.imgName}">
+   	     	<input type="text" placeholder="" class="paihang_user"  th:value="${img.userName}">
+   	     	<input type="text" placeholder="" class="paihang_number" th:value="${iterStat.count}">
    	     	</li>
-   	     	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
-   	     	</li>
-   	     	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
-   	     	</li>
-        	
 
         </ul>
    	    
@@ -189,7 +175,7 @@
 
         <ul class="paihang_ul">
         	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
+        	<img src="image/logo01.jpg" class="paihang_img" >
    	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
    	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
    	     	<input type="text" placeholder="" class="paihang_number"  value="1">

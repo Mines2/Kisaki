@@ -257,6 +257,19 @@ section{
 	width: 100px;
 	height: 100px;
 	float: left;
+	line-height: 95px;
+	border: solid;
+	text-align: center;
+
+}
+
+
+
+.paihang_image{
+
+	vertical-align: middle;
+	display: inline-block;
+
 }
 
 .paihang_text{
@@ -359,3 +372,13 @@ section{
 .mid_content_item_ul li{
 	margin-bottom: 5px;
 }
+
+.tag{
+	width:300px;
+	height:100px;
+	border:5px solid #09F;
+	position:absolute;
+	background-color:#FFF;
+	margin-top: -130px;
+}
+

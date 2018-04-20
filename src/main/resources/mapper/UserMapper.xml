@@ -24,5 +24,31 @@
 
     </select>
 
+    <select id="findFansByUserId" resultMap="UserResult" parameterType="java.lang.Long">
+        SELECT * from
+        t_user tu
+        LEFT JOIN t_user_fans tuf on tuf.fans_id = tu.USER_ID
+        where tuf.user_id = #{userid,jdbcType=NUMERIC}
+    </select>
+
+    <select id="findCareByUserId" resultMap="UserResult" parameterType="java.lang.Long">
+        SELECT * from
+        t_user tu
+        LEFT JOIN T_USER_CARE tuc on tuc.care_id = tu.USER_ID
+        where tuc.user_id = #{userid,jdbcType=NUMERIC}
+    </select>
+
+    <select id="findUserByTable" statementType="STATEMENT" parameterType="java.util.Map" resultMap="UserResult">
+        <![CDATA[
+        SELECT
+        ${column} , count(*) as count , USER_NAME,USER_LOGO_URL
+        FROM
+        ${table}
+        LEFT JOIN t_user on t_user.USER_ID = ${column}
+        GROUP BY ${column}
+        ORDER BY count DESC
+        ]]>
+    </select>
+
 
 </mapper>

@@ -11,7 +11,7 @@ $(document).ready(function () {
     var bgImg = new Array();
     $.ajax({
 
-        url: "/background/getBGList",
+        url: "/img/getBGList",
         success: function (data) {
             for (var i = 0; i < data.list.length; i++) {
                 bgImg.push(data.list[i]);
