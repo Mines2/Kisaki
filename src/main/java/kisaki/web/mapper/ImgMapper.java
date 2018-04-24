@@ -18,5 +18,7 @@ public interface ImgMapper {
 
     List<Img> findUserByTable(Map map);
 
+    Boolean addCollect(Map map);
+
 
 }

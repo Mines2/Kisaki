@@ -8,7 +8,7 @@
         <result column="IMG_NAME" property="imgName"/>
         <result column="USER_ID" property="userId"/>
         <result column="USER_NAME" property="userName"/>
-        <result column="USER_LOGO_URL" property="userLogoUrl" />
+        <result column="USER_LOGO_URL" property="userLogoUrl"/>
         <result column="USER_SIZE" property="userSize"/>
     </resultMap>
 
@@ -23,24 +23,41 @@
         , BG.USER_ID,TU.USER_NAME ,TU.USER_LOGO_URL
         FROM
         backgroundImg BG
-        LEFT JOIN  T_USER  TU ON  BG.USER_ID = TU.USER_ID
+        LEFT JOIN T_USER TU ON BG.USER_ID = TU.USER_ID
         ORDER BY ID ASC
 
     </select>
-    
-    <select id="getImgListByType" resultMap="ImgResult" parameterType="java.util.Map" statementType="STATEMENT" >
+
+    <select id="getImgListByType" resultMap="ImgResult" parameterType="java.util.Map" statementType="STATEMENT">
         <![CDATA[
+
         SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
         ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
 
         FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
-        order BY  ${type} ASC ]]>
+        order BY  ${type} ASC
+        LIMIT 3
 
+        ]]>
+    </select>
+
+    <select id="getImgListByTypes" resultMap="ImgResult" parameterType="java.util.Map" >
+         SELECT
+        id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
+        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+
+        FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
 
     </select>
+
+    <insert id="addCollect" parameterType="java.util.Map">
+        INSERT  T_COLLECT_IMG (user_id,img_id,img_user_id)
+        VALUES (#{userId,jdbcType=NUMERIC} , #{imgId,jdbcType=NUMERIC},
+        #{imgUserId,jdbcType=NUMERIC})
+    </insert>
 
 
 </mapper>

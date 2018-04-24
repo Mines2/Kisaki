@@ -12,4 +12,6 @@ public interface BackgroundImgService {
 
 
     List<Img> getImgListByType(Map map);
+
+    Boolean addCollect(Map map);
 }

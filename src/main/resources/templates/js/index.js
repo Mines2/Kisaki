@@ -10,35 +10,9 @@ $(document).ready(function () {
         function (e) {
             var index =  $(this).parent("li").index() ;
             $(this).parent().append(
-                "\t\t\t\t\t\t\t <style>.tag{\n" +
-                "\twidth:300px;\n" +
-                "\theight:100px;\n" +
-                "\tborder:5px solid #09F;\n" +
-                "\tposition:absolute;\n" +
-                "\tbackground-color:#FFF;\n" +
-                "\tmargin-top: -160px;\n" +
-                "margin-left:"+(-index*150)+"px"+"}\n" +
-                // ".tag:before ,.tag:after{\n" +
-                // "\tcontent:\"\";\n" +
-                // "\tdisplay:block;\n" +
-                // "\tborder-width:20px;\n" +
-                // "\tposition:absolute;\n" +
-                // "\tbottom:-40px;\n" +
-                // "\tleft:"+index*50+"px;\n" +
-                // "\tborder-style:solid dashed ;\n" +
-                // "\tborder-color:#09F transparent transparent;\n" +
-                // "\tfont-size:0;\n" +
-                // "\tline-height:0;\n" +
-                // "}\n" +
-                // ".tag:after{\n" +
-                // "\tbottom:-33px;\n" +
-                // "\tz-index: 989;\n" +
-                // "\tborder-color:#FFF transparent transparent;\n" +
-                // "}" +
-                "</style>"+
+
                 "<div class=\"tag\">\n" +
                 "\t\t\t\t\t\t\t\tcss3气泡框\n </div>" );
-                $(".tag").css("margin-left",-125+"px");
 
         },
         function () {
@@ -50,11 +24,59 @@ $(document).ready(function () {
         $(this).find(".tag").remove();
 
     });
+    var style;
+    $('.right_top_nav_img').hover(
+        function  (e) {
+            var index = $(this).parent('li').index();
+            style = $(this).attr('style');
+            if(index == 0){
+                $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
+                $(this).attr('style',' background: url(\'image/icons.png\') -851px -50px;background-size: 2500%;' +
+                    'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
+            }else {
+                $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
+
+                $(this).attr('style',' background: url(\'image/icons.png\') -851px -250px;background-size: 2500%;' +
+                    'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
+            }
+
+
+        },function () {
+            $('.right_top_nav_img_code').remove();
+            $(this).attr('style',style);
+        });
+
 
 
 
 
 
 });
+
+
+function Collect(e) {
+
+    var imgId = e.name;
+    var imgUserId = e.value;
+    $.ajax({
+        data:{imgId:imgId,imgUserId:imgUserId},
+        url:"/img/addCollect",
+        success: function (data) {
+           if(data.result == true){
+               alert("收藏成功");
+           }
+
+        },
+        error: function () {
+            alert("网络异常，请联系维护人员", function () {
+            });
+        }
+
+
+
+
+    })
+    
+}
 
 

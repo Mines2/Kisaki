@@ -23,4 +23,9 @@ public class BackgroundImgServiceImpl implements BackgroundImgService {
     public List<Img> getImgListByType(Map map) {
         return backgroundImgMapper.getImgListByType(map);
     }
+
+    @Override
+    public Boolean addCollect(Map map) {
+        return backgroundImgMapper.addCollect(map);
+    }
 }

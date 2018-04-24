@@ -1,211 +1,239 @@
 <!DOCTYPE html>
-<html charset="utf-8" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml"  >
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	
+
     <title>Kisaki登录页面</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <script src="js/jquery.min.js" charset="utf-8"></script>
-	<script src="js/index.js" charset="utf-8"></script>
+    <script src="js/index.js" charset="utf-8"></script>
 
 </head>
 
 
 <body>
-   <header>
-   	     <div class="head_main" >
-   	        <img alt="" src="image/logo01.jpg" class="head_logo" >
-            <div class="left_nav">
-   	         <ul class="left_nav_content">
-   	            <li>
-   	            	<img alt="" src="image/logo01.jpg" class="nav_logo">  <label class="nav_text" >XX</label>
-   	            </li>
-   	            <li>
-   	                <img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>
-   	            </li>
+<header>
+    <div class="head_main">
+        <img alt="" src="image/logo01.jpg" class="head_logo">
+        <div class="left_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -163px -37px;background-size: 1000% "
+                         class="nav_logo"></div>
+                    <label class="nav_text">首页</label>
+                </li>
+                <li style="width: 80px">
+                    <div alt="" style="background: url('image/nav_img.png') -87px -1092px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">上传</label>
+                    <label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label>
+                </li>
 
-   	         </ul>
-   	        </div>
-   	        <div class="right_top_nav">
-   	         <ul class="left_nav_content">
-   	            <li>
-   	            	  <label class="nav_text" >XX</label>
-   	            </li>
-   	            <li>
-   	                 <label class="nav_text">XX</label>
-   	            </li>
-   	            
-   	         </ul>
-   	        </div>
-   	        <div class="right_mid_nav">
-   	           <input type="text" placeholder="" class="search_text">
-   	           <button class="search_btu">搜索</button>
-   	        </div>
-   	        <div class="right_bot_nav">
-   	           <ul class="left_nav_content">
-   	            <li>
-   	            	  
-   	            	  <img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>
-   	            </li>
-   	            <li>
-   	                 
-   	                 <img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>
-   	            </li>
-   	            
-   	         </ul>
-   	        </div>
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -165px -992px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">收藏</label></li>
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -37px -12px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">动态</label></li>
 
+            </ul>
+        </div>
+        <div class="right_top_nav">
+            <ul class="left_nav_content">
+                <li>
+                   <div class="right_top_nav_img" style="  background: url('image/icons.png') -851px -50px;background-size: 2500%" ></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img" style="  background: url('image/icons.png') -851px -250px;background-size: 2500%"></div>
+                </li>
 
-   	     </div>
-   	     
-   </header>
-   <section>
-   <div class="section_content">
-   	  <div class="section_left">
-   	     <ul class="section_left_nav">
-   	        <li>
-   	           <img alt="" th:src="${user.logoImgUrl}">
-   	           <label class="section_left_userName" th:text="${user.userName}"></label>
-   	        </li>
-   	        <li>
-   	          <button  class="vip_button">
-   	          	开通会员
-   	          </button>
-   	        </li>
-   	        <li  class="line">
-   	        </li>
-   	        <li>
-   	        <label>关注</label>
-   	        <label class="number" th:text="${careList.size()}">22</label>
-   	        </li>
-   	        <li>
-				<label>粉丝</label>
-				<label class="number" th:text="${fansList.size()}">22</label>
-   	        </li>
-   	        <li  class="line">
-   	        </li>
-   	        <li>
-   	        浏览记录
-   	        </li>
-   	        <li>
-   	        评论记录
-   	        </li>
-   	        <li  class="line">
-   	        </li>
-   	     </ul>
-   	  </div>
-   	  
-   	  <div class="section_mid">
-   	  <div class="advice_content" >
-   	     <div class="advice">
-   	       <div class="advice_tillte">公告</div>
-   	     </div>
-   	     <ul  class="advice_ul">
-   	     <li>
-   	     	<input type="text" placeholder="" class="advice_item" value="公告">
-   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
-   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
-   	     </li>
-   	     <li>
-   	     	<input type="text" placeholder="" class="advice_item" value="公告">
-   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
-   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
-   	     </li>
-   	     <li>
-   	     	<input type="text" placeholder="" class="advice_item" value="公告">
-   	     	<input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
-   	     	<input type="text" placeholder="" class="advice_item_date" value="4月8号">
-   	     </li>
-   	     </ul>
-   	 </div>
-   	 <div class="mid_content">
-   	     <div class="mid_content_item">
-   	        <input type="text" value="今日排行"  class="mid_content_item_tillte" readonly>
-   	        <button class="mid_content_item_fresh">*</button>
-   	        <button class="mid_content_item_close">-</button>
-   	        <ul class="mid_content_item_ul">
-   	           <li>
-   	                <input type="text" value="推荐用户"  class="mid_content_item_tillte" readonly>
+            </ul>
+        </div>
+        <div class="right_mid_nav">
+            <input type="text" placeholder="" class="search_text">
+            <button class="search_btu"></button>
+        </div>
+        <!--<div class="right_bot_nav">-->
+            <!--<ul class="left_nav_content">-->
+                <!--<li>-->
 
-   	                <ul  class="mid_content_item_users">
-   	                	<li th:each="user:${userList}">
+                    <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+                <!--</li>-->
+                <!--<li>-->
+
+                    <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+                <!--</li>-->
+
+            <!--</ul>-->
+        <!--</div>-->
 
 
-   	                	    <img alt="" th:src="${user.logoImgUrl}" class="userLogo">
-   	                	</li>
+    </div>
 
-   	                </ul>
-   	           </li>
-   	           <li class="line">
-   	           </li>
-   	           <li>
-   	               <input type="text" value="推荐作品"  class="mid_content_item_tillte" readonly>
-   	           </li>
-   	        </ul>
-   	   
+</header>
+<section>
+    <div class="section_content">
+        <div class="section_left">
+            <ul class="section_left_nav">
+                <li>
+                    <img alt="" th:src="${user.logoImgUrl}">
+                    <label class="section_left_userName" th:text="${user.userName}"></label>
+                </li>
+                <li>
+                    <button class="vip_button">
+                        开通会员
+                    </button>
+                </li>
+                <li class="line">
+                </li>
+                <li>
+                    <label>关注</label>
+                    <label class="number" th:text="${careList.size()}">22</label>
+                </li>
+                <li>
+                    <label>粉丝</label>
+                    <label class="number" th:text="${fansList.size()}">22</label>
+                </li>
+                <li class="line">
+                </li>
+                <li>
+                    浏览记录
+                </li>
+                <li>
+                    评论记录
+                </li>
+                <li class="line">
+                </li>
+            </ul>
+        </div>
+
+        <div class="section_mid">
+            <div class="advice_content">
+                <div class="advice">
+                    <div class="advice_tillte">公告</div>
+                </div>
+                <ul class="advice_ul">
+                    <li>
+                        <input type="text" placeholder="" class="advice_item" value="公告">
+                        <input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+                        <input type="text" placeholder="" class="advice_item_date" value="4月8号">
+                    </li>
+                    <li>
+                        <input type="text" placeholder="" class="advice_item" value="公告">
+                        <input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+                        <input type="text" placeholder="" class="advice_item_date" value="4月8号">
+                    </li>
+                    <li>
+                        <input type="text" placeholder="" class="advice_item" value="公告">
+                        <input type="text" placeholder="" class="advice_item_text" value="XXXXXXXXXXXXXXXXXX">
+                        <input type="text" placeholder="" class="advice_item_date" value="4月8号">
+                    </li>
+                </ul>
+            </div>
+            <div class="mid_content">
+                <div class="mid_content_item">
+                    <input type="text" value="今日排行" class="mid_content_item_tillte" readonly>
+                    <button class="mid_content_item_fresh">*</button>
+                    <button class="mid_content_item_close">-</button>
+                    <ul class="mid_content_item_ul">
+                        <li>
+                            <input type="text" value="推荐用户" class="mid_content_item_tillte" readonly>
+
+                            <ul class="mid_content_item_users">
+                                <li th:each="user:${userList}">
 
 
+                                    <img alt="" th:src="${user.logoImgUrl}" class="userLogo">
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="line">
+                        </li>
+                        <li value="10">
+                            <input type="text" value="推荐作品" class="mid_content_item_tillte" readonly>
+                            <div class="img_content" th:each="img,iterStat:${collectList}">
+                                <div class="img_div">
+
+                                    <img alt="" class="paihang_image" th:src="${img.imgUrl}" th:style="${img.img_size} <= 1 ? 'width:'+${img.img_size*100}+'%;height:100%;' :
+        	 'width:100%'+'%;height:'+${(1/img.img_size)*100}+'%;'">
+
+                                    <button class="conllect" onclick="Collect(this)" th:value="${img.id}"
+                                            th:name="${img.userId}"></button>
 
 
+                                </div>
 
-   	     </div>
-   	 </div>
-   	  </div>
-   	  <div class="section_right" id="section_right">
-   	  <div class="paihang_content" >
-   	    <input type="text" value="今日排行"  readonly  class="paihang_tillte">
 
-        <ul class="paihang_ul">
-        	<li th:each="img,iterStat:${collectList}">
-				<div class="paihang_img">
-        	         <img th:src="${img.imgUrl}"  th:style="${img.img_size} <= 1 ? 'width:'+${img.img_size*100}+'%;height:100%;' :
+                                <ul>
+                                    <li id="imgId" th:text="${img.imgName}" th:value="${img.id}">XXXXXXX</li>
+                                    <li id="imgUserId" th:text="${img.userName}" th:value="${img.userId}">XXX</li>
+
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="section_right" id="section_right">
+            <div class="paihang_content">
+                <input type="text" value="今日排行" readonly class="paihang_tillte">
+
+                <ul class="paihang_ul">
+                    <li th:each="img,iterStat:${collectList}">
+                        <div class="paihang_img">
+                            <img th:src="${img.imgUrl}" th:style="${img.img_size} <= 1 ? 'width:'+${img.img_size*100}+'%;height:100%;' :
         	 'width:100%'+'%;height:'+${(1/img.img_size)*100}+'%;'" class="paihang_image">
-				</div>
-   	     	<input type="text" placeholder="" class="paihang_text"  th:value="${img.imgName}">
-   	     	<input type="text" placeholder="" class="paihang_user"  th:value="${img.userName}">
-   	     	<input type="text" placeholder="" class="paihang_number" th:value="${iterStat.count}">
-   	     	</li>
+                        </div>
+                        <input type="text" placeholder="" class="paihang_text" th:value="${img.imgName}">
+                        <input type="text" placeholder="" class="paihang_user" th:value="${img.userName}">
+                        <input type="text" placeholder="" class="paihang_number" th:value="${iterStat.count}">
+                    </li>
 
-        </ul>
-   	    
-   	  </div>
+                </ul>
 
-   	  <div class="paihang_content" >
-   	    <input type="text" value="今日排行" readonly class="paihang_tillte">
+            </div>
 
-        <ul class="paihang_ul">
-        	<li>
-        	<img src="image/logo01.jpg" class="paihang_img" >
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
-   	     	</li>
-   	     	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
-   	     	</li>
-   	     	<li>
-        	<img src="image/logo01.jpg" class="paihang_img">
-   	     	<input type="text" placeholder="" class="paihang_text"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_user"  value="XXXX">
-   	     	<input type="text" placeholder="" class="paihang_number"  value="1">
-   	     	</li>
-        	
+            <div class="paihang_content">
+                <input type="text" value="今日排行" readonly class="paihang_tillte">
 
-        </ul>
-   	    
-   	  </div>
-   	
-   </div>
-   </div>
+                <ul class="paihang_ul">
+                    <li>
+                        <img src="image/logo01.jpg" class="paihang_img">
+                        <input type="text" placeholder="" class="paihang_text" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_user" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_number" value="1">
+                    </li>
+                    <li>
+                        <img src="image/logo01.jpg" class="paihang_img">
+                        <input type="text" placeholder="" class="paihang_text" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_user" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_number" value="1">
+                    </li>
+                    <li>
+                        <img src="image/logo01.jpg" class="paihang_img">
+                        <input type="text" placeholder="" class="paihang_text" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_user" value="XXXX">
+                        <input type="text" placeholder="" class="paihang_number" value="1">
+                    </li>
 
 
+                </ul>
 
-   </section>
+            </div>
 
-	
+        </div>
+    </div>
+
+
+</section>
+
 
 </body>
 

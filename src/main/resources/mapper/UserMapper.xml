@@ -47,6 +47,7 @@
         LEFT JOIN t_user on t_user.USER_ID = ${column}
         GROUP BY ${column}
         ORDER BY count DESC
+        LIMIT 6
         ]]>
     </select>
 
