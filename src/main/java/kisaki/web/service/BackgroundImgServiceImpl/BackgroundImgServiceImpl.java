@@ -28,4 +28,26 @@ public class BackgroundImgServiceImpl implements BackgroundImgService {
     public Boolean addCollect(Map map) {
         return backgroundImgMapper.addCollect(map);
     }
+
+    @Override
+    public Img showByImgId(Long id) {
+        return backgroundImgMapper.showByImgId(id);
+    }
+
+    @Override
+    public List<Img> findImgByUserId(Long id) {
+        return backgroundImgMapper.findImgByUserId(id);
+    }
+
+    @Override
+    public List<Img> getCareImgListByUserId(Long userId) {
+        return backgroundImgMapper.findImgByUserId(userId);
+    }
+
+    @Override
+    public Boolean haveSeen(Map map) {
+        return backgroundImgMapper.haveSeen(map);
+    }
+
+
 }

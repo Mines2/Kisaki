@@ -14,4 +14,12 @@ public interface BackgroundImgService {
     List<Img> getImgListByType(Map map);
 
     Boolean addCollect(Map map);
+
+    Img showByImgId(Long id );
+
+    List<Img>  findImgByUserId (Long id);
+
+    List<Img> getCareImgListByUserId (Long userId);
+
+    Boolean haveSeen(Map map);
 }

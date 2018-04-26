@@ -71,4 +71,14 @@ public class ImgController {
         jsonObject.put("result",backgroundImgService.addCollect(map));
         return jsonObject;
     }
+
+
+    @RequestMapping("/findImgByUserId")
+    @ResponseBody
+    public Object findImgByUserId(Long id){
+        JSONObject jsonObject = new JSONObject();
+        List<Img> list = backgroundImgService.getCareImgListByUserId(id);
+        jsonObject.put("list",list);
+        return jsonObject;
+    }
 }

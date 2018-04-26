@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	
+    <title>Kisaki登录页面</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+    <link rel="stylesheet" href="../css/show.css" type="text/css">
+
+</head>
+
+
+<body>
+<header>
+    <div class="head_main">
+        <img alt="" src="../image/logo01.jpg" class="head_logo">
+        <div class="left_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -163px -37px;background-size: 1000% "
+                         class="nav_logo"></div>
+                    <label class="nav_text">首页</label>
+                </li>
+                <li style="width: 80px">
+                    <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">上传</label>
+                    <label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label>
+                </li>
+
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -165px -992px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">收藏</label></li>
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -37px -12px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">动态</label></li>
+
+            </ul>
+        </div>
+        <div class="right_top_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div class="right_top_nav_img" style="  background: url('../image/icons.png') -851px -50px;background-size: 2500%" ></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img" style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="right_mid_nav">
+            <input type="text" placeholder="" class="search_text">
+            <button class="search_btu"></button>
+        </div>
+
+
+
+    </div>
+
+</header>
+   <section class="section_content">
+       <div class="show_section_left">
+         <div class="user_content">
+           <img th:src="${Img.userLogoUrl}" class="user_logo">
+           <ul class="user_mess">
+            <li class="img_name" th:text="${Img.imgName}">XXXX</li>
+               <li>by <label id="user" th:text="${Img.userName}" th:value="${Img.userId}"></label></li>
+           </ul>
+           
+
+         </div>
+         <img alt="" th:src="${Img.imgUrl}" class="show_img">
+
+         
+           <div class="img_context" th:text="${Img.imgContext}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+         
+
+           <div  class="line"></div>
+
+
+
+           <ul  class="comment">
+             <li>
+                <div style="padding:5px;">
+                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
+                </div>
+                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+               
+             </li>
+              <li>
+                <div style="padding:5px;">
+                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
+                </div>
+                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+               
+             </li>
+              <li>
+                <div style="padding:5px;">
+                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
+                </div>
+                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+               
+             </li>
+           </ul>
+       </div>
+
+
+       <div class="show_section_right">
+         <div  class="recode">
+           <ul  >
+              <li style="border-right:dotted 1px;">
+                 <ol>
+                  <li style="width:100%;"><label>浏览量</label></li>
+                  <li style="width:100%;"><label th:text="${Img.imgHaveSeen}">200</label></li>
+                </ol>
+              </li>
+              <li>
+                <ol>
+                  <li style="width:100%;"><label>赞！</label></li>
+                  <li style="width:100%;"><label th:text="${Img.imgHaveCollected}">200</label></li>
+                </ol>
+              </li>
+           </ul>
+         </div>
+         <!--<div class="display_imgs">-->
+             <!--<label>XXXX</label>-->
+             <!--<ul>-->
+             <!--<li><img src="image/logo02.jpg"></li>-->
+              <!--<li><img src="image/logo02.jpg"></li>-->
+               <!--<li><img src="image/logo02.jpg"></li>-->
+                <!--<li><img src="image/logo02.jpg"></li>-->
+                 <!--<li><img src="image/logo02.jpg"></li>-->
+                  <!--<li><img src="image/logo02.jpg"></li>-->
+             <!--</ul>-->
+         <!--</div>-->
+
+         <!--<div class="display_imgs">-->
+             <!--<label>XXXX</label>-->
+             <!--<ul>-->
+             <!--<li><img src="image/logo02.jpg"></li>-->
+              <!--<li><img src="image/logo02.jpg"></li>-->
+               <!--<li><img src="image/logo02.jpg"></li>-->
+                <!--<li><img src="image/logo02.jpg"></li>-->
+                 <!--<li><img src="image/logo02.jpg"></li>-->
+                  <!--<li><img src="image/logo02.jpg"></li>-->
+             <!--</ul>-->
+         <!--</div>-->
+
+
+       </div>
+   </section>
+ </body>
+
+<script src="../js/jquery.min.js" charset="utf-8"></script>
+<script src="../js/show.js" charset="UTF-8"></script>

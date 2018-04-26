@@ -19,6 +19,33 @@ public class Img implements Serializable {
     private int img_height;
     private int img_width;
     private double img_size;
+    private String imgContext;
+    private int imgHaveSeen;
+    private int ImgHaveCollected;
+
+    public int getImgHaveSeen() {
+        return imgHaveSeen;
+    }
+
+    public void setImgHaveSeen(int imgHaveSeen) {
+        this.imgHaveSeen = imgHaveSeen;
+    }
+
+    public int getImgHaveCollected() {
+        return ImgHaveCollected;
+    }
+
+    public void setImgHaveCollected(int imgHaveCollected) {
+        ImgHaveCollected = imgHaveCollected;
+    }
+
+    public String getImgContext() {
+        return imgContext;
+    }
+
+    public void setImgContext(String imgContext) {
+        this.imgContext = imgContext;
+    }
 
     public int getImg_height() {
         return img_height;

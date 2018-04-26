@@ -10,6 +10,8 @@
         <result column="USER_NAME" property="userName"/>
         <result column="USER_LOGO_URL" property="userLogoUrl"/>
         <result column="USER_SIZE" property="userSize"/>
+        <result column="IMG_HAVE_SEEN" property="imgHaveSeen"></result>
+        <result column="IMG_HAVE_COLLECTED" property="ImgHaveCollected"/>
     </resultMap>
 
 
@@ -38,7 +40,9 @@
         FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
         order BY  ${type} ASC
+
         LIMIT 3
+
 
         ]]>
     </select>
@@ -59,5 +63,50 @@
         #{imgUserId,jdbcType=NUMERIC})
     </insert>
 
+    <select id="showByImgId" parameterType="java.lang.Long"  resultMap="ImgResult">
+        SELECT
+        id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
+        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL,
+        img_have_seen , img_have_collected
+        FROM  T_IMG TI
+        LEFT JOIN T_USER TU on TU.USER_ID = TI.USER_ID
+
+        where id = #{imgId , jdbcType=NUMERIC }
+    </select>
+
+    <select id="findImgByUserId" parameterType="java.lang.Long" resultMap="ImgResult">
+         SELECT
+        id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
+        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+        FROM  T_IMG TI
+        LEFT JOIN T_USER TU on TU.USER_ID = TI.USER_ID
+
+        where tu.USER_ID = #{userId , jdbcType=NUMERIC }
+    </select>
+
+
+    <select id="getCareImgListByUserId" resultMap="ImgResult" parameterType="java.lang.Long" >
+
+
+        SELECT
+        id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
+        ,img_push_date,img_size,tuc.USER_ID as user_id, care_id
+        FROM T_IMG TI LEFT JOIN  T_USER_CARE tuc on tuc.USER_ID = TI.user_id
+       <where>
+           1 = 1
+           <if test="null != userId and '' != userId">
+               ti.user_ID = #{userId ,jdbcType=NUMERIC }
+           </if>
+       </where>
+
+        LIMIT 6
+
+
+
+    </select>
+
+    <insert id="haveSeen" parameterType="java.util.Map" >
+        INSERT INTO  T_SEEN_IMG (user_id,img_id) VALUES (#{userId,jdbcType=NUMERIC} , #{imgId,jdbcType=NUMERIC})
+    </insert>
 
 </mapper>

@@ -1,5 +1,6 @@
 package kisaki.web.service.userService;
 
+import kisaki.web.entity.Img;
 import kisaki.web.entity.shiro.User;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService {
     List<User> findCareByUserId(Long id );
 
     List<User> findUserByTable(Map map);
+
+
 }

@@ -1,0 +1,149 @@
+/*
+* @Author: Mines
+* @Date:   2018-04-17 09:23:51
+* @Last Modified by:   Mines
+* @Last Modified time: 2018-04-17 16:44:39
+*/
+.section_content{
+	width: 65%;
+	background: gray;
+	height: 600px;
+	margin-top: 20px;
+
+
+}
+
+.show_section_left{
+	width: 60%;
+	float: left;
+	
+
+}
+
+.show_section_right{
+	width: 35%;
+	float: right;
+
+}
+
+.user_logo{
+	width: 50px;
+	height: 50px;
+	float: left;
+
+}
+
+
+.user_content{
+	width: 100%;
+
+}
+
+.user_mess{
+	float: left;
+	margin-top: -6px;
+	margin-left: 5px;
+}
+
+.img_name{
+	font-size: 24px;
+}
+
+.show_img{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+
+}
+
+.img_context{
+	width: 98%;
+	margin-top: 20px;
+	padding: 10px;
+	float: left;
+	word-break: break-all; 
+	word-wrap:break-word;
+	line-height: 20px;
+}
+
+.line{
+	border-top: solid 1px; 
+	float: left;
+	width: 100%;
+}
+
+.comment{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+.comment_data{
+	margin-left: 5px;
+}
+
+.user_comment{
+	width: 98%;
+	background: white;
+	padding: 5px;
+	float: left;
+	word-break: break-all; 
+	word-wrap:break-word;
+	line-height: 20px;
+
+}
+
+.comment li{
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.recode ul li {
+	float: left;
+	line-height: 30px;
+	width: 40%;
+}
+.recode{
+	text-align: center;
+}
+
+.recode ul li label{
+	width: 100%;
+	text-align: center;
+}
+
+.display_imgs{
+	margin-top: 20px;
+	width: 100%;
+
+
+}
+/* .display_imgs label{
+	width: 100%;
+
+} */
+
+.display_imgs ul li {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 1%;
+	padding: 0.5%;
+	text-align: center;
+	line-height: 150px;
+}
+
+.display_imgs ul li img {
+	width: 100%;
+}
+
+.display_imgs{
+	float: left;
+}
+
+.display_imgs ul {
+	margin-top: 10px;
+}
+
+ol li{
+	width: 100%
+}
