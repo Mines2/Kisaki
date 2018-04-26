@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2018-04-20 17:06:21
+Date: 2018-04-26 16:57:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,6 +56,24 @@ CREATE TABLE `people` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `t_collect_img`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_collect_img`;
+CREATE TABLE `t_collect_img` (
+  `user_id` int(11) NOT NULL,
+  `img_id` int(11) NOT NULL,
+  `img_user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_collect_img
+-- ----------------------------
+INSERT INTO `t_collect_img` VALUES ('3', '1', '1', '1');
+INSERT INTO `t_collect_img` VALUES ('2', '1', '1', '2');
+
+-- ----------------------------
 -- Table structure for `t_img`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_img`;
@@ -77,8 +95,27 @@ CREATE TABLE `t_img` (
 -- ----------------------------
 INSERT INTO `t_img` VALUES ('1', '1', 'wusaki', '鐧惧悎鍏?, '2', '2', '../image/img01.jpg', null, '0.6866667');
 INSERT INTO `t_img` VALUES ('2', '2', 'rori', '钀濊帀', null, '5', '../image/img02.jpg', null, '1');
-INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '楂樿揪', null, '4', '../image/img03.jpg', null, '1.41176471');
-INSERT INTO `t_img` VALUES ('4', '1', 'guojiadui', '濂充富', '5', '3', '../image/img04.jpg', null, '1.61290323');
+INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '楂樿揪', '1', '4', '../image/img03.jpg', null, '1.41176471');
+INSERT INTO `t_img` VALUES ('4', '1', 'guojiadui', '濂充富', '1', '3', '../image/img04.jpg', null, '1.61290323');
+
+-- ----------------------------
+-- Table structure for `t_seen_img`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_seen_img`;
+CREATE TABLE `t_seen_img` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `img_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_seen_img
+-- ----------------------------
+INSERT INTO `t_seen_img` VALUES ('1', '2', '1');
+INSERT INTO `t_seen_img` VALUES ('2', '1', '1');
+INSERT INTO `t_seen_img` VALUES ('3', '1', '3');
+INSERT INTO `t_seen_img` VALUES ('4', '1', '4');
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -108,7 +145,7 @@ CREATE TABLE `t_user_care` (
   `user_id` int(11) NOT NULL,
   `care_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_care
@@ -116,6 +153,7 @@ CREATE TABLE `t_user_care` (
 INSERT INTO `t_user_care` VALUES ('1', '2', '1');
 INSERT INTO `t_user_care` VALUES ('2', '3', '1');
 INSERT INTO `t_user_care` VALUES ('3', '1', '3');
+INSERT INTO `t_user_care` VALUES ('9', '3', '2');
 
 -- ----------------------------
 -- Table structure for `t_user_fans`
@@ -134,3 +172,71 @@ CREATE TABLE `t_user_fans` (
 INSERT INTO `t_user_fans` VALUES ('1', '1', '2');
 INSERT INTO `t_user_fans` VALUES ('2', '1', '3');
 INSERT INTO `t_user_fans` VALUES ('3', '3', '1');
+DROP TRIGGER IF EXISTS `img_collect_tg`;
+DELIMITER ;;
+CREATE TRIGGER `img_collect_tg` BEFORE INSERT ON `t_collect_img` FOR EACH ROW BEGIN
+
+
+   IF EXISTS (SELECT * from t_collect_img WHERE user_id = new.user_id and img_id = new.img_id and img_user_id = new.img_user_id)   then
+   DELETE from t_collect_img  where id  = new.id;
+   end if;
+
+
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `img_collect_tg2`;
+DELIMITER ;;
+CREATE TRIGGER `img_collect_tg2` AFTER INSERT ON `t_collect_img` FOR EACH ROW BEGIN
+  UPDATE t_img set img_have_collected = (select count(*) from t_collect_img where img_id = new.img_id)
+  where id = new.img_id;
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `T_SEEN_IMG_tg`;
+DELIMITER ;;
+CREATE TRIGGER `T_SEEN_IMG_tg` BEFORE INSERT ON `t_seen_img` FOR EACH ROW BEGIN
+
+
+   IF EXISTS (SELECT * from T_SEEN_IMG WHERE user_id = new.user_id and img_id = new.img_id )   then
+   DELETE from T_SEEN_IMG  where id  = new.id;
+   end if;
+
+
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `T_SEEN_IMG_tg2`;
+DELIMITER ;;
+CREATE TRIGGER `T_SEEN_IMG_tg2` AFTER INSERT ON `t_seen_img` FOR EACH ROW BEGIN
+  UPDATE t_img set img_have_seen = (select count(*) from T_SEEN_IMG where img_id = new.img_id)
+  where id = new.img_id;
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `InsteadTrigger`;
+DELIMITER ;;
+CREATE TRIGGER `InsteadTrigger` BEFORE INSERT ON `t_user_care` FOR EACH ROW BEGIN
+
+
+   IF EXISTS (SELECT * from t_user_care WHERE user_id = new.user_id and care_id = new.care_id)   then
+   DELETE from t_user_care where id  = new.id;
+   end if;
+
+
+end
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `fans_tg`;
+DELIMITER ;;
+CREATE TRIGGER `fans_tg` BEFORE INSERT ON `t_user_fans` FOR EACH ROW BEGIN
+
+
+   IF EXISTS (SELECT * from t_user_care WHERE user_id = new.user_id and care_id = new.fans_id)   then
+   DELETE from t_user_fans where id  = new.id;
+   end if;
+
+
+end
+;;
+DELIMITER ;
