@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kisaki.web.mapper.CommentMapper">
+    <resultMap id="CommentResult" type="kisaki.web.entity.Comment">
+        <result column="user_id" property="userId"/>
+        <result column="comment" property="comment"/>
+        <result column="date" property="date"/>
+        <result column="USER_NAME" property="userName"/>
+        <result column="USER_LOGO_URL" property="userLogoUrl"/>
+        <result column="USER_SIZE" property="userSize"/>
+    </resultMap>
+
+
+    <sql id="base_column">
+        ID, IMG_URL,IMG_NAME
+    </sql>
+    
+    <select id="getCommentList" resultMap="CommentResult" parameterType="java.lang.Long">
+        SELECT tc.user_id ,comment  , date , user_name   from t_comment  tc
+        LEFT JOIN t_user tu on tc.USER_ID =  tu.USER_ID
+        LEFT JOIN t_img ti on tc.img_id = ti.id
+        where tc.img_id = #{imgId,jdbcType= NUMERIC}
+    </select>
+
+  
+</mapper>

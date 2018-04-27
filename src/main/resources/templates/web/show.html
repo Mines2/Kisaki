@@ -20,7 +20,7 @@
                 <li>
                     <div alt="" style="background: url('../image/nav_img.png') -163px -37px;background-size: 1000% "
                          class="nav_logo"></div>
-                    <label class="nav_text">首页</label>
+                    <a th:href="@{/login}"><label class="nav_text">首页</label></a>
                 </li>
                 <li style="width: 80px">
                     <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
@@ -83,27 +83,14 @@
 
 
            <ul  class="comment">
-             <li>
+             <li   th:each="comment:${commentList}">
                 <div style="padding:5px;">
-                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
+                <a class="comment_user" href="#" th:text="${comment.userName}">XXXXX</a><label class="comment_data" th:text="${comment.date}">XXXXXX</label>
                 </div>
-                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                   <span class="user_comment" th:text="${comment.comment}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
                
              </li>
-              <li>
-                <div style="padding:5px;">
-                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
-                </div>
-                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
-               
-             </li>
-              <li>
-                <div style="padding:5px;">
-                <a class="comment_user" href="#">XXXXX</a><label class="comment_data">XXXXXX</label> 
-                </div>
-                   <span class="user_comment">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
-               
-             </li>
+
            </ul>
        </div>
 

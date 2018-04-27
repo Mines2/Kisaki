@@ -5,6 +5,7 @@ import kisaki.web.entity.shiro.User;
 import kisaki.web.service.BackgroundImgService.BackgroundImgService;
 import java.util.Map;
 
+import kisaki.web.service.commentService.CommentService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ import java.util.List;
 public class ShowController  {
     @Autowired
     BackgroundImgService backgroundImgService;
+    @Autowired
+    CommentService commentService;
 
 
     @RequestMapping("/showImg")
@@ -40,6 +43,7 @@ public class ShowController  {
         modelAndView.addObject("imgList",imgList);
         modelAndView.addObject("careList",careList);
         modelAndView.setViewName("/web/show");
+        modelAndView.addObject("commentList",commentService.getCommentList(imgId));
         return  modelAndView;
     }
 }

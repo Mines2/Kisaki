@@ -33,17 +33,28 @@ $(document).ready(function () {
                 $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
                 $(this).attr('style',' background: url(\'image/icons.png\') -851px -50px;background-size: 2500%;' +
                     'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
-            }else {
+            }else if (index == 1) {
                 $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
 
                 $(this).attr('style',' background: url(\'image/icons.png\') -851px -250px;background-size: 2500%;' +
                     'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
+            }else {
+
+                $(this).parent().append('<div class="right_top_nav_img_code"><ul><li >个人中心</li><li>注销</li></ul></div>');
+
             }
 
 
-        },function () {
+        });
+        $('.left_nav_content li').mouseleave(function () {
             $('.right_top_nav_img_code').remove();
-            $(this).attr('style',style);
+            // ($(this).find("div"))[0].attr("style",style);
+            // $(this).find("div").attr('class',"right_top_nav_img_code")
+alert(($(this).find("div"))[0].style);
+alert(style);
+($(this).find("div"))[0].style =style;
+            alert($(this).find("div"))
+
         });
 
 

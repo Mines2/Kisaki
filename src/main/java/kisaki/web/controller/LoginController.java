@@ -33,14 +33,19 @@ public class LoginController {
     @RequestMapping("/login")
     public ModelAndView login(User user) {
         ModelAndView modelAndView = new ModelAndView();
-
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),
-                user.getPassword());
         Subject subject = SecurityUtils.getSubject();
+        if(subject.getSession().getAttribute("user") != null){
+            user = (User) subject.getSession().getAttribute("user");
+        }else {
 
-        subject.login(token);
-        subject.getSession().setAttribute("user",
-                userService.findByUserName( subject.getPrincipal().toString()));
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),
+                    user.getPassword());
+            subject.login(token);
+            subject.getSession().setAttribute("user",
+                    userService.findByUserName( subject.getPrincipal().toString()));
+        }
+
+
         User currentUser = userService.findByUserName( subject.getPrincipal().toString());
         modelAndView.setViewName("/index");
         modelAndView.addObject("user", currentUser);

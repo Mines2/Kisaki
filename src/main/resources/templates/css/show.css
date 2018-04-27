@@ -5,7 +5,7 @@
 * @Last Modified time: 2018-04-17 16:44:39
 */
 .section_content{
-	width: 65%;
+	width: 1200px;
 	background: gray;
 	height: 600px;
 	margin-top: 20px;
@@ -94,7 +94,9 @@
 
 .comment li{
     margin-bottom: 10px;
-    height: 100px;
+    overflow: hidden;
+	position: relative;
+	margin-bottom: 40px;
 }
 
 .recode ul li {
@@ -130,6 +132,8 @@
 	padding: 0.5%;
 	text-align: center;
 	line-height: 150px;
+	background: white;
+	border: solid;
 }
 
 .display_imgs ul li img {
