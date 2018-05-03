@@ -49,5 +49,10 @@ public class BackgroundImgServiceImpl implements BackgroundImgService {
         return backgroundImgMapper.haveSeen(map);
     }
 
+    @Override
+    public Boolean upLoad(Map map) {
+        return backgroundImgMapper.upLoad(map);
+    }
+
 
 }

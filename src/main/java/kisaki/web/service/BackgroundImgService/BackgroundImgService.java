@@ -22,4 +22,6 @@ public interface BackgroundImgService {
     List<Img> getCareImgListByUserId (Long userId);
 
     Boolean haveSeen(Map map);
+
+    Boolean upLoad(Map map);
 }

@@ -22,7 +22,8 @@ $(document).ready(function () {
             $('#userLogoImg').attr('src',data.list[0].userLogoUrl);
 
         },
-        error: function () {
+        error: function (data) {
+            alert(data.list)
            alert("网络异常，请联系维护人员", function () {
             });
         }

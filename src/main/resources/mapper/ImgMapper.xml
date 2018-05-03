@@ -12,11 +12,12 @@
         <result column="USER_SIZE" property="userSize"/>
         <result column="IMG_HAVE_SEEN" property="imgHaveSeen"></result>
         <result column="IMG_HAVE_COLLECTED" property="ImgHaveCollected"/>
+        <result column="PUSH_DATE" property="imgPushDate"/>
     </resultMap>
 
 
     <sql id="base_column">
-        ID, IMG_URL,IMG_NAME
+        ID, IMG_URL,IMG_NAME ,PUSH_DATE
     </sql>
 
     <select id="getList" resultMap="ImgResult">
@@ -35,7 +36,7 @@
 
         SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
-        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+        ,push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
 
         FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
@@ -50,7 +51,7 @@
     <select id="getImgListByTypes" resultMap="ImgResult" parameterType="java.util.Map" >
          SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
-        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+        ,push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
 
         FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
@@ -66,7 +67,7 @@
     <select id="showByImgId" parameterType="java.lang.Long"  resultMap="ImgResult">
         SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
-        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL,
+        ,push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL,
         img_have_seen , img_have_collected
         FROM  T_IMG TI
         LEFT JOIN T_USER TU on TU.USER_ID = TI.USER_ID
@@ -77,7 +78,7 @@
     <select id="findImgByUserId" parameterType="java.lang.Long" resultMap="ImgResult">
          SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
-        ,img_push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
+        ,push_date,img_size,tu.USER_ID as user_id, USER_NAME , USER_LOGO_URL
         FROM  T_IMG TI
         LEFT JOIN T_USER TU on TU.USER_ID = TI.USER_ID
 
@@ -90,7 +91,7 @@
 
         SELECT
         id , img_name ,img_context , img_have_seen , img_have_collected ,img_url
-        ,img_push_date,img_size,tuc.USER_ID as user_id, care_id
+        ,push_date,img_size,tuc.USER_ID as user_id, care_id
         FROM T_IMG TI LEFT JOIN  T_USER_CARE tuc on tuc.USER_ID = TI.user_id
        <where>
            1 = 1
@@ -107,6 +108,16 @@
 
     <insert id="haveSeen" parameterType="java.util.Map" >
         INSERT INTO  T_SEEN_IMG (user_id,img_id) VALUES (#{userId,jdbcType=NUMERIC} , #{imgId,jdbcType=NUMERIC})
+    </insert>
+
+
+    <insert id="upLoad" parameterType="java.util.Map">
+        INSERT t_img (user_id,img_name,img_context,img_url,push_date,img_size)
+        VALUES
+        <foreach collection="list" item="item">
+            (#{item.userId},#{item.imgName},#{item.imgContext},#{item.imgUrl},#{item.imgPushDate},#{item.imgSize})
+        </foreach>
+
     </insert>
 
 </mapper>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿作品</title>
+
+    <link rel="stylesheet" href="../css/upload.css" type="text/css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+    <script src="../js/uploaddd.js" charset="utf-8"></script>
+</head>
+<body bgcolor="#E8E8E8">
+    <div id="oauthTabs">
+        <!--选项卡-->
+        <div class="tab-head">
+            <input type="hidden" id="tabNum"/>
+            <div class="navigationBar" style="flex-direction: row; align-items: center;">
+                <div name="tabName" id="paint" class="selected" style="height: 40px; text-align: center; line-height: 40px; width: 200px; color: #E8E8E8; margin-left: 20%; cursor: pointer;">插画</div>
+                <div name="tabName" id="gif" style="height: 40px; text-align: center; line-height: 40px; width: 200px; color: #E8E8E8; cursor: pointer;">动图</div>
+                <div name="tabName" id="manga" style="height: 40px; text-align: center; line-height: 40px; width: 200px; color: #E8E8E8; cursor: pointer;">漫画</div>
+                <div name="tabName" id="novel" style="height: 40px; text-align: center; line-height: 40px; width: 200px; color: #E8E8E8; cursor: pointer;">小说</div>
+            </div>
+        </div>
+        <!--/选项卡-->
+
+        <!--选项内容-->
+        <div class="content">
+            <div class="tab-content" style="display: block;">
+
+                    <div class="outerBox">
+                        <label class="upload" for="xFile">选择插画</label><br/>
+                        <div style="color: white;font-size: 16px; text-align: center;">JPEG GIF PNG</div>
+                        <div style="color: white;font-size: 16px; text-align: center;">投稿要求每张图大小8MB以内</div>
+                        <div style="color: white;font-size: 16px; text-align: center;">最多200张(合计30MB以内)</div>
+                        <input id="xFile" type="file" class="buttonStyle" onchange="getPhoto(this)" />
+                    </div>
+                    <div class="imgs" id="imgs">
+
+
+                    </div>
+                    <div class="infoOuterBox" style="flex-direction: row; align-items: center;">
+                        <div style="color: #B0B0B0;">标题</div>
+                        <input id="text_txt1"  maxlength="32" type="text" style="border: none; width: 85%; margin-left: 15px;"/>
+                        <div style="text-align: right; width: 8%;">
+                            <span id ="num_txt1" style="color: #B0B0B0;">0/32</span>
+                        </div>
+                    </div>
+                    <div class="infoOuterBox" style="flex-direction: column; margin-top: 5px">
+                        <div style="color: #B0B0B0;">说明文</div>
+                        <textarea id="text_txt2" maxlength="3000" type="text" style="border: none; width: 95%; margin-left: 15px; resize: none; height: 100px; max-width: 95%; max-height: 100px; margin-top: 5px; font-size: 14px;"></textarea>
+                        <div style="text-align: right; width: 99%; margin-top: 5px;">
+                            <span id ="num_txt2" style="color: #B0B0B0;">0/3000</span>
+                        </div>
+                    </div>
+                    <div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">
+                        <div>公开范围</div>
+                        <input type="radio" name="auth" value="0" style="margin-left: 25%;"/>所有人
+                        <input type="radio" name="auth" value="1" style="margin-left: 5%;"/>仅限好P友
+                        <input type="radio" name="auth" value="2" style="margin-left: 5%;"/>非公开
+                    </div>
+                    <div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">
+                        <input type="checkbox" id="isOriginal"/>原创作品
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <input type="button"  onclick="upload()" class="buttonStyle1" style="width: 160px; height: 50px; font-size: 18px;" value="立即投稿"/>
+                    </div>
+
+            </div>
+            <!--<div class="tab-content" style="display: none;">-->
+
+                    <!--<div class="outerBox">-->
+                        <!--<label class="upload" for="xFile">选择动图</label><br/>-->
+                        <!--<div style="color: white;font-size: 16px; text-align: center;">JPEG GIF PNG</div>-->
+                        <!--<div style="color: white;font-size: 16px; text-align: center;">投稿要求每张图大小8MB以内</div>-->
+                        <!--<div style="color: white;font-size: 16px; text-align: center;">最多200张(合计30MB以内)</div>-->
+                        <!--<input id="xFile" type="file" class="buttonStyle" />-->
+                    <!--</div>-->
+                    <!--<div class="infoOuterBox" style="flex-direction: row; align-items: center;">-->
+                        <!--<div style="color: #B0B0B0;">标题</div>-->
+                        <!--<input id="text_txt1" maxlength="32" type="text" style="border: none; width: 85%; margin-left: 15px;"/>-->
+                        <!--<div style="text-align: right; width: 8%;">-->
+                            <!--<span id ="num_txt1" style="color: #B0B0B0;">0/32</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="infoOuterBox" style="flex-direction: column; margin-top: 5px">-->
+                        <!--<div style="color: #B0B0B0;">说明文</div>-->
+                        <!--<textarea id="text_txt2" maxlength="3000" type="text" style="border: none; width: 95%; margin-left: 15px; resize: none; height: 100px; max-width: 95%; max-height: 100px; margin-top: 5px; font-size: 14px;"></textarea>-->
+                        <!--<div style="text-align: right; width: 99%; margin-top: 5px;">-->
+                            <!--<span id ="num_txt2" style="color: #B0B0B0;">0/3000</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                        <!--<div>公开范围</div>-->
+                        <!--<input type="radio" name="auth" value="0" style="margin-left: 25%;"/>所有人-->
+                        <!--<input type="radio" name="auth" value="1" style="margin-left: 5%;"/>仅限好P友-->
+                        <!--<input type="radio" name="auth" value="2" style="margin-left: 5%;"/>非公开-->
+                    <!--</div>-->
+                    <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                        <!--<input type="checkbox" id="isOriginal"/>原创作品-->
+                    <!--</div>-->
+                    <!--<div style="text-align: center; margin-top: 20px;">-->
+                        <!--<input type="submit" class="buttonStyle1" style="width: 160px; height: 50px; font-size: 18px;" value="立即投稿"/>-->
+                    <!--</div>-->
+
+            <!--</div><div class="tab-content" style="display: none;">-->
+
+                <!--<div class="outerBox">-->
+                    <!--<label class="upload" for="xFile">选择漫画</label><br/>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">JPEG GIF PNG</div>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">投稿要求每张图大小8MB以内</div>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">最多200张(合计30MB以内)</div>-->
+                    <!--<input id="xFile" type="file" class="buttonStyle" />-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="flex-direction: row; align-items: center;">-->
+                    <!--<div style="color: #B0B0B0;">标题</div>-->
+                    <!--<input id="text_txt1" maxlength="32" type="text" style="border: none; width: 85%; margin-left: 15px;"/>-->
+                    <!--<div style="text-align: right; width: 8%;">-->
+                        <!--<span id ="num_txt1" style="color: #B0B0B0;">0/32</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="flex-direction: column; margin-top: 5px">-->
+                    <!--<div style="color: #B0B0B0;">说明文</div>-->
+                    <!--<textarea id="text_txt2" maxlength="3000" type="text" style="border: none; width: 95%; margin-left: 15px; resize: none; height: 100px; max-width: 95%; max-height: 100px; margin-top: 5px; font-size: 14px;"></textarea>-->
+                    <!--<div style="text-align: right; width: 99%; margin-top: 5px;">-->
+                        <!--<span id ="num_txt2" style="color: #B0B0B0;">0/3000</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                    <!--<div>公开范围</div>-->
+                    <!--<input type="radio" name="auth" value="0" style="margin-left: 25%;"/>所有人-->
+                    <!--<input type="radio" name="auth" value="1" style="margin-left: 5%;"/>仅限好P友-->
+                    <!--<input type="radio" name="auth" value="2" style="margin-left: 5%;"/>非公开-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                    <!--<input type="checkbox" id="isOriginal"/>原创作品-->
+                <!--</div>-->
+                <!--<div style="text-align: center; margin-top: 20px;">-->
+                    <!--<input type="submit" class="buttonStyle1" style="width: 160px; height: 50px; font-size: 18px;" value="立即投稿"/>-->
+                <!--</div>-->
+
+        <!--</div><div class="tab-content" style="display: none;">-->
+
+                <!--<div class="outerBox">-->
+                    <!--<label class="upload" for="xFile">选择小说</label><br/>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">JPEG GIF PNG</div>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">投稿要求每张图大小8MB以内</div>-->
+                    <!--<div style="color: white;font-size: 16px; text-align: center;">最多200张(合计30MB以内)</div>-->
+                    <!--<input id="xFile" type="file" class="buttonStyle" />-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="flex-direction: row; align-items: center;">-->
+                    <!--<div style="color: #B0B0B0;">标题</div>-->
+                    <!--<input id="text_txt1" maxlength="32" type="text" style="border: none; width: 85%; margin-left: 15px;"/>-->
+                    <!--<div style="text-align: right; width: 8%;">-->
+                        <!--<span id ="num_txt1" style="color: #B0B0B0;">0/32</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="flex-direction: column; margin-top: 5px">-->
+                    <!--<div style="color: #B0B0B0;">说明文</div>-->
+                    <!--<textarea id="text_txt2" maxlength="3000" type="text" style="border: none; width: 95%; margin-left: 15px; resize: none; height: 100px; max-width: 95%; max-height: 100px; margin-top: 5px; font-size: 14px;"></textarea>-->
+                    <!--<div style="text-align: right; width: 99%; margin-top: 5px;">-->
+                        <!--<span id ="num_txt2" style="color: #B0B0B0;">0/3000</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                    <!--<div>公开范围</div>-->
+                    <!--<input type="radio" name="auth" value="0" style="margin-left: 25%;"/>所有人-->
+                    <!--<input type="radio" name="auth" value="1" style="margin-left: 5%;"/>仅限好P友-->
+                    <!--<input type="radio" name="auth" value="2" style="margin-left: 5%;"/>非公开-->
+                <!--</div>-->
+                <!--<div class="infoOuterBox" style="margin-top: 5px; color: #B0B0B0;">-->
+                    <!--<input type="checkbox" id="isOriginal"/>原创作品-->
+                <!--</div>-->
+                <!--<div style="text-align: center; margin-top: 20px;">-->
+                    <!--<input type="button" onclick="upload()" class="buttonStyle1" style="width: 160px; height: 50px; font-size: 18px;" value="立即投稿"/>-->
+                <!--</div>-->
+
+        <!--</div>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash;/选项内容&ndash;&gt;-->
+    </div>
+
+</body>
+</html>

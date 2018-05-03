@@ -28,5 +28,8 @@ public interface ImgMapper {
 
     Boolean haveSeen(Map map);
 
+    Boolean upLoad(Map map);
+
+
 
 }

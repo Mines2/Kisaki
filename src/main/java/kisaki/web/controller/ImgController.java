@@ -4,6 +4,8 @@ package kisaki.web.controller;
 //import net.sf.json.JSONObject;
 import kisaki.web.entity.Img;
 import kisaki.web.entity.shiro.User;
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -16,7 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kisaki.web.service.BackgroundImgService.BackgroundImgService;
 import org.springframework.web.servlet.ModelAndView;
 import util.ImgUtil;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,12 +33,16 @@ public class ImgController {
     @Autowired
     BackgroundImgService backgroundImgService;
 
+
+
     @ResponseBody
     @RequestMapping("/getBGList")
     public Object getBGList(){
         JSONObject jsonObject = new JSONObject();
         List<Img> list = backgroundImgService.getBGList();
-        jsonObject.accumulate("list",list);
+        if(list != null){
+            jsonObject.put("list",list);
+        }
         return jsonObject;
     }
 
@@ -79,6 +89,28 @@ public class ImgController {
         JSONObject jsonObject = new JSONObject();
         List<Img> list = backgroundImgService.getCareImgListByUserId(id);
         jsonObject.put("list",list);
+        return jsonObject;
+    }
+
+
+    @RequestMapping("/upload")
+    @ResponseBody
+    public Object upload(String imgList){
+        JSONObject jsonObject = new JSONObject();
+        List<Img> list = (List<Img>)JSONArray.toList(JSONArray.fromObject(imgList),Img.class);
+        List<Img> newList = new ArrayList<>();
+        for (Img img:  list) {
+            try {
+                img = ImgUtil.getImgSize(img);
+                img = ImgUtil.readAndWriteImg(img);
+                newList.add(img);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        jsonObject.put("list",imgList);
         return jsonObject;
     }
 }

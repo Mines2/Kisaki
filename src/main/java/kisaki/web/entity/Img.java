@@ -8,6 +8,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.Date;
 
 public class Img implements Serializable {
     private String imgUrl;
@@ -22,6 +23,15 @@ public class Img implements Serializable {
     private String imgContext;
     private int imgHaveSeen;
     private int ImgHaveCollected;
+    private Date imgPushDate;
+
+    public Date getImgPushDate() {
+        return imgPushDate;
+    }
+
+    public void setImgPushDate(Date imgPushDate) {
+        this.imgPushDate = imgPushDate;
+    }
 
     public int getImgHaveSeen() {
         return imgHaveSeen;
