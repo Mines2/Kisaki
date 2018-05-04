@@ -17,6 +17,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Blob;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ImgUtil {
@@ -49,9 +51,9 @@ public class ImgUtil {
         FileOutputStream fileOutputStream;
         try {
             fileInputStream = new FileInputStream(img.getImgUrl());
-            String s = ImgUtil.class.getClass().getResource("/").getPath() + "/templates/image/upload"
-                    + img.getImgUrl().substring(img.getImgUrl().length() - 4, img.getImgUrl().length());
             byte[] bytes = new byte[1024];
+            String s = ImgUtil.class.getClass().getResource("/").getPath() + "/templates/image/upload"
+                    + new Date().toString() ;
             fileOutputStream = new FileOutputStream(new File(s));
             int len = 0;
             while ((len = fileInputStream.read(bytes)) != -1) {
@@ -70,6 +72,41 @@ public class ImgUtil {
 
         }
         return img;
+    }
+
+    public static boolean GenerateImage(String imgStr)
+    {   //对字节数组字符串进行Base64解码并生成图片
+        if (imgStr == null) //图像数据为空
+            return false;
+        BASE64Decoder decoder = new BASE64Decoder();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss");
+        String last = imgStr.substring(imgStr.indexOf("/")+1,imgStr.indexOf(";"));
+        imgStr = imgStr.substring(imgStr.indexOf(",")+1,imgStr.length());
+        String newURL = ImgUtil.class.getClass().getResource("/")+ "/templates/image/upload/"
+                + simpleDateFormat.format(new Date()) +"." + last;
+        try
+        {
+            //Base64解码
+            byte[] b = decoder.decodeBuffer(imgStr);
+            for(int i=0;i<b.length;++i)
+            {
+                if(b[i]<0)
+                {//调整异常数据
+                    b[i]+=256;
+                }
+            }
+            //生成jpeg图片
+            String imgFilePath = "D:\\new.jpg";//新生成的图片
+            OutputStream out = new FileOutputStream(newURL);
+            out.write(b);
+            out.flush();
+            out.close();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
 }

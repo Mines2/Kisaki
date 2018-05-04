@@ -30,6 +30,18 @@ $(function () {
         }
         //console.log($('#num_txt').html(str));
     });
+
+    $("input[type='file']").change(function(){
+        var file = this.files[0];
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            //监听文件读取结束后事件
+            reader.onloadend = function (e) {
+               alert(e.target.result);    //e.target.result就是最后的路径地址
+            };
+        }
+    });
 });
 
 //Tab控制选项卡
@@ -64,6 +76,7 @@ function tabs(tabObj, event) {
 var imgurl = "";
 function getPhoto(node) {
     var imgURL = "";
+    var realURL = null;
     try{
         var file = null;
         if(node.files && node.files[0] ){
@@ -86,7 +99,17 @@ function getPhoto(node) {
             reader.readAsDataURL(node.files[0]);
         }
     }
-    creatImg(imgRUL,$('#xFile').val());
+    if (window.FileReader) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        //监听文件读取结束后事件
+        reader.onloadend = function (e) {
+            realURL = e.target.result;
+            creatImg(imgRUL,realURL);    //e.target.result就是最后的路径地址
+        };
+    }
+
+
     return imgURL;
 }
 
@@ -116,6 +139,18 @@ function getImgList() {
         
 
     }
+}
+
+function getObjectURL(file) {
+    var url = null;
+    if (window.createObjcectURL != undefined) {
+        url = window.createOjcectURL(file);
+    } else if (window.URL != undefined) {
+        url = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) {
+        url = window.webkitURL.createObjectURL(file);
+    }
+    return url;
 }
 
 function upload() {

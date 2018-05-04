@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2018-04-26 17:08:22
+Date: 2018-05-04 20:04:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,15 +24,16 @@ CREATE TABLE `backgroundimg` (
   `IMG_URL` varchar(50) NOT NULL,
   `IMG_NAME` varchar(20) NOT NULL,
   `USER_ID` int(20) NOT NULL,
+  `PUSH_DATE` date NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of backgroundimg
 -- ----------------------------
-INSERT INTO `backgroundimg` VALUES ('1', '/image/BG01.jpg', 'xxx', '1');
-INSERT INTO `backgroundimg` VALUES ('2', '/image/BG02.jpg', 'fff', '2');
-INSERT INTO `backgroundimg` VALUES ('3', '/image/BG03.jpg', '111111111', '3');
+INSERT INTO `backgroundimg` VALUES ('1', '/image/BG01.jpg', 'xxx', '1', '2018-05-02');
+INSERT INTO `backgroundimg` VALUES ('2', '/image/BG02.jpg', 'fff', '2', '2018-05-02');
+INSERT INTO `backgroundimg` VALUES ('3', '/image/BG03.jpg', '111111111', '3', '2018-05-02');
 
 -- ----------------------------
 -- Table structure for `people`
@@ -74,6 +75,41 @@ INSERT INTO `t_collect_img` VALUES ('3', '1', '1', '1');
 INSERT INTO `t_collect_img` VALUES ('2', '1', '1', '2');
 
 -- ----------------------------
+-- Table structure for `t_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_comment`;
+CREATE TABLE `t_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `img_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_comment
+-- ----------------------------
+INSERT INTO `t_comment` VALUES ('1', '1', '1', 'xxxx', '2018-04-26');
+INSERT INTO `t_comment` VALUES ('2', '1', '2', 'fuck u', '2018-04-27');
+
+-- ----------------------------
+-- Table structure for `t_history`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_history`;
+CREATE TABLE `t_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `img_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_history
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `t_img`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_img`;
@@ -85,7 +121,7 @@ CREATE TABLE `t_img` (
   `img_have_seen` int(11) DEFAULT NULL,
   `img_have_collected` int(11) DEFAULT NULL,
   `img_url` varchar(50) NOT NULL,
-  `img_push_date` date DEFAULT NULL,
+  `push_date` date NOT NULL,
   `img_size` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -93,10 +129,10 @@ CREATE TABLE `t_img` (
 -- ----------------------------
 -- Records of t_img
 -- ----------------------------
-INSERT INTO `t_img` VALUES ('1', '1', 'wusaki', '鐧惧悎鍏?, '2', '2', '../image/img01.jpg', null, '0.6866667');
-INSERT INTO `t_img` VALUES ('2', '2', 'rori', '钀濊帀', null, '5', '../image/img02.jpg', null, '1');
-INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '楂樿揪', '1', '4', '../image/img03.jpg', null, '1.41176471');
-INSERT INTO `t_img` VALUES ('4', '1', 'guojiadui', '濂充富', '1', '3', '../image/img04.jpg', null, '1.61290323');
+INSERT INTO `t_img` VALUES ('1', '1', 'wusaki', '鐧惧悎鍏?, '2', '2', '../image/img01.jpg', '2018-05-23', '0.6866667');
+INSERT INTO `t_img` VALUES ('2', '2', 'rori', '钀濊帀', null, '5', '../image/img02.jpg', '2018-05-02', '1');
+INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '楂樿揪', '1', '4', '../image/img03.jpg', '2018-04-29', '1.41176471');
+INSERT INTO `t_img` VALUES ('4', '1', 'guojiadui', '濂充富', '1', '3', '../image/img04.jpg', '2018-05-21', '1.61290323');
 
 -- ----------------------------
 -- Table structure for `t_seen_img`

@@ -101,11 +101,12 @@ public class ImgController {
         List<Img> newList = new ArrayList<>();
         for (Img img:  list) {
             try {
-                img = ImgUtil.getImgSize(img);
-                img = ImgUtil.readAndWriteImg(img);
+                ImgUtil.GenerateImage(img.getImgUrl());
+//                img = ImgUtil.getImgSize(img);
+//                img = ImgUtil.readAndWriteImg(img);
                 newList.add(img);
-            } catch (IOException e) {
-                e.printStackTrace();
+            }catch (Exception e){
+
             }
 
         }
