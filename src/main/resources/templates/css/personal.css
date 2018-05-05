@@ -1,0 +1,88 @@
+.tab-head li{
+    list-style: none;
+    display: inline;
+}
+.tab-head a{
+    text-decoration: none;
+}
+.selected{
+    color: black;
+    border-color: #C6E2FF;
+    border-style: solid;
+    border-width: thin;
+    border-bottom: none;
+}
+.tab-head{
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    border-bottom-color: #C6E2FF;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+.titleBox{
+    color: #7EC0EE;
+    display: flex;
+    text-align: center;
+}
+dl {
+    padding:0;
+    margin:0;
+    clear:left;
+}
+dl dt {
+    float:left;
+    width: 140px;
+}
+dl dd {
+
+}
+.content{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 40px;
+}
+.dd{
+    width: 46%;
+}
+.inputBox{
+    margin-left: 150px;
+}
+#city_2 {
+    /*  appearance   将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    /*在选择框的最右侧中间显示小箭头图片*/
+    /*background:url(../images/select_arrow.png)  no-repeat  scroll  right  center  transparent;*/
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right:14px;
+    width:148px;
+    height:30px;
+    /* 重写边框，使在各个浏览器下拉选边框样式保持一致 */
+    border:1px solid #ccc;
+    /* 字体颜色 */
+    color:#999999;
+}
+.authBox{
+    margin-left: 200px;
+    text-align: right;
+}
+.flexBox{
+    display: flex;
+    margin-top: 15px;
+}
+.flexTitle{
+    width: 10%;
+}
+.buttonStyle{
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    border:none;
+    color: #6495ED;
+    background: -webkit-linear-gradient(white, #EED8AE); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(white, #EED8AE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(white, #EED8AE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(white, #EED8AE); /* 标准的语法（必须放在最后） */
+}

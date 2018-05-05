@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+
+    <link rel="stylesheet" href="../css/comment.css" type="text/css">
+    <link rel="stylesheet" href="../css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/jquery.ztree.core.js"></script>
+    <script src="../js/comment.js" charset="utf-8"></script>
+</head>
+<body bgcolor="#E8E8E8">
+    <div style="width: 15%; float: left; background-color: #E8E8E8;">
+        <div class="userInfo">
+            <img src="../image/logo01.jpg" style="width: 100px; height: 100px; border-radius: 50%;"/>
+            <div>lovewings</div>
+        </div>
+        <div class="follower">
+            <div class="followerNum" style="flex-direction: row; align-items: center;">
+                <div style="margin: 5px; font-size: 15px; width: 75%; text-align: left;">关注中</div>
+                <div style="margin: 5px; font-size: 15px; text-align: right;">1</div>
+            </div>
+            <div style="text-align: left;">
+                <img src="../image/logo01.jpg" style="width: 40px; height: 40px; border-radius: 50%; margin: 5px;"/>
+                <div style="margin-right: 5px; text-align: right;"><a>查看列表</a></div>
+            </div>
+            <div style="margin-top: 5px; margin-right: 5px; text-align: right;"><a>粉丝</a></div>
+        </div>
+        <div style="background-color: #ffffff;padding: 1px; margin-top: 10%;">
+            <div class="news">
+                <!--<ul id="treeDemo" class="ztree"></ul>-->
+                <div class="newsTitle" style="border-bottom-color: #00B2EE; border-bottom-style: solid; border-bottom-width: thin; height: 30px; line-height: 30px;">&nbsp;&nbsp;大家的动态</div>
+                <div class="newsTitle selected">&nbsp;&nbsp;全部动态</div>
+                <div class="newsTitle">&nbsp;&nbsp;├关注的用户的动态</div>
+                <div class="newsTitle">&nbsp;&nbsp;├好P友的动态</div>
+                <div class="newsTitle" style="height: 25px;">&nbsp;&nbsp;└你的动态</div>
+            </div>
+        </div>
+    </div>
+    <div class="divleft" style="width: 70%;">
+        <form>
+            <div style="flex-direction: row; align-items: center;" class="titleBox">
+                <div class="tip">
+                    <span id ="">发表一句话</span>
+                </div>
+                <div class="totalText">
+                    <span id ="num_txt1" style="color: #B0B0B0;">0/140</span>
+                </div>
+            </div>
+            <div class="textBox">
+                <textarea maxlength="140" id="text_txt1" class="textInput"></textarea>
+            </div>
+            <div class="buttonBox">
+                <button type="submit" class="buttonStyle">投稿</button>
+            </div>
+        </form>
+
+        <div class="totalAct">全部活动</div>
+
+        <!-- 遍历查询显示列表数据 -->
+        <div class="outer">
+            <div class="infoBox" style="flex-direction: row;">
+                <div class="imageBox">
+                    <img src="../image/logo01.jpg" class="imageItem"/>
+                </div>
+                <div class="info1">
+                    <div class="authorInfo" style="flex-direction: row; align-items: flex-end;">
+                        <div class="title">キャスター</div>
+                        <div class="author">by xx</div>
+                    </div>
+                    <div class="info2" style="flex-direction: row;">
+                        <div><img src="../image/logo01.jpg" class="headPhoto"/></div>
+                        <div class="info4">
+                            <div class="info3" style="flex-direction: row; align-items: flex-end">
+                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>
+                                <div style="font-size: 15px; margin-left: 5px;">已投稿</div>
+                            </div>
+                            <div class="info5" style="flex-direction: row; align-items: center;">
+                                <div class="fontStyle" style="margin-left: 0px;">x日前</div>
+                                <div class="fontStyle" style="margin-left: 5px;">反应x件</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkMore">
+                        <a>其他xx查看</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="outer">
+            <div class="infoBox" style="flex-direction: row;">
+                <div class="imageBox">
+                    <img src="../image/logo01.jpg" class="imageItem"/>
+                </div>
+                <div class="info1">
+                    <div class="authorInfo" style="flex-direction: row; align-items: flex-end;">
+                        <div class="title">キャスター</div>
+                        <div class="author">by xx</div>
+                    </div>
+                    <div class="info2" style="flex-direction: row;">
+                        <div><img src="../image/logo01.jpg" class="headPhoto"/></div>
+                        <div class="info4">
+                            <div class="info3" style="flex-direction: row; align-items: flex-end">
+                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>
+                                <div style="font-size: 15px; margin-left: 5px;">已投稿</div>
+                            </div>
+                            <div class="info5" style="flex-direction: row; align-items: center;">
+                                <div class="fontStyle" style="margin-left: 0px;">x日前</div>
+                                <div class="fontStyle" style="margin-left: 5px;">反应x件</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkMore">
+                        <a>其他xx查看</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 2px; height: 1000px;">
+        <div class="divright" style="width: 14%;">
+            <div name="newsTitle" class="newsTitle" style="margin-top: 50px;">&nbsp;&nbsp;全部</div>
+            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;发给你的投稿</div>
+            <div name="newsTitle" class="newsTitle selected">&nbsp;&nbsp;活动</div>
+            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;一句话</div>
+        </div>
+    </div>
+</body>
+</html>

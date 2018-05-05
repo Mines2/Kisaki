@@ -50,10 +50,10 @@ $(document).ready(function () {
             $('.right_top_nav_img_code').remove();
             // ($(this).find("div"))[0].attr("style",style);
             // $(this).find("div").attr('class',"right_top_nav_img_code")
-alert(($(this).find("div"))[0].style);
-alert(style);
+// alert(($(this).find("div"))[0].style);
+// alert(style);
 ($(this).find("div"))[0].style =style;
-            alert($(this).find("div"))
+            // alert($(this).find("div"))
 
         });
 

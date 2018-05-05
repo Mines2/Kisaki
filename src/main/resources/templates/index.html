@@ -36,7 +36,7 @@
                 <li>
                     <div alt="" style="background: url('image/nav_img.png') -37px -12px ;background-size: 1000%  "
                          class="nav_logo"></div>
-                    <label class="nav_text">动态</label></li>
+                    <a th:href="@{/web/comment.html}"><label class="nav_text">动态</label></a></li>
 
             </ul>
         </div>
@@ -83,8 +83,10 @@
         <div class="section_left">
             <ul class="section_left_nav">
                 <li>
-                    <img alt="" th:src="${user.logoImgUrl}">
-                    <label class="section_left_userName" th:text="${user.userName}"></label>
+                   <img alt="" th:src="${user.logoImgUrl}">
+                    <a th:href="@{/web/personal.html}">
+                        <label class="section_left_userName" th:text="${user.userName}"></label>
+                    </a>
                 </li>
                 <li>
                     <button class="vip_button">

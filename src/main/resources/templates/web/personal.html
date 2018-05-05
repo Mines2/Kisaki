@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+
+    <link rel="stylesheet" href="../css/personal.css" type="text/css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+    <script src="../js/personal.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="oauthTabs">
+        <!--选项卡-->
+        <div class="tab-head">
+            <div style="font-size: 20px; font-weight: bold">修改设置</div>
+            <input type="hidden" id="tabNum"/>
+            <div class="titleBox" style="flex-direction: row; align-items: flex-end">
+                <div name="tabName" id="perInfo" class="selected" style="margin-top: 5px; margin-left: 36%; height: 30px; width: 100px; line-height: 38px;" href="javascript:;">个人资料</div>
+                <div name="tabName" id="resetPwd" style="margin-top: 5px; margin-left: 50px; height: 30px; width: 100px; line-height: 38px;" href="javascript:;">修改密码</div>
+            </div>
+        </div>
+        <!--/选项卡-->
+
+        <!--选项内容-->
+        <div class="content">
+            <div class="tab-content" style="display: block;">
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">昵称：</div>
+                    <div class="dd">
+                        <input type="text" id="nickName" class="inputBox"/></div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">主页：</div>
+                    <div class="dd">
+                        <input id="mainPage" type="text" class="inputBox" /></div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">性别：</div>
+                    <div class="dd">
+                        <input name="sex" type="radio" value="1" class="inputBox" />男
+                        <input name="sex" type="radio" value="0" />女
+                    </div>
+                    <div>
+                        <select id="sexAuth" class="authBox">
+                            <option value="1">所有人</option>
+                            <option value="2">仅好友</option>
+                            <option value="3">私密</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">地址：</div>
+                    <div class="dd">
+                        <select id="cmbProvince" name="cmbProvince" class="inputBox"></select>
+                        <select id="cmbCity" name="cmbCity"></select>
+                        <select id="cmbArea" name="cmbArea"></select>
+                    </div>
+                    <div>
+                        <select id="addressAuth" class="authBox">
+                            <option value="1">所有人</option>
+                            <option value="2">仅好友</option>
+                            <option value="3">私密</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">出生年份：</div>
+                    <div class="dd">
+                        <select id="year" name="year" class="inputBox"></select>
+                    </div>
+                    <div>
+                        <select id="yearAuth" class="authBox">
+                            <option value="1">所有人</option>
+                            <option value="2">仅好友</option>
+                            <option value="3">私密</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">生日：</div>
+                    <div class="dd">
+                        <select id="month" name="month" class="inputBox"></select>
+                        <select id="day" name="day"></select>
+                    </div>
+                    <div>
+                        <select id="dateAuth" class="authBox">
+                            <option value="1">所有人</option>
+                            <option value="2">仅好友</option>
+                            <option value="3">私密</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">职业：</div>
+                    <div class="dd">
+                        <select id="job" name="job" class="inputBox">
+                            <option>暂无</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="jobAuth" class="authBox">
+                            <option value="1">所有人</option>
+                            <option value="2">仅好友</option>
+                            <option value="3">私密</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <div>
+                        <input id="btnSubmit1" name="btnSubmit1" type="submit" class="buttonStyle" style="width: 100px; height: 30px;" value="立即绑定" /></div>
+                </div>
+            </div>
+            <div class="tab-content" style="display: none;">
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">原密码：</div>
+                    <div class="dd">
+                        <input name="txtMobile" type="text" class="inputBox" /></div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">新密码：</div>
+                    <div class="dd">
+                        <input name="txtPassword" type="password" class="inputBox" /></div>
+                </div>
+                <div class="flexBox" style="flex-direction: row; align-items: center;">
+                    <div class="flexTitle">新密码确认：</div>
+                    <div class="dd">
+                        <input name="txtPasswordConfirm" type="passwordConfirm" class="inputBox" /></div>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <div>
+                        <input id="btnSubmit2" name="btnSubmit1" type="submit" class="buttonStyle" style="width: 100px; height: 30px;" value="立即修改" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/选项内容-->
+    </div>
+
+    <script type="text/javascript">
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+    </script>
+</body>
+</html>
