@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Blob;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +41,8 @@ public class ImgUtil {
         BufferedImage sourceImg = ImageIO.read(new FileInputStream(picture));
         img.setImg_height(sourceImg.getHeight());
         img.setImg_width(sourceImg.getWidth());
-        img.setImg_size(sourceImg.getWidth() / sourceImg.getHeight());
+        DecimalFormat df=new DecimalFormat("0.00");
+        img.setImg_size(Double.parseDouble(df.format((float)sourceImg.getWidth() / sourceImg.getHeight())));
 
 
         return img;
@@ -74,15 +76,15 @@ public class ImgUtil {
         return img;
     }
 
-    public static boolean GenerateImage(String imgStr)
+    public static String GenerateImage(String imgStr)
     {   //对字节数组字符串进行Base64解码并生成图片
         if (imgStr == null) //图像数据为空
-            return false;
+            return null;
         BASE64Decoder decoder = new BASE64Decoder();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss");
         String last = imgStr.substring(imgStr.indexOf("/")+1,imgStr.indexOf(";"));
         imgStr = imgStr.substring(imgStr.indexOf(",")+1,imgStr.length());
-        String newURL = ImgUtil.class.getClass().getResource("/")+ "/templates/image/upload/"
+        String newURL = System.getProperty("user.dir")+"\\src\\main\\resources/templates/image/upload/"
                 + simpleDateFormat.format(new Date()) +"." + last;
         try
         {
@@ -96,17 +98,21 @@ public class ImgUtil {
                 }
             }
             //生成jpeg图片
-            String imgFilePath = "D:\\new.jpg";//新生成的图片
             OutputStream out = new FileOutputStream(newURL);
             out.write(b);
             out.flush();
             out.close();
-            return true;
+            return newURL;
         }
         catch (Exception e)
         {
-            return false;
+            return null;
         }
+    }
+    public static void  main (String args[]){
+        String newURL = System.getProperty("user.dir")+"\\src\\main\\resources/templates/image/upload/";
+
+        System.out.println(newURL);
     }
 
 }

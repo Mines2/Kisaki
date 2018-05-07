@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,19 +100,27 @@ public class ImgController {
         JSONObject jsonObject = new JSONObject();
         List<Img> list = (List<Img>)JSONArray.toList(JSONArray.fromObject(imgList),Img.class);
         List<Img> newList = new ArrayList<>();
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
         for (Img img:  list) {
             try {
-                ImgUtil.GenerateImage(img.getImgUrl());
-//                img = ImgUtil.getImgSize(img);
-//                img = ImgUtil.readAndWriteImg(img);
+                String newUrl = ImgUtil.GenerateImage(img.getImgUrl());
+                img.setImgUrl(newUrl);
+                img = ImgUtil.getImgSize(img);
+                img.setImgUrl("../"+newUrl.substring(newUrl.indexOf("/",newUrl.indexOf("templates")),newUrl.length()));
+                img.setUserId(user.getId().toString());
+                img.setImgPushDate(new Date());
                 newList.add(img);
             }catch (Exception e){
 
             }
 
         }
+        Map map = new HashMap();
+        map.put("list",newList);
+        backgroundImgService.upLoad(map);
 
-        jsonObject.put("list",imgList);
+        jsonObject.put("list",newList);
         return jsonObject;
     }
 }

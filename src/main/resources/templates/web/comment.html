@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html charset="utf-8" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml" >
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Comment</title>
 
     <link rel="stylesheet" href="../css/comment.css" type="text/css">
-    <link rel="stylesheet" href="../css/zTreeStyle/zTreeStyle.css" type="text/css">
     <script src="../js/jquery.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../js/jquery.ztree.core.js"></script>
     <script src="../js/comment.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+    <script src="../js/index.js" charset="utf-8"></script>
 </head>
 <body bgcolor="#E8E8E8">
+
+<header>
+    <div class="head_main">
+        <img alt="" src="../image/upload/201805127105114.jpeg" class="head_logo">
+        <div class="left_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -163px -37px;background-size: 1000% "
+                         class="nav_logo"></div>
+                    <a th:href="@{/login}"><label class="nav_text">首页</label></a>
+                </li>
+                <li style="width: 80px">
+                    <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/web/upload.html}"><label class="nav_text">上传</label></a>
+                    <label style="margin-left: 63px;border-left: solid 1px;padding-left:5px "
+                           class="nav_text">管理</label>
+                </li>
+
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -165px -992px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">收藏</label></li>
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -37px -12px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/web/comment.html}"><label class="nav_text">动态</label></a></li>
+            </ul>
+        </div>
+        <div class="right_top_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -50px;background-size: 2500%"></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img">
+                        <img style="width: 50px;border-radius: 50%;" th:src="${user.logoImgUrl}">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="right_mid_nav">
+            <input type="text" placeholder="" class="search_text">
+            <button class="search_btu"></button>
+        </div>
+
+
+
+    </div>
+
+</header>
+<section>
     <div style="width: 15%; float: left; background-color: #E8E8E8;">
         <div class="userInfo">
             <img src="../image/logo01.jpg" style="width: 100px; height: 100px; border-radius: 50%;"/>
@@ -31,9 +90,12 @@
         <div style="background-color: #ffffff;padding: 1px; margin-top: 10%;">
             <div class="news">
                 <!--<ul id="treeDemo" class="ztree"></ul>-->
-                <div class="newsTitle" style="border-bottom-color: #00B2EE; border-bottom-style: solid; border-bottom-width: thin; height: 30px; line-height: 30px;">&nbsp;&nbsp;大家的动态</div>
+                <div class="newsTitle"
+                     style="border-bottom-color: #00B2EE; border-bottom-style: solid; border-bottom-width: thin; height: 30px; line-height: 30px;">
+                    &nbsp;&nbsp;大家的动态
+                </div>
                 <div class="newsTitle selected">&nbsp;&nbsp;全部动态</div>
-                <div class="newsTitle">&nbsp;&nbsp;├关注的用户的动态</div>
+                <div class="newsTitle">&nbsp;&nbsp;├关注的用户动态</div>
                 <div class="newsTitle">&nbsp;&nbsp;├好P友的动态</div>
                 <div class="newsTitle" style="height: 25px;">&nbsp;&nbsp;└你的动态</div>
             </div>
@@ -41,12 +103,12 @@
     </div>
     <div class="divleft" style="width: 70%;">
         <form>
-            <div style="flex-direction: row; align-items: center;" class="titleBox">
+            <div style="flex-direction: row; align-items: center;margin-top: 30px;" class="titleBox">
                 <div class="tip">
-                    <span id ="">发表一句话</span>
+                    <span id="">发表一句话</span>
                 </div>
                 <div class="totalText">
-                    <span id ="num_txt1" style="color: #B0B0B0;">0/140</span>
+                    <span id="num_txt1" style="color: #B0B0B0;">0/140</span>
                 </div>
             </div>
             <div class="textBox">
@@ -120,13 +182,14 @@
             </div>
         </div>
     </div>
-    <div style="padding: 2px; height: 1000px;">
+    <div>
         <div class="divright" style="width: 14%;">
-            <div name="newsTitle" class="newsTitle" style="margin-top: 50px;">&nbsp;&nbsp;全部</div>
+            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;全部</div>
             <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;发给你的投稿</div>
             <div name="newsTitle" class="newsTitle selected">&nbsp;&nbsp;活动</div>
             <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;一句话</div>
         </div>
     </div>
+</section>
 </body>
 </html>

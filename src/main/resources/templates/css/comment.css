@@ -124,7 +124,6 @@ a{cursor: pointer;}
 .divright{
     float: left;
     background-color: #D9D9D9;
-    height: 1000px;
 }
 .divleft{
     float: left;
@@ -137,12 +136,10 @@ textarea:focus{
 .userInfo{
     text-align: center;
     background-color: #FFFFFF;
-    margin-left: 10%;
 }
 .follower{
     text-align: center;
     background-color: #FFFFFF;
-    margin-left: 5%;
     margin-top: 10%;
 }
 .news{

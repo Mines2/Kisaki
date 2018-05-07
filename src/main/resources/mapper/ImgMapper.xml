@@ -114,8 +114,8 @@
     <insert id="upLoad" parameterType="java.util.Map">
         INSERT t_img (user_id,img_name,img_context,img_url,push_date,img_size)
         VALUES
-        <foreach collection="list" item="item">
-            (#{item.userId},#{item.imgName},#{item.imgContext},#{item.imgUrl},#{item.imgPushDate},#{item.imgSize})
+        <foreach collection="list" item="item" separator=",">
+            (#{item.userId},#{item.imgName},#{item.imgContext},#{item.imgUrl},#{item.imgPushDate},#{item.img_size})
         </foreach>
 
     </insert>

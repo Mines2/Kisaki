@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,9 +8,70 @@
     <link rel="stylesheet" href="../css/personal.css" type="text/css">
     <script src="../js/jquery.min.js" charset="utf-8"></script>
     <script src="../js/personal.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+    <script src="../js/index.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="oauthTabs">
+<header>
+    <div class="head_main">
+        <img alt="" src="../image/upload/201805127105114.jpeg" class="head_logo">
+        <div class="left_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -163px -37px;background-size: 1000% "
+                         class="nav_logo"></div>
+                    <a th:href="@{/login}"><label class="nav_text">首页</label></a>
+                </li>
+                <li style="width: 80px">
+                    <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/web/upload.html}"><label class="nav_text">上传</label></a>
+                    <label style="margin-left: 63px;border-left: solid 1px;padding-left:5px "
+                           class="nav_text">管理</label>
+                </li>
+
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -165px -992px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <label class="nav_text">收藏</label></li>
+                <li>
+                    <div alt="" style="background: url('../image/nav_img.png') -37px -12px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/web/comment.html}"><label class="nav_text">动态</label></a></li>
+
+            </ul>
+        </div>
+        <div class="right_top_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -50px;background-size: 2500%"></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img">
+                        <!--<img style="width: 50px;border-radius: 50%;" th:src="${user.logoImgUrl}">-->
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="right_mid_nav">
+            <input type="text" placeholder="" class="search_text">
+            <button class="search_btu"></button>
+        </div>
+
+
+
+    </div>
+
+</header>
+<section>
+    <div id="oauthTabs" style="background: white;padding: 15px;margin-top: 20px;">
         <!--选项卡-->
         <div class="tab-head">
             <div style="font-size: 20px; font-weight: bold">修改设置</div>
@@ -135,6 +197,7 @@
         </div>
         <!--/选项内容-->
     </div>
+</section>
 
     <script type="text/javascript">
         addressInit('cmbProvince', 'cmbCity', 'cmbArea');

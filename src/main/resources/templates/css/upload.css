@@ -50,8 +50,6 @@
 }
 .infoOuterBox{
     display: flex;
-    width: 80%;
-    margin-left: 10%;
     margin-top: 20px;
     background-color: #FFFFFF;
     padding: 10px;
@@ -75,7 +73,6 @@ textarea:focus {
 }
 
 .imgs{
-    width:80%;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
