@@ -77,6 +77,13 @@ public class LoginController {
         return "/web/login";
     }
 
+    @RequestMapping("/out")
+    public String out(){
+        SecurityUtils.getSubject().getSession().removeAttribute("user");
+
+        return "/web/login";
+    }
+
 //    @RequestMapping("/getUserList")
 //    public
 }

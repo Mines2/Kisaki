@@ -73,18 +73,19 @@
 <section>
     <div style="width: 15%; float: left; background-color: #E8E8E8;">
         <div class="userInfo">
-            <img src="../image/logo01.jpg" style="width: 100px; height: 100px; border-radius: 50%;"/>
-            <div>lovewings</div>
+            <img th:src="${user.logoImgUrl}" style="width: 100px; height: 100px; border-radius: 50%;"/>
+            <div th:text="${user.userName}">lovewings</div>
         </div>
         <div class="follower">
             <div class="followerNum" style="flex-direction: row; align-items: center;">
                 <div style="margin: 5px; font-size: 15px; width: 75%; text-align: left;">关注中</div>
-                <div style="margin: 5px; font-size: 15px; text-align: right;">1</div>
+                <div style="margin: 5px; font-size: 15px; text-align: right;" th:text="${userList.size()}">1</div>
             </div>
-            <div style="text-align: left;">
-                <img src="../image/logo01.jpg" style="width: 40px; height: 40px; border-radius: 50%; margin: 5px;"/>
-                <div style="margin-right: 5px; text-align: right;"><a>查看列表</a></div>
+            <div style="text-align: left;" >
+                <img th:each="careUser:${userList}" th:src="${careUser.logoImgUrl}" style="width: 40px; height: 40px; border-radius: 50%; margin: 5px;"/>
+
             </div>
+            <div style="margin-right: 5px; text-align: right;"><a>查看列表</a></div>
             <div style="margin-top: 5px; margin-right: 5px; text-align: right;"><a>粉丝</a></div>
         </div>
         <div style="background-color: #ffffff;padding: 1px; margin-top: 10%;">
@@ -95,9 +96,9 @@
                     &nbsp;&nbsp;大家的动态
                 </div>
                 <div class="newsTitle selected">&nbsp;&nbsp;全部动态</div>
-                <div class="newsTitle">&nbsp;&nbsp;├关注的用户动态</div>
-                <div class="newsTitle">&nbsp;&nbsp;├好P友的动态</div>
-                <div class="newsTitle" style="height: 25px;">&nbsp;&nbsp;└你的动态</div>
+                <div class="newsTitle" onclick="findByCareIds(this)">&nbsp;&nbsp;├关注的用户动态</div>
+                <div class="newsTitle" >&nbsp;&nbsp;├好P友的动态</div>
+                <div class="newsTitle" style="height: 25px;" onclick="findContextByUserId(this)">&nbsp;&nbsp;└你的动态</div>
             </div>
         </div>
     </div>
@@ -115,72 +116,69 @@
                 <textarea maxlength="140" id="text_txt1" class="textInput"></textarea>
             </div>
             <div class="buttonBox">
-                <button type="submit" class="buttonStyle">投稿</button>
+                <button type="button" class="buttonStyle" onclick="pushContext()">投稿</button>
             </div>
         </form>
-
-        <div class="totalAct">全部活动</div>
+        <div class="totalAct" >全部活动</div>
 
         <!-- 遍历查询显示列表数据 -->
-        <div class="outer">
+        <div class="outer" th:each="comment:${list}">
             <div class="infoBox" style="flex-direction: row;">
-                <div class="imageBox">
-                    <img src="../image/logo01.jpg" class="imageItem"/>
+                <div class="imageBox" th:if="${comment.imgUrl != null}">
+                    <img th:src="${comment.imgUrl}" class="imageItem"/>
                 </div>
                 <div class="info1">
                     <div class="authorInfo" style="flex-direction: row; align-items: flex-end;">
-                        <div class="title">キャスター</div>
-                        <div class="author">by xx</div>
+                        <div class="title" th:text="${comment.context}">キャスター</div>
+                        <div class="author" th:text="'by '+${comment.userName}">by xx</div>
                     </div>
                     <div class="info2" style="flex-direction: row;">
-                        <div><img src="../image/logo01.jpg" class="headPhoto"/></div>
+                        <div><img th:src="${comment.userLogoUrl}" class="headPhoto"/></div>
                         <div class="info4">
                             <div class="info3" style="flex-direction: row; align-items: flex-end">
-                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>
+                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;" th:text="${comment.userName}">傻逼</div>
                                 <div style="font-size: 15px; margin-left: 5px;">已投稿</div>
                             </div>
                             <div class="info5" style="flex-direction: row; align-items: center;">
-                                <div class="fontStyle" style="margin-left: 0px;">x日前</div>
-                                <div class="fontStyle" style="margin-left: 5px;">反应x件</div>
+                                <div class="fontStyle" style="margin-left: 0px;" th:text="${comment.date}">x日前</div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="checkMore">
-                        <a>其他xx查看</a>
-                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="outer">
-            <div class="infoBox" style="flex-direction: row;">
-                <div class="imageBox">
-                    <img src="../image/logo01.jpg" class="imageItem"/>
-                </div>
-                <div class="info1">
-                    <div class="authorInfo" style="flex-direction: row; align-items: flex-end;">
-                        <div class="title">キャスター</div>
-                        <div class="author">by xx</div>
-                    </div>
-                    <div class="info2" style="flex-direction: row;">
-                        <div><img src="../image/logo01.jpg" class="headPhoto"/></div>
-                        <div class="info4">
-                            <div class="info3" style="flex-direction: row; align-items: flex-end">
-                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>
-                                <div style="font-size: 15px; margin-left: 5px;">已投稿</div>
-                            </div>
-                            <div class="info5" style="flex-direction: row; align-items: center;">
-                                <div class="fontStyle" style="margin-left: 0px;">x日前</div>
-                                <div class="fontStyle" style="margin-left: 5px;">反应x件</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="checkMore">
-                        <a>其他xx查看</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--<div class="outer">-->
+            <!--<div class="infoBox" style="flex-direction: row;">-->
+                <!--<div class="imageBox">-->
+                    <!--<img src="../image/logo01.jpg" class="imageItem"/>-->
+                <!--</div>-->
+                <!--<div class="info1">-->
+                    <!--<div class="authorInfo" style="flex-direction: row; align-items: flex-end;">-->
+                        <!--<div class="title">キャスター</div>-->
+                        <!--<div class="author">by xx</div>-->
+                    <!--</div>-->
+                    <!--<div class="info2" style="flex-direction: row;">-->
+                        <!--<div><img src="../image/logo01.jpg" class="headPhoto"/></div>-->
+                        <!--<div class="info4">-->
+                            <!--<div class="info3" style="flex-direction: row; align-items: flex-end">-->
+                                <!--<div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>-->
+                                <!--<div style="font-size: 15px; margin-left: 5px;">已投稿</div>-->
+                            <!--</div>-->
+                            <!--<div class="info5" style="flex-direction: row; align-items: center;">-->
+                                <!--<div class="fontStyle" style="margin-left: 0px;">x日前</div>-->
+                                <!--<div class="fontStyle" style="margin-left: 5px;">反应x件</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="checkMore">-->
+                        <!--<a>其他xx查看</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
     <div>
         <div class="divright" style="width: 14%;">

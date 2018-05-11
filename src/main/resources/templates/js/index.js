@@ -40,7 +40,8 @@ $(document).ready(function () {
                     'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
             }else {
 
-                $(this).parent().append('<div class="right_top_nav_img_code"><ul><li >个人中心</li><li>注销</li></ul></div>');
+                $(this).parent().append('<div class="right_top_nav_img_code"><ul><li >个人中心</li><li  onclick="loginOut()">' +
+                    '注销</li></ul></div>');
 
             }
 
@@ -63,6 +64,17 @@ $(document).ready(function () {
 
 
 });
+
+
+function loginOut() {
+    $.ajax({
+        url:"/out",
+        success:function () {
+            location.href="/"
+        }
+    })
+    
+}
 
 
 function Collect(e) {
