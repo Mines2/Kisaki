@@ -18,6 +18,10 @@ public interface ActiveMapper {
 
     List<Active> findContextByUserId(Long userId);
 
+    List<Active> findCommentByUserId(Long userId);
+
+    List<Active> findCommentByCareIds(Long userId);
+
 
 
 

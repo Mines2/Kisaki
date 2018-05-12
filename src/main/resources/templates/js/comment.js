@@ -13,6 +13,13 @@ $(function () {
         }
         //console.log($('#num_txt').html(str));
     });
+
+
+
+
+
+
+
 });
 
 var setting = {
@@ -48,6 +55,26 @@ $(document).ready(function () {
 });
 
 
+function getParameter(e) {
+    $(".divright div").attr("class","newsTitle");
+    var value = $(e).attr("value");
+    if(value == 1){
+        $(".divright").attr("name",1);
+    }else if(value == 2){
+        $(".divright").attr("name",2);
+    }else if (value == 3){
+        $(".divright").attr("name", 3);
+    }
+
+    for (var i=0;i<$(".news #Action").length;i++){
+
+       if( $(".news #Action")[i].className == "newsTitle selected"){
+           $('.news #Action')[i].click(e);
+           $(e).attr("class","newsTitle selected");
+       }
+    }
+}
+
 function pushContext() {
     var text = $('#text_txt1').val();
     $.ajax({
@@ -67,37 +94,91 @@ function pushContext() {
 
 }
 
-
-function findContextByUserId(e) {
+function getAll(e) {
     $('.outer').remove();
-
     changeClass(e);
+    var type = $(".divright").attr("name");
+
     $.ajax({
-        url:"/active/getListByUserId",
-        success:function (data) {
-            for(var i = 0 ;i<data.list.length;i++) {
-                appendContext(data.list[i]);
+        data:{type:type},
+        url: "/active/getAllList",
+        success: function (data) {
+            if (data.list != null) {
+                for (var i = 0; i < data.list.length; i++) {
+                    if (data.list[i].imgUrl == "") {
+                        appendContext(data.list[i]);
+                    } else {
+                        appComment(data.list[i])
+                    }
+                }
             }
         }
     })
+}
+function findByCareIds(e) {
+    $('.outer').remove();
+    changeClass(e);
+    var type = $(".divright").attr("name");
+    $.ajax({
+        data:{type:type},
+        url: "/active/getlist1",
+        success: function (data) {
+            if (data.list != null) {
+                for (var i = 0; i < data.list.length; i++) {
+                    if (data.list[i].imgUrl == null) {
+                        appendContext(data.list[i]);
+                    } else {
+                        appComment(data.list[i])
+                    }
+                }
+            }
+        }
+    })
+}
+function findContextByUserId(e) {
+    $('.outer').remove();
+    var type = $(".divright").attr("name");
+    changeClass(e);
+    $.ajax({
+        data:{type:type},
+        url: "/active/getListByUserId",
+        success: function (data) {
+            for (var i = 0; i < data.list.length; i++) {
+                if (data.list[i].imgUrl == "") {
+                    appendContext(data.list[i]);
+                } else {
+                    appComment(data.list[i])
+                }
+            }
+        }
+    })
+}
+function getCareList(e) {
+    $('.outer').remove();
+    var type = $(".divright").attr("name");
+    changeClass(e);
+    $.ajax({
+        data:{type:type},
+        url: "/active/getCardsList",
+        success: function (data) {
+            for (var i = 0; i < data.list.length; i++) {
+                if (data.list[i].imgUrl == "") {
+                    appendContext(data.list[i]);
+                } else {
+                    appComment(data.list[i])
+                }
+            }
+        }
+    })
+}
+
+
+
+
+    
     
 
 
-    function findByCareIds(e) {
-        $('.outer').remove();
-            changeClass(e);
-
-            $.ajax({
-                url: "/active/getlist1",
-                success: function (data) {
-                    if (data.list != null) {
-                        for (var i = 0; i < data.list.length; i++) {
-                            appendContext(data.list[i]);
-                        }
-                    }
-                }
-            })
-    }
     
     
     function appendContext(context) {
@@ -132,12 +213,43 @@ function findContextByUserId(e) {
 
     }
     
+    function appComment(comment) {
+        $('.divleft').append("<div class=\"outer\" >\n" +
+            "            <div class=\"infoBox\" style=\"flex-direction: row;\">\n" +
+            "                <div class=\"imageBox\">\n" +
+            "                    <img src=\""+comment.imgUrl+"\" class=\"imageItem\"/>\n" +
+            "                </div>\n" +
+            "                <div class=\"info1\">\n" +
+            "                    <div class=\"authorInfo\" style=\"flex-direction: row; align-items: flex-end;\">\n" +
+            "                        <div class=\"title\" text=\""+comment.context+"\">キャスター</div>\n" +
+            "                        <div class=\"author\" >by "+comment.userName+"</div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"info2\" style=\"flex-direction: row;\">\n" +
+            "                        <div><img src=\""+comment.userLogoUrl+"\" class=\"headPhoto\"/></div>\n" +
+            "                        <div class=\"info4\">\n" +
+            "                            <div class=\"info3\" style=\"flex-direction: row; align-items: flex-end\">\n" +
+            "                                <div style=\"font-size: 15px; color: #6B6B6B; margin-left: 0px;\" >"+comment.userName+"</div>\n" +
+            "                                <div style=\"font-size: 15px; margin-left: 5px;\">已投稿</div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"info5\" style=\"flex-direction: row; align-items: center;\">\n" +
+            "                                <div class=\"fontStyle\" style=\"margin-left: 0px;\" >"+comment.date+"</div>\n" +
+            "\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "\n" +
+            "                </div>\n" +
+            "            </div>\n" +
+            "        </div>");
+    }
+    
     function  changeClass(e) {
-        $(".newsTitle").attr("class","newsTitle");
-        $(".newsTitle selected").attr("class","newsTitle");
+        $(".news .newsTitle").attr("class","newsTitle");
+        $(".news .newsTitle selected").attr("class","newsTitle");
         $(e).attr("class","newsTitle selected");
         
     }
 
+
     
-}
+

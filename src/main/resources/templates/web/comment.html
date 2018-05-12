@@ -95,10 +95,9 @@
                      style="border-bottom-color: #00B2EE; border-bottom-style: solid; border-bottom-width: thin; height: 30px; line-height: 30px;">
                     &nbsp;&nbsp;大家的动态
                 </div>
-                <div class="newsTitle selected">&nbsp;&nbsp;全部动态</div>
-                <div class="newsTitle" onclick="findByCareIds(this)">&nbsp;&nbsp;├关注的用户动态</div>
-                <div class="newsTitle" >&nbsp;&nbsp;├好P友的动态</div>
-                <div class="newsTitle" style="height: 25px;" onclick="findContextByUserId(this)">&nbsp;&nbsp;└你的动态</div>
+                <div id="Action" class="newsTitle selected" onclick="getAll(this)">&nbsp;&nbsp;全部动态</div>
+                <div id="Action" class="newsTitle" onclick="getCareList(this)">&nbsp;&nbsp;├关注的用户动态</div>
+                <div id="Action" class="newsTitle" style="height: 25px;" onclick="findContextByUserId(this)">&nbsp;&nbsp;└你的动态</div>
             </div>
         </div>
     </div>
@@ -150,42 +149,13 @@
             </div>
         </div>
 
-        <!--<div class="outer">-->
-            <!--<div class="infoBox" style="flex-direction: row;">-->
-                <!--<div class="imageBox">-->
-                    <!--<img src="../image/logo01.jpg" class="imageItem"/>-->
-                <!--</div>-->
-                <!--<div class="info1">-->
-                    <!--<div class="authorInfo" style="flex-direction: row; align-items: flex-end;">-->
-                        <!--<div class="title">キャスター</div>-->
-                        <!--<div class="author">by xx</div>-->
-                    <!--</div>-->
-                    <!--<div class="info2" style="flex-direction: row;">-->
-                        <!--<div><img src="../image/logo01.jpg" class="headPhoto"/></div>-->
-                        <!--<div class="info4">-->
-                            <!--<div class="info3" style="flex-direction: row; align-items: flex-end">-->
-                                <!--<div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;">傻逼</div>-->
-                                <!--<div style="font-size: 15px; margin-left: 5px;">已投稿</div>-->
-                            <!--</div>-->
-                            <!--<div class="info5" style="flex-direction: row; align-items: center;">-->
-                                <!--<div class="fontStyle" style="margin-left: 0px;">x日前</div>-->
-                                <!--<div class="fontStyle" style="margin-left: 5px;">反应x件</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="checkMore">-->
-                        <!--<a>其他xx查看</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+
     </div>
     <div>
-        <div class="divright" style="width: 14%;">
-            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;全部</div>
-            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;发给你的投稿</div>
-            <div name="newsTitle" class="newsTitle selected">&nbsp;&nbsp;活动</div>
-            <div name="newsTitle" class="newsTitle">&nbsp;&nbsp;一句话</div>
+        <div class="divright" style="width: 14%;" name="1">
+            <div name="newsTitle " class="newsTitle selected" onclick="getParameter(this)" value="1">&nbsp;&nbsp;全部</div>
+            <div name="newsTitle" class="newsTitle" onclick="getParameter(this)" value="2">&nbsp;&nbsp;插画评论</div>
+            <div name="newsTitle" class="newsTitle" onclick="getParameter(this)" value="3">&nbsp;&nbsp;说说</div>
         </div>
     </div>
 </section>

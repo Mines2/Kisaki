@@ -77,18 +77,87 @@ public class ActiveController {
 
     @RequestMapping("/getListByUserId")
     @ResponseBody
-    public JSONObject getListByUserId(){
+    public JSONObject getListByUserId(int type){
         JSONObject jsonObject = new JSONObject();
         org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
         User user = (User)subject.getSession().getAttribute("user");
-        jsonObject.accumulate("list",activeService.findContextByUserId(user.getId()));
+        if(type == 1){
+            List<Active> list_context = activeService.findContextByUserId(user.getId());
+            List<Active> list_comment = activeService.findCommentByUserId(user.getId());
+            List<Active> newList = march(list_comment,list_context);
+            jsonObject.accumulate("list",newList);
+        }else if(type == 2){
+            List<Active> list_comment = activeService.findCommentByUserId(user.getId());
+            List<Active> newList = march(list_comment, null);
+            jsonObject.accumulate("list", newList);
+        }else {
+            List<Active> list_context = activeService.findContextByUserId(user.getId());
+            List<Active> newList = march(list_context, null);
+            jsonObject.accumulate("list", newList);
+        }
         return jsonObject;
     }
 
 
+    @RequestMapping("/getAllList")
+    @ResponseBody
+    public JSONObject getAllList(int type){
+        JSONObject jsonObject = new JSONObject();
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        if(type == 1){
+            List<Active> list = activeService.findContextWithUserId(user.getId());
+            List<Active> carelist = activeService.findContextWithCareIds(user.getId());
+            List<Active> meActiveList = activeService.findContextByUserId(user.getId());
+            List<Active> newList = march(list, carelist);
+            newList = march(newList, meActiveList);
+            jsonObject.accumulate("list", newList);
+        }else if(type == 2){
+            List<Active> list = activeService.findContextWithUserId(user.getId());
+            List<Active> newList = march(list, null);
+            jsonObject.accumulate("list", newList);
+        }else {
+            List<Active> meActiveList = activeService.findContextByUserId(user.getId());
+            List<Active> carelist = activeService.findContextWithCareIds(user.getId());
+            List<Active> newList = march(meActiveList, carelist);
+            jsonObject.accumulate("list", newList);
+        }
+        return jsonObject;
+    }
 
+
+    @RequestMapping("/getCardsList")
+    @ResponseBody
+    public  JSONObject getCardsList(int type){
+        JSONObject jsonObject = new JSONObject();
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        if(type == 1){
+            List<Active> list_context = activeService.findContextWithCareIds(user.getId());
+            List<Active> list_comment = activeService.findCommentByCareIds(user.getId());
+            List<Active> newList = march(list_comment,list_context);
+            jsonObject.accumulate("list",newList);
+        }else if(type == 2){
+            List<Active> list_comment = activeService.findCommentByCareIds(user.getId());
+            List<Active> newList = march(list_comment, null);
+            jsonObject.accumulate("list", newList);
+        }else {
+            List<Active> list_context = activeService.findContextWithCareIds(user.getId());
+            List<Active> newList = march(list_context, null);
+            jsonObject.accumulate("list", newList);
+        }
+        return jsonObject;
+
+    }
+
+
+    /*
+    合并list，并且按照日期排序
+     */
     public List<Active> march(List<Active> list1,List<Active> list2){
-        list1.addAll(list2);
+        if(list2 != null){
+            list1.addAll(list2);
+        }
         for ( Active active  :list1) {
             for (int i = 0; i<list1.size()-1 ; i++){
                 Active active_i = list1.get(i);

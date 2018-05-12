@@ -35,13 +35,30 @@
          USER_LOGO_URL ,date from t_comment  tc
         LEFT JOIN t_img ti on ti.id = tc.img_id
         LEFT JOIN t_user tu on tu.USER_ID  = tc.user_id
-        where tc.user_id in (#{userId,jdbcType=NUMERIC},(SELECT care_id from t_user_care where USER_ID = #{userId,jdbcType=NUMERIC} ))
+        where tc.user_id in ((SELECT care_id from t_user_care where USER_ID = #{userId,jdbcType=NUMERIC} ))
+        or tc.user_id = #{userId,jdbcType=NUMERIC}
     </select>
 
     <insert id="insertContext" parameterType="kisaki.web.entity.Active">
        INSERT into t_user_context (user_id, date , context)
        VALUES(#{userId , jdbcType=NUMERIC },NOW(),#{context , jdbcType=VARCHAR})
     </insert>
+
+    <select id="findCommentByUserId" resultMap="ActiveResult"  parameterType="java.lang.Long">
+        SELECT img_id , tc.user_id , comment as context , img_name, img_url , img_size , user_name ,
+         USER_LOGO_URL ,date from t_comment  tc
+        LEFT JOIN t_img ti on ti.id = tc.img_id
+        LEFT JOIN t_user tu on tu.USER_ID  = tc.user_id
+        where tc.user_id = #{userId,jdbcType=NUMERIC}
+    </select>
+
+    <select id="findCommentByCareIds" resultMap="ActiveResult" parameterType="java.lang.Long">
+        SELECT img_id , tc.user_id , comment as context , img_name, img_url , img_size , user_name ,
+         USER_LOGO_URL ,date from t_comment  tc
+        LEFT JOIN t_img ti on ti.id = tc.img_id
+        LEFT JOIN t_user tu on tu.USER_ID  = tc.user_id
+        where tc.user_id in ((SELECT care_id from t_user_care where USER_ID = #{userId,jdbcType=NUMERIC} ))
+    </select>
 
 
 

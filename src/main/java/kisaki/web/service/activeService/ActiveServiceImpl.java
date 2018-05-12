@@ -29,4 +29,14 @@ public class ActiveServiceImpl implements ActiveService {
     public List<Active> findContextByUserId(Long userId) {
         return activeMapper.findContextByUserId(userId);
     }
+
+    @Override
+    public List<Active> findCommentByUserId(Long userId) {
+        return activeMapper.findCommentByUserId( userId);
+    }
+
+    @Override
+    public List<Active> findCommentByCareIds(Long userId) {
+        return activeMapper.findCommentByCareIds(userId);
+    }
 }
