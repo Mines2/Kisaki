@@ -11,10 +11,16 @@ public interface UserMapper {
 
 User findByUserName(String username);
 
-List<User> findFansByUserId(Long id );
+    List<User> findFansByUserId(Long id );
 
-List<User> findCareByUserId(Long id );
+    List<User> findCareByUserId(Long id );
 
-List<User> findUserByTable(Map map);
+    List<User> findUserByTable(Map map);
+
+    Boolean insertUser(User user);
+
+    Boolean updatePassWord(User user);
+
+    Boolean updateMess(User user);
 
 }

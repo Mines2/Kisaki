@@ -31,13 +31,13 @@ $(document).ready(function () {
             style = $(this).attr('style');
             if(index == 0){
                 $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
-                $(this).attr('style',' background: url(\'image/icons.png\') -851px -50px;background-size: 2500%;' +
-                    'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
+                // $(this).attr('style',' background: url(\'image/icons.png\') -851px -50px;background-size: 2500%;' +
+                //     'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
             }else if (index == 1) {
                 $(this).parent().append('<div class="right_top_nav_img_code"><img src="../image/code01.jpg" style="width: 100%"></div>');
 
-                $(this).attr('style',' background: url(\'image/icons.png\') -851px -250px;background-size: 2500%;' +
-                    'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
+                // $(this).attr('style',' background: url(\'image/icons.png\') -851px -250px;background-size: 2500%;' +
+                //     'border: 1px solid cornflowerblue;border-bottom: white solid 1px;')
             }else {
 
                 $(this).parent().append('<div class="right_top_nav_img_code"><ul><li >个人中心</li><li  onclick="loginOut()">' +
@@ -53,7 +53,7 @@ $(document).ready(function () {
             // $(this).find("div").attr('class',"right_top_nav_img_code")
 // alert(($(this).find("div"))[0].style);
 // alert(style);
-($(this).find("div"))[0].style =style;
+// ($(this).find("div"))[0].style =style;
             // alert($(this).find("div"))
 
         });

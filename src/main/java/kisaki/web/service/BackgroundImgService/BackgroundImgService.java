@@ -24,4 +24,12 @@ public interface BackgroundImgService {
     Boolean haveSeen(Map map);
 
     Boolean upLoad(Map map);
+
+    int deleteImgs(Map map);
+
+    int deleteCollectImgs(Map map);
+
+    List<Img> getCollectionList(Long userId);
+
+    List<Img> getImgListByUserId(Long userId);
 }

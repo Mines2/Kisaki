@@ -54,5 +54,25 @@ public class BackgroundImgServiceImpl implements BackgroundImgService {
         return backgroundImgMapper.upLoad(map);
     }
 
+    @Override
+    public int deleteImgs(Map map) {
+        return backgroundImgMapper.deleteImgs(map);
+    }
+
+    @Override
+    public int deleteCollectImgs(Map map) {
+        return backgroundImgMapper.deleteCollectImgs(map);
+    }
+
+    @Override
+    public List<Img> getCollectionList(Long userId) {
+        return backgroundImgMapper.getCollectionList(userId);
+    }
+
+    @Override
+    public List<Img> getImgListByUserId(Long userId) {
+        return backgroundImgMapper.getImgListByUserId(userId);
+    }
+
 
 }

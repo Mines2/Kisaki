@@ -33,4 +33,15 @@ public class UserServiceImpl implements UserService {
     public List<User> findUserByTable(Map map) {
         return userMapper.findUserByTable(map);
     }
+
+
+    @Override
+    public Boolean insertUser(User user){
+        return userMapper.insertUser(user);
+    }
+
+    @Override
+    public Boolean updatePassWord(User user){
+        return userMapper.updatePassWord(user);
+    }
 }

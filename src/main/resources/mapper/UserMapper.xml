@@ -50,6 +50,18 @@
         LIMIT 6
         ]]>
     </select>
+    
+    <insert id="insertUser" parameterType="kisaki.web.entity.shiro.User"  >
+        INSERT  into T_USER (USER_NAME,PASS_WORD_SALT) VALUES (#{userName ,jdbcType=VARCHAR } ,#{password ,jdbcType=VARCHAR } )
+    </insert>
+
+    <update id="updatePassWord" parameterType="kisaki.web.entity.shiro.User">
+        UPDATE  SET  PASS_WORD_SALT = #{password , jdbcType=VARCHAR } WHERE USER_ID = #{id ,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateMess" parameterType="kisaki.web.entity.shiro.User">
+        
+    </update>
 
 
 </mapper>

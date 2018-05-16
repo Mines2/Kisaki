@@ -18,7 +18,7 @@ $(document).ready(function () {
                     height = 100;
                 }
 
-                context+="<li><img src=\""+data.list[i].imgUrl+"\" style='width: "+width+"%;height: "+height+"%;'  ></li>"
+                context+="<li><a href='/show/showImg?imgId="+data.list[i].id+"'> <img src=\""+data.list[i].imgUrl+"\" style='width: "+width+"%;height: "+height+"%;'  ></a></li>"
             }
             context+="</ul>\n" +
                 "</div>";

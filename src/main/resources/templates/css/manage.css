@@ -1,0 +1,105 @@
+/*
+* @Author: Mines
+* @Date:   2018-05-14 09:13:23
+* @Last Modified by:   Mines
+* @Last Modified time: 2018-05-14 17:13:00
+*/
+
+*{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+section{
+	width: 1200px;
+	margin: auto;
+	background: white;
+	border: 1px solid;
+	border-radius: 4px;
+	position: relative;
+	overflow: auto;
+	overflow: hidden;
+
+}
+
+.section_header{
+
+border-bottom: 1px solid;
+padding: 15px;
+position: inherit;
+height: 35px;
+
+}
+
+.section_header_title{
+	font-size: 24px;
+	float: left;
+}
+
+.section_header_upload{
+	font-size: 12px;
+	position: absolute;
+	right: 5%;
+	bottom: 25%;
+
+}
+
+.section_bottom{
+	width: 100%;
+	overflow: auto;
+	overflow: hidden;
+	position: relative;
+	bottom: 0;
+  background: gainsboro;
+  margin-top: 20px;
+}
+
+.section_bottom div {
+	width: 100%;
+	height: 15px;
+	padding: 15px;
+	
+	line-height: 15px;
+}
+
+.selected div  label{
+	float: left;
+	margin-right: 10px;
+}
+
+  button{
+	padding: 5px 10px;
+position: absolute;
+top: 50%;
+background: greenyellow;
+border: none;
+}
+
+.section_mid{
+	width: 100%;
+	padding: 20px;
+
+}
+
+.img_content{
+	margin-right: 90px;
+	margin-bottom: 20px;
+	width:308px;float:left;
+}
+
+.section_mid_label{
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	float: left;
+    margin-top: 20px;
+}
+
+
+.row{
+	width: 100%;
+	float: left;
+	overflow: auto;
+}

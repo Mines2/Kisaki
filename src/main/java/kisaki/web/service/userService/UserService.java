@@ -16,5 +16,7 @@ public interface UserService {
 
     List<User> findUserByTable(Map map);
 
+    Boolean insertUser(User user);
 
+    Boolean updatePassWord(User user);
 }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Kisaki登录页面</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/manage.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/manage.js"></script>
+</head>
+
+
+<body style="background:gray;">
+<header>
+    <div class="head_main">
+        <img alt="" src="../image/timg.jpg" class="head_logo">
+        <div class="left_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -163px -37px;background-size: 1000% "
+                         class="nav_logo"></div>
+                    <a th:href="@{/goIndex}"><label class="nav_text">首页</label></a>
+                </li>
+                <li style="width: 80px">
+                    <div alt="" style="background: url('image/nav_img.png') -87px -1092px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/img/toUpload}"><label class="nav_text">上传</label></a>
+                    <a th:href="@{/img/toManage?type=1}"><label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label></a>
+                </li>
+
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -165px -992px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/img/toManage?type=2}"><label class="nav_text">收藏</label></a></li>
+                <li>
+                    <div alt="" style="background: url('image/nav_img.png') -37px -12px ;background-size: 1000%  "
+                         class="nav_logo"></div>
+                    <a th:href="@{/active/getlist3}"><label class="nav_text">动态</label></a></li>
+
+            </ul>
+        </div>
+        <div class="right_top_nav">
+            <ul class="left_nav_content">
+                <li>
+                    <div class="right_top_nav_img" style="  background: url('image/icons.png') -851px -50px;background-size: 2500%" ></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img" style="  background: url('image/icons.png') -851px -250px;background-size: 2500%"></div>
+                </li>
+                <li>
+                    <div class="right_top_nav_img">
+                        <img style="width: 50px;border-radius: 50%;" th:src="${user.logoImgUrl}">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="right_mid_nav">
+            <input type="text" placeholder="" class="search_text">
+            <button class="search_btu"></button>
+        </div>
+        <!--<div class="right_bot_nav">-->
+        <!--<ul class="left_nav_content">-->
+        <!--<li>-->
+
+        <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+        <!--</li>-->
+        <!--<li>-->
+
+        <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+        <!--</li>-->
+
+        <!--</ul>-->
+        <!--</div>-->
+
+
+    </div>
+
+</header>
+
+<section>
+    <div class="section_header">
+        <label class="section_header_title" th:text="${tittle}">管理作品</label>
+        <label class="section_header_upload">作品投稿</label>
+    </div>
+    <div class="section_mid">
+        <!--<div  class="img_content" th:each="img:${imgList}">-->
+            <!--<div class="paihang_img" style="position: relative;width: 300px;height: 300px;line-height: 290px;">-->
+
+                <!--<a th:href="@{/show/showImg?imgId=}+${img.id}"> <img alt="" class="paihang_image" th:src="${img.imgUrl}"-->
+                                                                     <!--th:style="${img.img_size} <= 1 ? 'width:'+${img.img_size*100}+'%;height:100%;' :-->
+        	 <!--'width:100%'+'%;height:'+${(1/img.img_size)*100}+'%;'"></a>-->
+
+                <!--<input type="checkbox" class="conllect"/>-->
+
+
+            <!--</div>-->
+
+            <!--<ul style="width:200px;">-->
+                <!--<li th:text="${img.imgName}">XXXXXXX</li>-->
+                <!--<li th:text="${img.userName}">XXX</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+
+        <!--<div class="section_mid_label"><label>更新更多</label>-->
+        </div>
+    </div>
+
+
+    <div class="section_bottom">
+        <div class="selected">
+            <label>选择：</label>
+            <label onclick="checkAll()">全部</label>
+            <label onclick="checkCannel()">取消</label>
+        </div>
+        <div class="button_div">
+            <button onclick="deleteAjax()">删除</button>
+
+        </div>
+
+
+    </div>
+
+</section>
+</body>

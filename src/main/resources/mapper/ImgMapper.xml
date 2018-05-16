@@ -119,5 +119,41 @@
         </foreach>
 
     </insert>
+    
+    <select id="getCollectionList" resultMap="ImgResult" parameterType="java.lang.Long">
+        select t_collect_img.img_user_id as User_id , T_collect_img.img_id as ID,
+        img_name ,img_url ,user_name ,img_size,T_img.push_date as PUSH_DATE ,t_img.*  from t_collect_img
+        LEFT JOIN t_img on t_img.id = t_collect_img.img_id
+        LEFT JOIN t_user on t_user.USER_ID = t_img.user_id
+        WHERE t_collect_img.user_id = #{userId ,jdbcType=NUMERIC }
+    </select>
+
+    <select id="getImgListByUserId" resultMap="ImgResult" parameterType="java.lang.Long">
+        SELECT * FROM  T_img
+        where user_id = #{userId ,jdbcType=NUMERIC }
+    </select>
+    
+    <delete id="deleteImgs" parameterType="java.util.Map">
+        DELETE FROM T_img
+        where  user_id = #{userId}
+         AND id in
+        <foreach collection="ids" separator="," item="id" open="(" close=")">
+           id
+        </foreach>
+
+
+
+    </delete>
+    
+    <delete id="deleteCollectImgs" parameterType="java.util.Map" >
+        DELETE FROM T_collect_img
+        WHERE   user_id =#{userId} AND
+        img_id in
+        <foreach collection="ids" separator="," item="id" open="(" close=")">
+            #{id}
+        </foreach>
+
+
+    </delete>
 
 </mapper>

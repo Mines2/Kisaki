@@ -123,4 +123,80 @@ public class ImgController {
         jsonObject.put("list",newList);
         return jsonObject;
     }
+
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public  Object delete(String ids , int type){
+        JSONObject jsonObject = new JSONObject();
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        Map map = new HashMap();
+        String[] idslist = ids.split(",");
+        List<Integer>  idsList = new ArrayList<Integer>();
+        for(int i = 0; i<idslist.length ; i++){
+            idsList.add(Integer.parseInt(idslist[i]));
+        }
+        map.put("userId",user.getId());
+        map.put("ids",idsList);
+        if(type == 1){
+            jsonObject.accumulate("result", backgroundImgService.deleteImgs(map));
+        }else if(type == 2){
+            jsonObject.accumulate("result",backgroundImgService.deleteCollectImgs(map));
+        }else{
+            jsonObject.accumulate("result",false);
+        }
+
+        return jsonObject;
+
+
+    }
+
+
+    @RequestMapping("/toManage")
+    public  ModelAndView modelAndView (int type ){
+        ModelAndView modelAndView = new ModelAndView();
+        if(type ==1 ){
+            modelAndView.addObject("tittle", "管理作品");
+        }else{
+            modelAndView.addObject("tittle", "收藏管理");
+        }
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("/web/manage");
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/getImgList")
+    @ResponseBody
+    public  Object getImgList( int type){
+        JSONObject jsonObject = new JSONObject();
+         List<Img> imgList = null;
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        if( type == 1){
+            imgList = backgroundImgService.getImgListByUserId(user.getId());
+
+        }else  if (type == 2){
+            imgList = backgroundImgService.getCollectionList(user.getId());
+        }
+        jsonObject.accumulate("imgList",imgList);
+
+        return jsonObject;
+
+
+    }
+
+
+    @RequestMapping("/toUpload")
+    public ModelAndView toUpload(){
+        ModelAndView modelAndView = new ModelAndView();
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("/web/upload");
+        return  modelAndView;
+    }
 }

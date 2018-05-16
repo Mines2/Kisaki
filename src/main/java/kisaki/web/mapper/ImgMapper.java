@@ -30,6 +30,12 @@ public interface ImgMapper {
 
     Boolean upLoad(Map map);
 
+    int deleteImgs(Map map);
 
+    int deleteCollectImgs(Map map);
+
+    List<Img> getCollectionList(Long userId);
+
+    List<Img> getImgListByUserId(Long userId);
 
 }

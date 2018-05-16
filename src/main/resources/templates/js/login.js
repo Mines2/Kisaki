@@ -63,19 +63,70 @@ function login() {
     var password = $('#password').val();
     $.ajax({
         data:{userName:username,password:password},
-        dataType:JSON,
         url: "/login",
         success: function (data) {
-            alert("1111111111");
+            if(data.msg == 1) {
+                location.href = "/goIndex";
+            }else  if(data.msg == 2){
+                alert("密码错误");
+            }else if(data.msg == 3){
+                alert("帐号不存在或者帐号错误");
+            }
 
         },
-        error: function () {
-            alert("网络异常，请联系维护人员", function () {
+        error: function (data) {
+            alert(data.msg)
+
+            alert("密码错误", function () {
             });
         }
 
     })
 
+
+
+
 }
 
+
+function register(e) {
+
+
+        $(".login_bt").text("注册");
+        $(e).text( "返回");
+        $(".login_bt").attr("onclick","insert()");
+        $(".register_bt").attr("onclick","back(this)");
+        $("#account").attr("placeholder","请输入你的用户名");
+        $("#password").attr("placeholder","请输入你的密码");
+
+
+
+
+
+}
+
+function insert() {
+    var userName = $("#account").val();
+    var password = $("#password").val();
+    $.ajax({
+        url: "/register",
+        data: {userName: userName, password: password},
+        success: function (data) {
+            if (data.result === true) {
+                location.href = "/";
+            }
+        }
+
+    })
+}
+
+function back(e) {
+    $(".login_bt").text("登录");
+    $(e).text( "注册");
+    $(".login_bt").attr("onclick","login()");
+    $(".register_bt").attr("onclick","register(this)");
+    $("#account").attr("placeholder","帐号");
+    $("#password").attr("placeholder","密码");
+
+}
 
