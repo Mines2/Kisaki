@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2018-05-04 20:04:33
+Date: 2018-05-16 17:22:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,13 +66,15 @@ CREATE TABLE `t_collect_img` (
   `img_user_id` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_collect_img
 -- ----------------------------
 INSERT INTO `t_collect_img` VALUES ('3', '1', '1', '1');
 INSERT INTO `t_collect_img` VALUES ('2', '1', '1', '2');
+INSERT INTO `t_collect_img` VALUES ('1', '3', '3', '8');
+INSERT INTO `t_collect_img` VALUES ('1', '2', '2', '9');
 
 -- ----------------------------
 -- Table structure for `t_comment`
@@ -124,15 +126,13 @@ CREATE TABLE `t_img` (
   `push_date` date NOT NULL,
   `img_size` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_img
 -- ----------------------------
-INSERT INTO `t_img` VALUES ('1', '1', 'wusaki', '鐧惧悎鍏?, '2', '2', '../image/img01.jpg', '2018-05-23', '0.6866667');
-INSERT INTO `t_img` VALUES ('2', '2', 'rori', '钀濊帀', null, '5', '../image/img02.jpg', '2018-05-02', '1');
-INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '楂樿揪', '1', '4', '../image/img03.jpg', '2018-04-29', '1.41176471');
-INSERT INTO `t_img` VALUES ('4', '1', 'guojiadui', '濂充富', '1', '3', '../image/img04.jpg', '2018-05-21', '1.61290323');
+INSERT INTO `t_img` VALUES ('2', '2', 'rori', '萝莉', null, '1', '../image/img02.jpg', '2018-05-02', '1');
+INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '高达', '1', '1', '../image/img03.jpg', '2018-04-29', '1.41176471');
 
 -- ----------------------------
 -- Table structure for `t_seen_img`
@@ -143,7 +143,7 @@ CREATE TABLE `t_seen_img` (
   `user_id` int(11) NOT NULL,
   `img_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_seen_img
@@ -152,6 +152,11 @@ INSERT INTO `t_seen_img` VALUES ('1', '2', '1');
 INSERT INTO `t_seen_img` VALUES ('2', '1', '1');
 INSERT INTO `t_seen_img` VALUES ('3', '1', '3');
 INSERT INTO `t_seen_img` VALUES ('4', '1', '4');
+INSERT INTO `t_seen_img` VALUES ('5', '1', '5');
+INSERT INTO `t_seen_img` VALUES ('6', '1', '7');
+INSERT INTO `t_seen_img` VALUES ('7', '2', '7');
+INSERT INTO `t_seen_img` VALUES ('8', '2', '11');
+INSERT INTO `t_seen_img` VALUES ('9', '1', '11');
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -159,18 +164,24 @@ INSERT INTO `t_seen_img` VALUES ('4', '1', '4');
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `USER_ID` int(20) NOT NULL AUTO_INCREMENT,
-  `USER_NAME` varchar(20) DEFAULT NULL,
-  `PASS_WORD_SALT` varchar(50) DEFAULT NULL,
-  `USER_LOGO_URL` varchar(20) DEFAULT NULL,
+  `USER_NAME` varchar(20) NOT NULL,
+  `PASS_WORD_SALT` varchar(50) NOT NULL,
+  `USER_LOGO_URL` varchar(20) NOT NULL DEFAULT '../image/timg.jpg',
+  `NIKE_NAME` varchar(20) DEFAULT NULL,
+  `sex` int(10) DEFAULT NULL,
+  `address` varchar(10) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
   PRIMARY KEY (`USER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', 'miness', '674833193512b702f69ed1a0e106aa67', '../image/logo01.jpg');
-INSERT INTO `t_user` VALUES ('2', 'GGWP', '674833193512b702f69ed1a0e106aa67', '../image/logo02.jpg');
-INSERT INTO `t_user` VALUES ('3', 'kisaki', '674833193512b702f69ed1a0e106aa67', '../image/logo03.jpg');
+INSERT INTO `t_user` VALUES ('1', 'miness', '674833193512b702f69ed1a0e106aa67', '../image/logo01.jpg', null, null, null, null);
+INSERT INTO `t_user` VALUES ('2', 'GGWP', '67270d5903c8facd62f49aa2461ad19d', '../image/logo02.jpg', null, null, null, null);
+INSERT INTO `t_user` VALUES ('3', 'kisaki', '674833193512b702f69ed1a0e106aa67', '../image/logo03.jpg', null, null, null, null);
+INSERT INTO `t_user` VALUES ('4', 'QQWW', '13bfbacc1aa9791362820af8f67d3c8a', '../image/timg.jpg', null, null, null, null);
+INSERT INTO `t_user` VALUES ('5', 'czm', '1d9eaec6b5ef7d6afdea06dde856fced', '../image/timg.jpg', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `t_user_care`
@@ -181,7 +192,7 @@ CREATE TABLE `t_user_care` (
   `user_id` int(11) NOT NULL,
   `care_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_care
@@ -190,6 +201,31 @@ INSERT INTO `t_user_care` VALUES ('1', '2', '1');
 INSERT INTO `t_user_care` VALUES ('2', '3', '1');
 INSERT INTO `t_user_care` VALUES ('3', '1', '3');
 INSERT INTO `t_user_care` VALUES ('9', '3', '2');
+INSERT INTO `t_user_care` VALUES ('10', '1', '2');
+
+-- ----------------------------
+-- Table structure for `t_user_context`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user_context`;
+CREATE TABLE `t_user_context` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `context` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_user_context
+-- ----------------------------
+INSERT INTO `t_user_context` VALUES ('1', '1', '2018-05-07', 'xxxxxxxxxxxxx');
+INSERT INTO `t_user_context` VALUES ('2', '2', '2018-05-07', 'sssssssssssss');
+INSERT INTO `t_user_context` VALUES ('3', '2', '2018-05-10', 'XXXXXXXXX');
+INSERT INTO `t_user_context` VALUES ('4', '2', '2018-05-10', 'asdasd');
+INSERT INTO `t_user_context` VALUES ('5', '2', '2018-05-10', 'asdasdsad');
+INSERT INTO `t_user_context` VALUES ('6', '2', '2018-05-10', 'asdasdsad');
+INSERT INTO `t_user_context` VALUES ('7', '2', '2018-05-10', 'adsdaddss');
+INSERT INTO `t_user_context` VALUES ('8', '3', '2018-05-11', 'dddddddddd');
 
 -- ----------------------------
 -- Table structure for `t_user_fans`
@@ -211,13 +247,13 @@ INSERT INTO `t_user_fans` VALUES ('3', '3', '1');
 DROP TRIGGER IF EXISTS `img_collect_tg`;
 DELIMITER ;;
 CREATE TRIGGER `img_collect_tg` BEFORE INSERT ON `t_collect_img` FOR EACH ROW BEGIN
-
-
+  
+   
    IF EXISTS (SELECT * from t_collect_img WHERE user_id = new.user_id and img_id = new.img_id and img_user_id = new.img_user_id)   then
    DELETE from t_collect_img  where id  = new.id;
    end if;
-
-
+   
+   
 end
 ;;
 DELIMITER ;
@@ -232,13 +268,13 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `T_SEEN_IMG_tg`;
 DELIMITER ;;
 CREATE TRIGGER `T_SEEN_IMG_tg` BEFORE INSERT ON `t_seen_img` FOR EACH ROW BEGIN
-
-
+  
+   
    IF EXISTS (SELECT * from T_SEEN_IMG WHERE user_id = new.user_id and img_id = new.img_id )   then
    DELETE from T_SEEN_IMG  where id  = new.id;
    end if;
-
-
+   
+   
 end
 ;;
 DELIMITER ;
@@ -253,26 +289,26 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `InsteadTrigger`;
 DELIMITER ;;
 CREATE TRIGGER `InsteadTrigger` BEFORE INSERT ON `t_user_care` FOR EACH ROW BEGIN
-
-
+  
+   
    IF EXISTS (SELECT * from t_user_care WHERE user_id = new.user_id and care_id = new.care_id)   then
    DELETE from t_user_care where id  = new.id;
    end if;
-
-
+   
+   
 end
 ;;
 DELIMITER ;
 DROP TRIGGER IF EXISTS `fans_tg`;
 DELIMITER ;;
 CREATE TRIGGER `fans_tg` BEFORE INSERT ON `t_user_fans` FOR EACH ROW BEGIN
-
-
+  
+   
    IF EXISTS (SELECT * from t_user_care WHERE user_id = new.user_id and care_id = new.fans_id)   then
    DELETE from t_user_fans where id  = new.id;
    end if;
-
-
+   
+   
 end
 ;;
 DELIMITER ;
