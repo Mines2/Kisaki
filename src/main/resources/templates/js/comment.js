@@ -12,6 +12,9 @@ $(function () {
             $('#text_txt1').val($('#text_txt1').val().substring(0, 140)); //这里意思是当里面的文字小于等于0的时候，那么字数不能再增加，只能是600个字
         }
         //console.log($('#num_txt').html(str));
+
+
+
     });
 
 
@@ -20,7 +23,12 @@ $(function () {
 
 
 
+
+
 });
+var list;
+
+
 
 var setting = {
     view: {
@@ -51,6 +59,16 @@ function getFont(treeId, node) {
 }
 
 $(document).ready(function () {
+
+    $.ajax({
+        url:"/active/getList",
+        success:function (data) {
+            list = data.list;
+            appendComments(list);
+
+
+        }
+    })
     $.fn.zTree.init($("#treeDemo"), setting, zNodes);
 });
 
@@ -104,13 +122,10 @@ function getAll(e) {
         url: "/active/getAllList",
         success: function (data) {
             if (data.list != null) {
-                for (var i = 0; i < data.list.length; i++) {
-                    if (data.list[i].imgUrl == "") {
-                        appendContext(data.list[i]);
-                    } else {
-                        appComment(data.list[i])
-                    }
-                }
+                list = data.list;
+                beginIndex = 0;
+                index = add ;
+                appendComments(list);
             }
         }
     })
@@ -124,13 +139,10 @@ function findByCareIds(e) {
         url: "/active/getlist1",
         success: function (data) {
             if (data.list != null) {
-                for (var i = 0; i < data.list.length; i++) {
-                    if (data.list[i].imgUrl == null) {
-                        appendContext(data.list[i]);
-                    } else {
-                        appComment(data.list[i])
-                    }
-                }
+                list = data.list;
+                beginIndex = 0;
+                index = add ;
+                appendComments(list);
             }
         }
     })
@@ -143,13 +155,10 @@ function findContextByUserId(e) {
         data:{type:type},
         url: "/active/getListByUserId",
         success: function (data) {
-            for (var i = 0; i < data.list.length; i++) {
-                if (data.list[i].imgUrl == "") {
-                    appendContext(data.list[i]);
-                } else {
-                    appComment(data.list[i])
-                }
-            }
+            list = data.list;
+            beginIndex = 0;
+            index = add ;
+            appendComments(list);
         }
     })
 }
@@ -161,13 +170,10 @@ function getCareList(e) {
         data:{type:type},
         url: "/active/getCardsList",
         success: function (data) {
-            for (var i = 0; i < data.list.length; i++) {
-                if (data.list[i].imgUrl == "") {
-                    appendContext(data.list[i]);
-                } else {
-                    appComment(data.list[i])
-                }
-            }
+                list = data.list;
+                beginIndex = 0;
+                index = add ;
+                appendComments(list);
         }
     })
 }
@@ -249,6 +255,41 @@ function getCareList(e) {
         $(e).attr("class","newsTitle selected");
         
     }
+
+    var add = 5;
+    var beginIndex = 0;
+    var index = add ;
+    function appendComments(list){
+        if(beginIndex == 0) {
+            $('.outer').remove();
+        }
+        $("#more").remove();
+        var context ;
+        if(index > list.length){
+            index = list.length;
+          context = "        <div id=\"more\" style=\"width: 100%;text-align: center;padding: 25px\"> <label>没有更多</label></div>\n";
+        }else{
+            context = "        <div id=\"more\" style=\"width: 100%;text-align: center;padding: 25px\" onclick='appendComments(list)'> <label>更多</label></div>\n";
+        }
+
+        for(var i = beginIndex ; i<index ; i++){
+            if(list[i].imgUrl != null){
+                appendContext(list[i]);
+            }else{
+                appComment(list[i]);
+            }
+        }
+
+        $(".divleft").append(context);
+        index += add;
+        beginIndex+=add;
+
+
+
+
+
+    }
+    
 
 
     

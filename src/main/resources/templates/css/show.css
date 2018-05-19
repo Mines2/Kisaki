@@ -13,6 +13,23 @@
 
 }
 
+
+.titleBox{
+	display: flex;
+	width: 90%;
+	text-align: center;
+	margin-left: 5%;
+}
+
+.tip{
+	text-align: left;
+	width: 100%;
+}
+
+.totalText{
+	text-align: right;
+}
+
 .show_section_left{
 	width: 60%;
 	float: left;

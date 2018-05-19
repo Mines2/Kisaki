@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService {
     public Boolean updatePassWord(User user){
         return userMapper.updatePassWord(user);
     }
+
+    @Override
+    public  Boolean updateMess(User user){
+        return  userMapper.updateMess(user);
+    }
 }

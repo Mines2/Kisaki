@@ -120,35 +120,36 @@
         <div class="totalAct" >全部活动</div>
 
         <!-- 遍历查询显示列表数据 -->
-        <div class="outer" th:each="comment:${list}">
-            <div class="infoBox" style="flex-direction: row;">
-                <div class="imageBox" th:if="${comment.imgUrl != null}">
-                    <img th:src="${comment.imgUrl}" class="imageItem"/>
-                </div>
-                <div class="info1">
-                    <div class="authorInfo" style="flex-direction: row; align-items: flex-end;">
-                        <div class="title" th:text="${comment.context}">キャスター</div>
-                        <div class="author" th:text="'by '+${comment.userName}">by xx</div>
-                    </div>
-                    <div class="info2" style="flex-direction: row;">
-                        <div><img th:src="${comment.userLogoUrl}" class="headPhoto"/></div>
-                        <div class="info4">
-                            <div class="info3" style="flex-direction: row; align-items: flex-end">
-                                <div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;" th:text="${comment.userName}">傻逼</div>
-                                <div style="font-size: 15px; margin-left: 5px;">已投稿</div>
-                            </div>
-                            <div class="info5" style="flex-direction: row; align-items: center;">
-                                <div class="fontStyle" style="margin-left: 0px;" th:text="${comment.date}">x日前</div>
+        <!--<div class="outer" th:each="comment:${list}">-->
+            <!--<div class="infoBox" style="flex-direction: row;">-->
+                <!--<div class="imageBox" th:if="${comment.imgUrl != null}">-->
+                    <!--<img th:src="${comment.imgUrl}" class="imageItem"/>-->
+                <!--</div>-->
+                <!--<div class="info1">-->
+                    <!--<div class="authorInfo" style="flex-direction: row; align-items: flex-end;">-->
+                        <!--<div class="title" th:text="${comment.context}">キャスター</div>-->
+                        <!--<div class="author" th:text="'by '+${comment.userName}">by xx</div>-->
+                    <!--</div>-->
+                    <!--<div class="info2" style="flex-direction: row;">-->
+                        <!--<div><img th:src="${comment.userLogoUrl}" class="headPhoto"/></div>-->
+                        <!--<div class="info4">-->
+                            <!--<div class="info3" style="flex-direction: row; align-items: flex-end">-->
+                                <!--<div style="font-size: 15px; color: #6B6B6B; margin-left: 0px;" th:text="${comment.userName}">傻逼</div>-->
+                                <!--<div style="font-size: 15px; margin-left: 5px;">已投稿</div>-->
+                            <!--</div>-->
+                            <!--<div class="info5" style="flex-direction: row; align-items: center;">-->
+                                <!--<div class="fontStyle" style="margin-left: 0px;" th:text="${comment.date}">x日前</div>-->
 
-                            </div>
-                        </div>
-                    </div>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                </div>
-            </div>
-        </div>
+                <!--</div>-->
+            <!--</div>-->
 
+        <!--</div>-->
 
+        <!--<div id="more" style="width: 100%;text-align: center"> <label>更多</label></div>-->
     </div>
     <div>
         <div class="divright" style="width: 14%;" name="1">

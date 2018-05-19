@@ -86,111 +86,85 @@
         <!--选项内容-->
         <div class="content">
             <div class="tab-content" style="display: block;">
-                <div class="flexBox" style="flex-direction: row; align-items: center;">
-                    <div class="flexTitle">昵称：</div>
-                    <div class="dd">
-                        <input type="text" id="nickName" class="inputBox"/></div>
-                </div>
-                <div class="flexBox" style="flex-direction: row; align-items: center;">
-                    <div class="flexTitle">主页：</div>
-                    <div class="dd">
-                        <input id="mainPage" type="text" class="inputBox" /></div>
-                </div>
+                <!--<div class="flexBox" style="flex-direction: row; align-items: center;">-->
+                    <!--<div class="flexTitle">昵称：</div>-->
+                    <!--<div class="dd">-->
+                        <!--<input type="text" id="nickName" class="inputBox"/></div>-->
+                <!--</div>-->
+                <!--<div class="flexBox" style="flex-direction: row; align-items: center;">-->
+                    <!--<div class="flexTitle">主页：</div>-->
+                    <!--<div class="dd">-->
+                        <!--<input id="mainPage" type="text" class="inputBox" /></div>-->
+                <!--</div>-->
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">性别：</div>
                     <div class="dd">
-                        <input name="sex" type="radio" value="1" class="inputBox" />男
-                        <input name="sex" type="radio" value="0" />女
+                        <input name="sex" type="radio" value="1" class="inputBox" th:checked="${user.sex == 1 ? true : false}" />男
+                        <input name="sex" type="radio" value="0" th:checked="${user.sex == 0 ? true : false}"/>女
                     </div>
-                    <div>
-                        <select id="sexAuth" class="authBox">
-                            <option value="1">所有人</option>
-                            <option value="2">仅好友</option>
-                            <option value="3">私密</option>
-                        </select>
-                    </div>
+                    <!--<div>-->
+                        <!--<select id="sexAuth" class="authBox">-->
+                            <!--<option value="1">所有人</option>-->
+                            <!--<option value="2">仅好友</option>-->
+                            <!--<option value="3">私密</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
                 </div>
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">地址：</div>
                     <div class="dd">
-                        <select id="cmbProvince" name="cmbProvince" class="inputBox"></select>
-                        <select id="cmbCity" name="cmbCity"></select>
-                        <select id="cmbArea" name="cmbArea"></select>
-                    </div>
-                    <div>
-                        <select id="addressAuth" class="authBox">
-                            <option value="1">所有人</option>
-                            <option value="2">仅好友</option>
-                            <option value="3">私密</option>
+                        <select id="cmbProvince" th:name="${user.getAddress().substring(0,user.getAddress().indexOf(',') )}" class="inputBox">
+                            <!--<option th:text="${user.getAddress().substring(0,user.getAddress().indexOf(',') )}" selected></option>-->
+                        </select>
+                        <select id="cmbCity" th:name="${user.getAddress().substring(user.getAddress().indexOf(',') + 1, user.getAddress().lastIndexOf(','))}">
+                            <!--<option th:value="1" th:text="${user.getAddress().substring(user.getAddress().indexOf(',') + 1, user.getAddress().lastIndexOf(','))}" selected>11111</option>-->
+                        </select>
+                        <select id="cmbArea" th:name="${user.getAddress().substring(user.getAddress().lastIndexOf(',') + 1, user.getAddress().length())}">
+                            <!--<option th:text="${user.getAddress().substring(user.getAddress().lastIndexOf(',') + 1, user.getAddress().length())}" selected></option>-->
                         </select>
                     </div>
+
                 </div>
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">出生年份：</div>
                     <div class="dd">
-                        <select id="year" name="year" class="inputBox"></select>
+                        <select id="year" class="inputBox" th:name="${user.getBirthdayString().substring(0, user.getBirthdayString().indexOf('-'))}"></select>
                     </div>
-                    <div>
-                        <select id="yearAuth" class="authBox">
-                            <option value="1">所有人</option>
-                            <option value="2">仅好友</option>
-                            <option value="3">私密</option>
-                        </select>
-                    </div>
+
                 </div>
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">生日：</div>
                     <div class="dd">
-                        <select id="month" name="month" class="inputBox"></select>
-                        <select id="day" name="day"></select>
+                        <select id="month"  class="inputBox" th:name="${user.getBirthdayString().substring(user.getBirthdayString().indexOf('-')+1,user.getBirthdayString().lastIndexOf('-'))}"></select>
+                        <select id="day"  th:name="${(user.getBirthdayString().substring(user.getBirthdayString().lastIndexOf('-') + 1, user.getBirthdayString().length()))}"></select>
                     </div>
-                    <div>
-                        <select id="dateAuth" class="authBox">
-                            <option value="1">所有人</option>
-                            <option value="2">仅好友</option>
-                            <option value="3">私密</option>
-                        </select>
-                    </div>
+
                 </div>
-                <div class="flexBox" style="flex-direction: row; align-items: center;">
-                    <div class="flexTitle">职业：</div>
-                    <div class="dd">
-                        <select id="job" name="job" class="inputBox">
-                            <option>暂无</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select id="jobAuth" class="authBox">
-                            <option value="1">所有人</option>
-                            <option value="2">仅好友</option>
-                            <option value="3">私密</option>
-                        </select>
-                    </div>
-                </div>
+
                 <div style="text-align: center; margin-top: 15px;">
                     <div>
-                        <input id="btnSubmit1" name="btnSubmit1" type="submit" class="buttonStyle" style="width: 100px; height: 30px;" value="立即绑定" /></div>
+                        <input id="btnSubmit1" name="btnSubmit1" type="button" class="buttonStyle" style="width: 100px; height: 30px;"  onclick="updateMess()" value="立即绑定" /></div>
                 </div>
             </div>
             <div class="tab-content" style="display: none;">
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">原密码：</div>
                     <div class="dd">
-                        <input name="txtMobile" type="text" class="inputBox" /></div>
+                        <input name="txtMobile" type="text" class="inputBox" id="pastPassWord" /></div>
                 </div>
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">新密码：</div>
                     <div class="dd">
-                        <input name="txtPassword" type="password" class="inputBox" /></div>
+                        <input name="txtPassword" type="password" class="inputBox" id="newPassWord" /></div>
                 </div>
                 <div class="flexBox" style="flex-direction: row; align-items: center;">
                     <div class="flexTitle">新密码确认：</div>
                     <div class="dd">
-                        <input name="txtPasswordConfirm" type="passwordConfirm" class="inputBox" /></div>
+                        <input name="txtPasswordConfirm" type="passwordConfirm" class="inputBox" id="checkPassWord" /></div>
                 </div>
                 <div style="text-align: center; margin-top: 15px;">
                     <div>
-                        <input id="btnSubmit2" name="btnSubmit1" type="submit" class="buttonStyle" style="width: 100px; height: 30px;" value="立即修改" />
+                        <input id="btnSubmit2" name="btnSubmit1" type="button" class="buttonStyle" style="width: 100px; height: 30px;" value="立即修改"  onclick="upPassWord()" />
                     </div>
                 </div>
             </div>

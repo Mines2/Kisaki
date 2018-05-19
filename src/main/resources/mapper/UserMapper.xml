@@ -7,11 +7,14 @@
         <result column="USER_NAME" property="userName"/>
         <result column="USER_LOGO_URL" property="logoImgUrl"/>
         <result column="PASS_WORD_SALT" property="password"/>
+        <result column="SEX" property="sex"/>
+        <result column="BIRTHDAY" property="birthday"/>
+        <result column="ADDRESS" property="address"/>
     </resultMap>
 
 
     <sql id="base_column">
-        USER_ID, USER_NAME,USER_LOGO_URL ,PASS_WORD_SALT
+        USER_ID, USER_NAME,USER_LOGO_URL ,PASS_WORD_SALT,sex,birthday,address
     </sql>
 
     <select id="findByUserName" resultMap="UserResult" parameterType="java.lang.String">
@@ -56,11 +59,13 @@
     </insert>
 
     <update id="updatePassWord" parameterType="kisaki.web.entity.shiro.User">
-        UPDATE  SET  PASS_WORD_SALT = #{password , jdbcType=VARCHAR } WHERE USER_ID = #{id ,jdbcType=NUMERIC}
+        UPDATE T_USER SET  PASS_WORD_SALT = #{password , jdbcType=VARCHAR } WHERE USER_ID = #{id ,jdbcType=NUMERIC}
     </update>
 
     <update id="updateMess" parameterType="kisaki.web.entity.shiro.User">
-        
+        UPDATE T_USER SET sex = #{sex , jdbcType=NUMERIC} , address = #{address ,jdbcType=VARCHAR}
+        ,birthday = #{birthday , jdbcType=TIMESTAMP}
+        WHERE  USER_ID = #{id ,jdbcType=NUMERIC}
     </update>
 
 

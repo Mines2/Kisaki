@@ -62,6 +62,22 @@ public class ActiveController {
         return modelAndView;
     }
 
+
+    @RequestMapping("/getList")
+    @ResponseBody
+    public JSONObject getList(){
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getSession().getAttribute("user");
+        JSONObject jsonObject = new JSONObject();
+        List<Active> list = activeService.findContextWithUserId(user.getId());
+        List<Active> carelist = activeService.findContextWithCareIds(user.getId());
+        List<Active> meActiveList = activeService.findContextByUserId(user.getId());
+        List<Active> newList = march(list , carelist);
+        newList = march(newList , meActiveList);
+        jsonObject.accumulate("list",newList);
+        return jsonObject;
+    }
+
     @RequestMapping("/pushContext")
     @ResponseBody
     public JSONObject push(Active active){

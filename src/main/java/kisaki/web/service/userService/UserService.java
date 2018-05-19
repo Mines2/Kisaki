@@ -19,4 +19,6 @@ public interface UserService {
     Boolean insertUser(User user);
 
     Boolean updatePassWord(User user);
+
+    Boolean updateMess(User user);
 }

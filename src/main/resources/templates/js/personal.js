@@ -40,6 +40,14 @@ $(function () {
             $("#day").append("<option value='" + i + "'>" + i + "</option>"); //为Select追加一个Option(下拉项)
         }
     });
+
+
+    $("#year").val(parseInt($("#year").attr("name")));
+    $("#month").val(parseInt($("#month").attr("name")));
+    $("#day").val(parseInt($("#day").attr("name")));
+    $("#cmbProvince").val($("#cmbProvince").attr("name"));
+    $("#cmbCity").val($("#cmbCity").attr("name"));
+    $("#cmbArea").val($("#cmbArea").attr("name"));
 });
 
 //Tab控制选项卡
@@ -544,4 +552,54 @@ var provinceList = [
     {name:'澳门', cityList:[
     ]}
 ];
+
+
+
+function upPassWord() {
+    var pastPassWord = $("#pastPassWord").val();
+    var newPassWord = $("#newPassWord").val();
+    var checkPassWord = $("#checkPassWord").val();
+
+    if(newPassWord == checkPassWord){
+        $.ajax({
+            data:{pastPassWord:pastPassWord,newPassWord:newPassWord},
+            url:"/user/updatePassWord",
+            success:function (data) {
+                if(data.result == 1){
+                    alert("修改成功");
+                    location.href = "/out";
+                }else{
+                    alert("修改失败")
+                }
+                
+            }
+        })
+    }
+
+    
+}
+
+var user = new Object();
+
+function updateMess() {
+    var sex = $('input[name=sex]').val();
+    var address =$('.dd #cmbProvince').val() + "," + $(".dd #cmbCity").val() + "," +  $('.dd #cmbArea').val();
+
+    var date = $("#year").val() + "/" +  $("#month").val() + "/" + $("#day").val();
+    var oldTime = (new Date(date)).getTime();
+    var curTime = new Date(oldTime);
+    $.ajax({
+        url:"/user/updateMess",
+        data:{sex:sex,address:address,birthday:curTime},
+        success:function (data) {
+            if(data.result == true){
+            location.href = "/user/personal";
+          }
+        }
+    })
+
+
+
+    
+}
 
