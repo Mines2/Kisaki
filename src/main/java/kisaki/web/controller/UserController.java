@@ -17,6 +17,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+//   前往个人管理页面
     @RequestMapping("/personal")
     public ModelAndView toUpdate(Long userId) {
         ModelAndView modelAndView = new ModelAndView();
@@ -31,6 +32,7 @@ public class UserController {
         return modelAndView;
     }
 
+//    修改密码
     @RequestMapping("/updatePassWord")
     @ResponseBody
     public Object updatePassWord(String newPassWord, String pastPassWord) {
@@ -52,6 +54,7 @@ public class UserController {
         return jsonObject;
     }
 
+//    修改个人信息
     @RequestMapping("/updateMess")
     @ResponseBody
     public Object updateMess(User user) {

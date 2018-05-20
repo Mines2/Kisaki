@@ -24,6 +24,7 @@ public class ActiveController {
     @Autowired
     UserService userService;
 
+    //用关注用户id号寻找动态
     @RequestMapping("/getlist1")
     @ResponseBody
     public JSONObject findfindContextWithCareIds(){
@@ -35,6 +36,7 @@ public class ActiveController {
         return jsonObject;
     }
 
+    //用当前用户id寻找动态
     @RequestMapping("/getlist2")
     @ResponseBody
     public  JSONObject findContextWithUserId(Long userId){
@@ -62,7 +64,7 @@ public class ActiveController {
         return modelAndView;
     }
 
-
+    //获取所有动态
     @RequestMapping("/getList")
     @ResponseBody
     public JSONObject getList(){
@@ -78,6 +80,7 @@ public class ActiveController {
         return jsonObject;
     }
 
+//    发表动态
     @RequestMapping("/pushContext")
     @ResponseBody
     public JSONObject push(Active active){
@@ -91,6 +94,7 @@ public class ActiveController {
     }
 
 
+    //通过当前userId获取list表，type1=全部，type2=插画的评价 ， else 动态
     @RequestMapping("/getListByUserId")
     @ResponseBody
     public JSONObject getListByUserId(int type){
@@ -114,7 +118,7 @@ public class ActiveController {
         return jsonObject;
     }
 
-
+    //页面上的全部选项，type1=全部，type2=插画的评价 ， else 动态
     @RequestMapping("/getAllList")
     @ResponseBody
     public JSONObject getAllList(int type){
@@ -141,7 +145,7 @@ public class ActiveController {
         return jsonObject;
     }
 
-
+    //页面上的关注用户选项，type1=全部，type2=插画的评价 ， else 动态
     @RequestMapping("/getCardsList")
     @ResponseBody
     public  JSONObject getCardsList(int type){

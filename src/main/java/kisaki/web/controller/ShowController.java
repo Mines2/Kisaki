@@ -24,6 +24,7 @@ public class ShowController  {
     CommentService commentService;
 
 
+//    插图展示页面
     @RequestMapping("/showImg")
     ModelAndView show (long imgId){
         Map map =new HashMap();

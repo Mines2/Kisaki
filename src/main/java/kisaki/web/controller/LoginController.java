@@ -31,6 +31,7 @@ public class LoginController {
     @Autowired
     BackgroundImgService backgroundImgService;
 
+//    登录
     @ResponseBody
     @RequestMapping("/login")
     public Object login(User user) {
@@ -62,6 +63,7 @@ public class LoginController {
     }
 
 
+//    前往主页
     @RequestMapping("/goIndex")
     public ModelAndView goIndex(){
 
@@ -88,6 +90,7 @@ public class LoginController {
 
     }
 
+//    登录页面
     @RequestMapping("/")
     public static String test(Model model){
         return "/web/login";
@@ -99,7 +102,7 @@ public class LoginController {
 
         return "/web/login";
     }
-
+//注册
     @ResponseBody
     @RequestMapping("/register")
     public Object register(User user){

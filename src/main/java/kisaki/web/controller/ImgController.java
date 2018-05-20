@@ -36,6 +36,7 @@ public class ImgController {
 
 
 
+//    登录页面，获取背景图片
     @ResponseBody
     @RequestMapping("/getBGList")
     public Object getBGList(){
@@ -47,10 +48,8 @@ public class ImgController {
         return jsonObject;
     }
 
-    @RequestMapping("/mess")
-    public String test(Model model){
-        return "/web/login";
-    }
+
+
 
     @RequestMapping("/index")
     public ModelAndView goIndex(){
@@ -59,6 +58,7 @@ public class ImgController {
         return modelAndView;
     }
 
+//    获取排行榜内容
     @RequestMapping("/getListByType")
     public Object getList(String type) throws IOException {
         JSONObject jsonObject = new JSONObject();
@@ -69,6 +69,7 @@ public class ImgController {
         return jsonObject;
     }
 
+//    添加为收藏
     @RequestMapping("/addCollect")
     @ResponseBody
     public Object addCollect(int imgUserId , int imgId){
@@ -84,6 +85,7 @@ public class ImgController {
     }
 
 
+//    获取当前用户所拥有的插画
     @RequestMapping("/findImgByUserId")
     @ResponseBody
     public Object findImgByUserId(Long id){
@@ -94,6 +96,7 @@ public class ImgController {
     }
 
 
+//    上传
     @RequestMapping("/upload")
     @ResponseBody
     public Object upload(String imgList){
@@ -125,6 +128,7 @@ public class ImgController {
     }
 
 
+//    删除插画
     @RequestMapping("/delete")
     @ResponseBody
     public  Object delete(String ids , int type){
@@ -152,7 +156,7 @@ public class ImgController {
 
     }
 
-
+//前往管理页面
     @RequestMapping("/toManage")
     public  ModelAndView modelAndView (int type ){
         ModelAndView modelAndView = new ModelAndView();
@@ -168,7 +172,7 @@ public class ImgController {
         return modelAndView;
     }
 
-
+//    管理页面获取图片list，type1为个人作品，type2为收藏
     @RequestMapping("/getImgList")
     @ResponseBody
     public  Object getImgList( int type){
@@ -190,6 +194,7 @@ public class ImgController {
     }
 
 
+//    前往上传页面
     @RequestMapping("/toUpload")
     public ModelAndView toUpload(){
         ModelAndView modelAndView = new ModelAndView();
