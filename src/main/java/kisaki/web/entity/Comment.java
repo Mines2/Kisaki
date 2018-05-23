@@ -7,9 +7,18 @@ import java.util.Date;
 
 public class Comment implements Serializable {
     private Long userId;
+    private Long imgId;
     private String comment;
     private String userName;
     private Date date;
+
+    public Long getImgId() {
+        return imgId;
+    }
+
+    public void setImgId(Long imgId) {
+        this.imgId = imgId;
+    }
 
     public Long getUserId() {
         return userId;
@@ -35,11 +44,12 @@ public class Comment implements Serializable {
         this.userName = userName;
     }
 
-    public String getDate() {
+    public Date getDate() {
+        return date;
+    }
+
+    public String getStringDate() {
         SimpleDateFormat sf = new SimpleDateFormat("YYYY:MM:DD HH:MM:SS");
-
-
-
         return sf.format(date);
     }
 

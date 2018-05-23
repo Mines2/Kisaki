@@ -40,9 +40,9 @@
 
         FROM T_IMG TI LEFT JOIN  T_USER tu on tu.USER_ID = TI.user_id
 
-        order BY  ${type} ASC
+        order BY  ${type} DESC
 
-        LIMIT 3
+        LIMIT ${number}
 
 
         ]]>

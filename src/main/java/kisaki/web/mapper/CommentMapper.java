@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface CommentMapper {
     List<Comment> getCommentList(Long imgId);
+
+    Boolean insertComment(Comment comment);
 }

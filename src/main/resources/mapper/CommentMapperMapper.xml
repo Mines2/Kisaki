@@ -22,6 +22,10 @@
         LEFT JOIN t_img ti on tc.img_id = ti.id
         where tc.img_id = #{imgId,jdbcType= NUMERIC}
     </select>
+    
+    <insert id="insertComment" parameterType="kisaki.web.entity.Comment" >
+        INSERT  INTO  T_COMMENT (img_id,user_id,comment,date) VALUES (#{imgId},#{userId},#{comment},#{date})
+    </insert>
 
   
 </mapper>

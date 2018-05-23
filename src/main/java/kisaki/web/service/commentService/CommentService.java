@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CommentService {
     List<Comment> getCommentList(Long imgId);
+
+    Boolean insertComment(Comment comment);
 }

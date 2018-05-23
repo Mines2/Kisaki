@@ -80,8 +80,15 @@ public class LoginController {
                     userService.findCareByUserId(currentUser.getId()));
             Map map = new HashMap();
             map.put("type", "img_have_collected");
+            map.put("number",6);
             List<Img> collectList = backgroundImgService.getImgListByType(map);
+            map.put("number", 3);
+            List<Img> collectList2 = backgroundImgService.getImgListByType(map);
             modelAndView.addObject("collectList", collectList);
+            modelAndView.addObject("collectList2", collectList2);
+            map.put("type","push_date");
+            List<Img> dateList = backgroundImgService.getImgListByType(map);
+            modelAndView.addObject("dateList", dateList);
             map.put("table", "t_user_care");
             map.put("column", "care_id");
             modelAndView.addObject("userList", userService.findUserByTable(map));

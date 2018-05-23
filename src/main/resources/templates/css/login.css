@@ -70,17 +70,10 @@ body{
 
 
 .logo{
-
-	width: 300px;
-	height: 150px;
-	background: yellow;
+	height: 165px;
 	position: relative;
-	left: 50%;
-	margin-left: -150px;
+    margin-bottom: 10px;
 	opacity: 1;
-
-
-
 }
 
 
@@ -91,12 +84,6 @@ body{
 	width:500px;
 	height: 70px;
 	left: 0;
-
-
-
-
-
-
 }
 
 

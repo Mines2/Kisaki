@@ -7,6 +7,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="../css/index.css" type="text/css">
     <link rel="stylesheet" href="../css/show.css" type="text/css">
+    <link rel="stylesheet" href="../css/comment.css" type="text/css">
 
 </head>
 
@@ -14,29 +15,29 @@
 <body>
 <header>
     <div class="head_main">
-        <img alt="" src="../image/logo01.jpg" class="head_logo">
+        <img alt="" src="../image/kisaki.png" class="head_logo">
         <div class="left_nav">
             <ul class="left_nav_content">
                 <li>
                     <div alt="" style="background: url('../image/nav_img.png') -163px -37px;background-size: 1000% "
                          class="nav_logo"></div>
-                    <a th:href="@{/login}"><label class="nav_text">首页</label></a>
+                    <a th:href="@{/goIndex}"><label class="nav_text">首页</label></a>
                 </li>
                 <li style="width: 80px">
                     <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
                          class="nav_logo"></div>
-                    <label class="nav_text">上传</label>
-                    <label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label>
+                    <a th:href="@{/img/toUpload}"><label class="nav_text">上传</label></a>
+                    <a th:href="@{/img/toManage?type=1}"><label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label></a>
                 </li>
 
                 <li>
                     <div alt="" style="background: url('../image/nav_img.png') -165px -992px ;background-size: 1000%  "
                          class="nav_logo"></div>
-                    <label class="nav_text">收藏</label></li>
+                    <a th:href="@{/img/toManage?type=2}"><label class="nav_text">收藏</label></a></li>
                 <li>
                     <div alt="" style="background: url('../image/nav_img.png') -37px -12px ;background-size: 1000%  "
                          class="nav_logo"></div>
-                    <label class="nav_text">动态</label></li>
+                    <a th:href="@{/active/getlist3}"><label class="nav_text">动态</label></a></li>
 
             </ul>
         </div>
@@ -48,6 +49,11 @@
                 <li>
                     <div class="right_top_nav_img" style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
                 </li>
+                <li>
+                    <div class="right_top_nav_img">
+                        <img style="width: 50px;border-radius: 50%;" th:src="${user.logoImgUrl}">
+                    </div>
+                </li>
 
             </ul>
         </div>
@@ -55,7 +61,19 @@
             <input type="text" placeholder="" class="search_text">
             <button class="search_btu"></button>
         </div>
+        <!--<div class="right_bot_nav">-->
+        <!--<ul class="left_nav_content">-->
+        <!--<li>-->
 
+        <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+        <!--</li>-->
+        <!--<li>-->
+
+        <!--<img alt="" src="image/logo01.jpg" class="nav_logo"> <label class="nav_text">XX</label>-->
+        <!--</li>-->
+
+        <!--</ul>-->
+        <!--</div>-->
 
 
     </div>
@@ -72,7 +90,7 @@
            
 
          </div>
-         <img alt="" th:src="${Img.imgUrl}" class="show_img">
+         <img alt="" th:src="${Img.imgUrl}" class="show_img" th:name="${Img.id}">
 
          
            <div class="img_context" th:text="${Img.imgContext}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
@@ -85,7 +103,7 @@
            <ul  class="comment">
              <li   th:each="comment:${commentList}">
                 <div style="padding:5px;">
-                <a class="comment_user" href="#" th:text="${comment.userName}">XXXXX</a><label class="comment_data" th:text="${comment.date}">XXXXXX</label>
+                <a class="comment_user" href="#" th:text="${comment.userName}">XXXXX</a><label class="comment_data" th:text="${comment.getStringDate()}">XXXXXX</label>
                 </div>
                    <span class="user_comment" th:text="${comment.comment}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
                
@@ -94,16 +112,14 @@
            </ul>
            <div style="flex-direction: row; align-items: center;margin-top: 30px;" class="titleBox">
                <div class="tip">
-                   <span id="">发表一句话</span>
+                   <span id="">评论</span>
                </div>
-               <div class="totalText">
-                   <span id="num_txt1" style="color: #B0B0B0;">0/140</span>
-               </div>
+
                <div class="textBox">
                    <textarea maxlength="140" id="text_txt1" class="textInput"></textarea>
                </div>
                <div class="buttonBox">
-                   <button type="button" class="buttonStyle" onclick="pushContext()">投稿</button>
+                   <button type="button" class="buttonStyle" onclick="insertComment()">发表</button>
                </div>
            </div>
        </div>
@@ -126,29 +142,7 @@
               </li>
            </ul>
          </div>
-         <!--<div class="display_imgs">-->
-             <!--<label>XXXX</label>-->
-             <!--<ul>-->
-             <!--<li><img src="image/logo02.jpg"></li>-->
-              <!--<li><img src="image/logo02.jpg"></li>-->
-               <!--<li><img src="image/logo02.jpg"></li>-->
-                <!--<li><img src="image/logo02.jpg"></li>-->
-                 <!--<li><img src="image/logo02.jpg"></li>-->
-                  <!--<li><img src="image/logo02.jpg"></li>-->
-             <!--</ul>-->
-         <!--</div>-->
 
-         <!--<div class="display_imgs">-->
-             <!--<label>XXXX</label>-->
-             <!--<ul>-->
-             <!--<li><img src="image/logo02.jpg"></li>-->
-              <!--<li><img src="image/logo02.jpg"></li>-->
-               <!--<li><img src="image/logo02.jpg"></li>-->
-                <!--<li><img src="image/logo02.jpg"></li>-->
-                 <!--<li><img src="image/logo02.jpg"></li>-->
-                  <!--<li><img src="image/logo02.jpg"></li>-->
-             <!--</ul>-->
-         <!--</div>-->
 
 
        </div>

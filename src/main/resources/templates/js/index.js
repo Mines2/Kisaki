@@ -79,8 +79,8 @@ function loginOut() {
 
 function Collect(e) {
 
-    var imgId = e.name;
-    var imgUserId = e.value;
+    var imgId = e.value;
+    var imgUserId = e.name;
     $.ajax({
         data:{imgId:imgId,imgUserId:imgUserId},
         url:"/img/addCollect",

@@ -30,3 +30,19 @@ $(document).ready(function () {
 
 
 })
+
+
+function insertComment() {
+    var imgId = $(".show_img").attr("name");
+    var comment =$("#text_txt1").val();
+    $.ajax({
+        data:{imgId:imgId,comment:comment},
+        url:"/show/insertComment",
+        success:function (data) {
+            if(data.result == true ){
+                location.href="/show/showImg?imgId="+imgId;
+            }
+        }
+    })
+    
+}

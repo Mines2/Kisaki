@@ -16,4 +16,9 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getCommentList(Long imgId) {
         return commentMapper.getCommentList(imgId);
     }
+
+    @Override
+    public Boolean insertComment(Comment comment) {
+        return commentMapper.insertComment(comment);
+    }
 }
