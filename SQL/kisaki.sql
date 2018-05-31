@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2018-05-16 17:22:09
+Date: 2018-05-31 17:39:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,6 +57,33 @@ CREATE TABLE `people` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `t_anwser`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_anwser`;
+CREATE TABLE `t_anwser` (
+  `userId` int(10) NOT NULL,
+  `anwserId` int(10) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `imgId` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `commentId` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_anwser
+-- ----------------------------
+INSERT INTO `t_anwser` VALUES ('1', '1', 'dasdasdas', '2018-05-30 00:00:00', '5', '1', '3');
+INSERT INTO `t_anwser` VALUES ('1', '1', 'sdadasd', '2018-05-27 00:00:00', '5', '2', '4');
+INSERT INTO `t_anwser` VALUES ('1', '1', 'afsafasfsaf', '2018-05-31 15:54:24', '5', '3', '3');
+INSERT INTO `t_anwser` VALUES ('1', '1', 'asdasdzxczcagag', '2018-05-31 15:54:31', '5', '4', '3');
+INSERT INTO `t_anwser` VALUES ('1', '1', 'sadasdzxczxcasdafzxc', '2018-05-31 15:54:38', '5', '5', '3');
+INSERT INTO `t_anwser` VALUES ('2', '1', 'DAFSFAF', '2018-05-31 17:15:08', '5', '6', '1');
+INSERT INTO `t_anwser` VALUES ('2', '1', 'fasfafsafxzc', '2018-05-31 17:15:27', '5', '7', '3');
+INSERT INTO `t_anwser` VALUES ('2', '1', 'fasfszxcxzvzvx', '2018-05-31 17:24:45', '5', '8', '4');
+
+-- ----------------------------
 -- Table structure for `t_collect_img`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_collect_img`;
@@ -66,15 +93,13 @@ CREATE TABLE `t_collect_img` (
   `img_user_id` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_collect_img
 -- ----------------------------
-INSERT INTO `t_collect_img` VALUES ('3', '1', '1', '1');
-INSERT INTO `t_collect_img` VALUES ('2', '1', '1', '2');
-INSERT INTO `t_collect_img` VALUES ('1', '3', '3', '8');
-INSERT INTO `t_collect_img` VALUES ('1', '2', '2', '9');
+INSERT INTO `t_collect_img` VALUES ('1', '5', '1', '16');
+INSERT INTO `t_collect_img` VALUES ('1', '6', '1', '17');
 
 -- ----------------------------
 -- Table structure for `t_comment`
@@ -87,13 +112,16 @@ CREATE TABLE `t_comment` (
   `comment` varchar(255) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_comment
 -- ----------------------------
 INSERT INTO `t_comment` VALUES ('1', '1', '1', 'xxxx', '2018-04-26');
 INSERT INTO `t_comment` VALUES ('2', '1', '2', 'fuck u', '2018-04-27');
+INSERT INTO `t_comment` VALUES ('3', '5', '1', '撒旦撒旦', '2018-05-21');
+INSERT INTO `t_comment` VALUES ('4', '5', '1', '飒沓撒爱上', '2018-05-21');
+INSERT INTO `t_comment` VALUES ('5', '5', '2', 'afassafzxczxc', '2018-05-31');
 
 -- ----------------------------
 -- Table structure for `t_history`
@@ -126,13 +154,19 @@ CREATE TABLE `t_img` (
   `push_date` date NOT NULL,
   `img_size` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_img
 -- ----------------------------
-INSERT INTO `t_img` VALUES ('2', '2', 'rori', '萝莉', null, '1', '../image/img02.jpg', '2018-05-02', '1');
-INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '高达', '1', '1', '../image/img03.jpg', '2018-04-29', '1.41176471');
+INSERT INTO `t_img` VALUES ('2', '2', 'rori', '萝莉', '2', '0', '../image/img02.jpg', '2018-05-02', '1');
+INSERT INTO `t_img` VALUES ('3', '3', 'gumdamu', '高达', '2', '0', '../image/img03.jpg', '2018-04-29', '1.41176471');
+INSERT INTO `t_img` VALUES ('4', '1', '图片', null, '2', null, '..//image/upload/201805141095707.jpeg', '2018-05-21', '1');
+INSERT INTO `t_img` VALUES ('5', '1', '图片', null, '2', '1', '..//image/upload/201805141095708.jpeg', '2018-05-21', '1.5');
+INSERT INTO `t_img` VALUES ('6', '1', 'sadasd', null, '2', '1', '..//image/upload/201805141101005.jpeg', '2018-05-21', '1');
+INSERT INTO `t_img` VALUES ('7', '1', 'sdas ', null, null, null, '..//image/upload/201805142171213.jpeg', '2018-05-22', '1');
+INSERT INTO `t_img` VALUES ('8', '1', 'sdas ', null, null, null, '..//image/upload/201805142171214.jpeg', '2018-05-22', '1');
+INSERT INTO `t_img` VALUES ('9', '1', 'sadas', null, null, null, '..//image/upload/201805150130210.jpeg', '2018-05-30', '1.6');
 
 -- ----------------------------
 -- Table structure for `t_seen_img`
@@ -143,7 +177,7 @@ CREATE TABLE `t_seen_img` (
   `user_id` int(11) NOT NULL,
   `img_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_seen_img
@@ -157,6 +191,13 @@ INSERT INTO `t_seen_img` VALUES ('6', '1', '7');
 INSERT INTO `t_seen_img` VALUES ('7', '2', '7');
 INSERT INTO `t_seen_img` VALUES ('8', '2', '11');
 INSERT INTO `t_seen_img` VALUES ('9', '1', '11');
+INSERT INTO `t_seen_img` VALUES ('10', '1', '2');
+INSERT INTO `t_seen_img` VALUES ('11', '1', '6');
+INSERT INTO `t_seen_img` VALUES ('12', '2', '2');
+INSERT INTO `t_seen_img` VALUES ('13', '2', '3');
+INSERT INTO `t_seen_img` VALUES ('14', '2', '6');
+INSERT INTO `t_seen_img` VALUES ('15', '2', '5');
+INSERT INTO `t_seen_img` VALUES ('16', '2', '4');
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -167,7 +208,6 @@ CREATE TABLE `t_user` (
   `USER_NAME` varchar(20) NOT NULL,
   `PASS_WORD_SALT` varchar(50) NOT NULL,
   `USER_LOGO_URL` varchar(20) NOT NULL DEFAULT '../image/timg.jpg',
-  `NIKE_NAME` varchar(20) DEFAULT NULL,
   `sex` int(10) DEFAULT NULL,
   `address` varchar(10) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
@@ -177,11 +217,11 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', 'miness', '674833193512b702f69ed1a0e106aa67', '../image/logo01.jpg', null, null, null, null);
-INSERT INTO `t_user` VALUES ('2', 'GGWP', '67270d5903c8facd62f49aa2461ad19d', '../image/logo02.jpg', null, null, null, null);
-INSERT INTO `t_user` VALUES ('3', 'kisaki', '674833193512b702f69ed1a0e106aa67', '../image/logo03.jpg', null, null, null, null);
-INSERT INTO `t_user` VALUES ('4', 'QQWW', '13bfbacc1aa9791362820af8f67d3c8a', '../image/timg.jpg', null, null, null, null);
-INSERT INTO `t_user` VALUES ('5', 'czm', '1d9eaec6b5ef7d6afdea06dde856fced', '../image/timg.jpg', null, null, null, null);
+INSERT INTO `t_user` VALUES ('1', 'miness', '674833193512b702f69ed1a0e106aa67', '../image/logo01.jpg', '1', '上海,县,崇明县', '1906-02-28');
+INSERT INTO `t_user` VALUES ('2', 'GGWP', '67270d5903c8facd62f49aa2461ad19d', '../image/logo02.jpg', null, null, null);
+INSERT INTO `t_user` VALUES ('3', 'kisaki', '674833193512b702f69ed1a0e106aa67', '../image/logo03.jpg', null, null, null);
+INSERT INTO `t_user` VALUES ('4', 'QQWW', '13bfbacc1aa9791362820af8f67d3c8a', '../image/timg.jpg', null, null, null);
+INSERT INTO `t_user` VALUES ('5', 'czm', '1d9eaec6b5ef7d6afdea06dde856fced', '../image/timg.jpg', null, null, null);
 
 -- ----------------------------
 -- Table structure for `t_user_care`
