@@ -11,6 +11,21 @@ public class Comment implements Serializable {
     private String comment;
     private String userName;
     private Date date;
+    private Long id;
+    private String dataString;
+
+    public void setDataString() {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:SS");
+        this.dataString = sf.format(date);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getImgId() {
         return imgId;
@@ -50,6 +65,7 @@ public class Comment implements Serializable {
 
     public String getStringDate() {
         SimpleDateFormat sf = new SimpleDateFormat("YYYY:MM:DD HH:MM:SS");
+
         return sf.format(date);
     }
 

@@ -9,6 +9,19 @@
         <result column="USER_NAME" property="userName"/>
         <result column="USER_LOGO_URL" property="userLogoUrl"/>
         <result column="USER_SIZE" property="userSize"/>
+        <result column="id" property="id"/>
+    </resultMap>
+
+    <resultMap id="AnwserResult" type="kisaki.web.entity.Anwser">
+        <result column="userId" property="userId"></result>
+        <result column="anwserId" property="anwserId"></result>
+        <result column="date" property="date"/>
+        <result column="comment" property="comment"/>
+        <result column="id" property="id"/>
+        <result column="anwserName" property="anwserName"/>
+        <result column="userName" property="userName"/>
+        <result column="imgId" property="imgId"/>
+        <result column="commentId" property="commentId"/>
     </resultMap>
 
 
@@ -17,7 +30,7 @@
     </sql>
     
     <select id="getCommentList" resultMap="CommentResult" parameterType="java.lang.Long">
-        SELECT tc.user_id ,comment  , date , user_name   from t_comment  tc
+        SELECT tc.id as id , tc.user_id ,comment  , date , user_name   from t_comment  tc
         LEFT JOIN t_user tu on tc.USER_ID =  tu.USER_ID
         LEFT JOIN t_img ti on tc.img_id = ti.id
         where tc.img_id = #{imgId,jdbcType= NUMERIC}
@@ -26,6 +39,19 @@
     <insert id="insertComment" parameterType="kisaki.web.entity.Comment" >
         INSERT  INTO  T_COMMENT (img_id,user_id,comment,date) VALUES (#{imgId},#{userId},#{comment},#{date})
     </insert>
+
+
+    <insert id="insertAnwser" parameterType="kisaki.web.entity.Anwser">
+        INSERT INTO  T_ANWSER (userId,anwserId ,comment,date,imgId,commentId) VALUES (#{userId},#{anwserId},#{comment},#{date},#{imgId},#{commentId})
+    </insert>
+    
+    <select id="getAnwserList" resultMap="AnwserResult" parameterType="java.lang.Long">
+        SELECT *, tu.USER_NAME as userName ,tus.USER_NAME as anwserName from t_anwser ta
+        LEFT JOIN t_user tu  on tu.USER_ID = ta.userId
+        LEFT JOIN t_user tus on tus.USER_ID = ta.anwserId
+        WHERE  imgId = #{imgId}
+        GROUP BY ta.date ASC
+    </select>
 
   
 </mapper>

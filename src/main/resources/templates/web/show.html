@@ -2,12 +2,13 @@
 <html charset="utf-8" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	
+
     <title>Kisaki登录页面</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="../css/index.css" type="text/css">
     <link rel="stylesheet" href="../css/show.css" type="text/css">
     <link rel="stylesheet" href="../css/comment.css" type="text/css">
+    <script src="../js/index.js" charset="utf-8"></script>
 
 </head>
 
@@ -27,7 +28,9 @@
                     <div alt="" style="background: url('../image/nav_img.png') -87px -1092px ;background-size: 1000%  "
                          class="nav_logo"></div>
                     <a th:href="@{/img/toUpload}"><label class="nav_text">上传</label></a>
-                    <a th:href="@{/img/toManage?type=1}"><label style="margin-left: 63px;border-left: solid 1px;padding-left:5px " class="nav_text">管理</label></a>
+                    <a th:href="@{/img/toManage?type=1}"><label
+                            style="margin-left: 63px;border-left: solid 1px;padding-left:5px "
+                            class="nav_text">管理</label></a>
                 </li>
 
                 <li>
@@ -44,10 +47,12 @@
         <div class="right_top_nav">
             <ul class="left_nav_content">
                 <li>
-                    <div class="right_top_nav_img" style="  background: url('../image/icons.png') -851px -50px;background-size: 2500%" ></div>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -50px;background-size: 2500%"></div>
                 </li>
                 <li>
-                    <div class="right_top_nav_img" style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
+                    <div class="right_top_nav_img"
+                         style="  background: url('../image/icons.png') -851px -250px;background-size: 2500%"></div>
                 </li>
                 <li>
                     <div class="right_top_nav_img">
@@ -79,75 +84,82 @@
     </div>
 
 </header>
-   <section class="section_content">
-       <div class="show_section_left">
-         <div class="user_content">
-           <img th:src="${Img.userLogoUrl}" class="user_logo">
-           <ul class="user_mess">
-            <li class="img_name" th:text="${Img.imgName}">XXXX</li>
-               <li>by <label id="user" th:text="${Img.userName}" th:value="${Img.userId}"></label></li>
-           </ul>
-           
-
-         </div>
-         <img alt="" th:src="${Img.imgUrl}" class="show_img" th:name="${Img.id}">
-
-         
-           <div class="img_context" th:text="${Img.imgContext}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
-         
-
-           <div  class="line"></div>
+<section class="section_content">
+    <div class="show_section_left">
+        <div class="user_content">
+            <img th:src="${Img.userLogoUrl}" class="user_logo">
+            <ul class="user_mess">
+                <li class="img_name" th:text="${Img.imgName}">XXXX</li>
+                <li>by <label id="user" th:text="${Img.userName}" th:value="${Img.userId}"></label></li>
+            </ul>
 
 
+        </div>
+        <img id="showImg" alt="" th:src="${Img.imgUrl}" class="show_img" th:name="${Img.id}">
 
-           <ul  class="comment">
-             <li   th:each="comment:${commentList}">
+
+        <div class="img_context" th:text="${Img.imgContext}">
+            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <ul class="comment">
+            <li th:each="comment:${commentList}" flag="ture" th:name="${comment.id}" number="3">
                 <div style="padding:5px;">
-                <a class="comment_user" href="#" th:text="${comment.userName}">XXXXX</a><label class="comment_data" th:text="${comment.getStringDate()}">XXXXXX</label>
+                    <a class="comment_user" href="#" th:text="${comment.userName}" th:name="${comment.userId}">XXXXX</a><label
+                        class="comment_data" th:text="${comment.getStringDate()}">XXXXXX</label>
                 </div>
-                   <span class="user_comment" th:text="${comment.comment}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
-               
-             </li>
+                <span class="user_comment" th:text="${comment.comment}">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                <label class="anwser" onclick="showAnswer(this)">回复</label>
+                <!--<div style="padding: 5px;background: white">-->
+                    <!--<span style="margin-left: 50px">xxxx回复XXXX :</span> <span>SSSSSSSS</span> <span-->
+                        <!--style="right: 0;position: absolute;margin-right: 15%;"> YYYYMMDD-HHMMSS</span> <span-->
+                        <!--class="anwser" style="margin-top:0 ">回复</span>-->
+                <!--</div>-->
 
-           </ul>
-           <div style="flex-direction: row; align-items: center;margin-top: 30px;" class="titleBox">
-               <div class="tip">
-                   <span id="">评论</span>
-               </div>
+            </li>
 
-               <div class="textBox">
-                   <textarea maxlength="140" id="text_txt1" class="textInput"></textarea>
-               </div>
-               <div class="buttonBox">
-                   <button type="button" class="buttonStyle" onclick="insertComment()">发表</button>
-               </div>
-           </div>
-       </div>
+        </ul>
+        <div style="flex-direction: row; align-items: center;margin: 0px; background: white;width: 96%;padding: 2%" class="titleBox">
+            <div class="tip">
+                <span>评论</span>
+            </div>
 
-
-       <div class="show_section_right">
-         <div  class="recode">
-           <ul  >
-              <li style="border-right:dotted 1px;">
-                 <ol>
-                  <li style="width:100%;"><label>浏览量</label></li>
-                  <li style="width:100%;"><label th:text="${Img.imgHaveSeen}">200</label></li>
-                </ol>
-              </li>
-              <li>
-                <ol>
-                  <li style="width:100%;"><label>赞！</label></li>
-                  <li style="width:100%;"><label th:text="${Img.imgHaveCollected}">200</label></li>
-                </ol>
-              </li>
-           </ul>
-         </div>
+            <div class="textBox">
+                <textarea maxlength="140" id="text_txt1" class="textInput"></textarea>
+            </div>
+            <div class="buttonBox">
+                <button type="button" class="buttonStyle" onclick="insertComment()">发表</button>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="show_section_right">
+        <div class="recode">
+            <ul>
+                <li style="border-right:dotted 1px;">
+                    <ol>
+                        <li style="width:100%;"><label>浏览量</label></li>
+                        <li style="width:100%;"><label th:text="${Img.imgHaveSeen}">200</label></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li style="width:100%;"><label>赞！</label></li>
+                        <li style="width:100%;"><label th:text="${Img.imgHaveCollected}">200</label></li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
 
-       </div>
-   </section>
- </body>
+
+    </div>
+</section>
+</body>
 
 <script src="../js/jquery.min.js" charset="utf-8"></script>
 <script src="../js/show.js" charset="UTF-8"></script>
